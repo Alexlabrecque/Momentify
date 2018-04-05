@@ -7,23 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0118C4320745514004F3375 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4220745514004F3375 /* AuthenticationViewController.swift */; };
+		C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C442074573F004F3375 /* SessionsViewController.swift */; };
+		C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */; };
 		C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07772DF2073016E00EA6759 /* AppDelegate.swift */; };
-		C07772E22073016E00EA6759 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07772E12073016E00EA6759 /* ViewController.swift */; };
 		C07772E52073016E00EA6759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772E32073016E00EA6759 /* Main.storyboard */; };
 		C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C07772E62073016E00EA6759 /* Momentify.xcdatamodeld */; };
 		C07772EA2073016E00EA6759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07772E92073016E00EA6759 /* Assets.xcassets */; };
 		C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */; };
+		C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */; };
+		C07772FE207311C100EA6759 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07772FD207311C100EA6759 /* Bolts.framework */; };
+		C0777300207311E000EA6759 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */; };
+		C0777302207311EE00EA6759 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */; };
+		C0777304207311FD00EA6759 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0777303207311FD00EA6759 /* FBSDKShareKit.framework */; };
+		C07773062073131600EA6759 /* FacebookSDKs-iOS-4 in Frameworks */ = {isa = PBXBuildFile; fileRef = C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */; };
+		C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077730F20742C9B00EA6759 /* FilterViewController.swift */; };
+		C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731120742CB300EA6759 /* ProfileViewController.swift */; };
+		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
+		C077731620742CEA00EA6759 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731520742CEA00EA6759 /* NotificationsViewController.swift */; };
+		DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		253E0D3793C9A9C0BCB58947 /* Pods-Momentify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momentify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Momentify/Pods-Momentify.release.xcconfig"; sourceTree = "<group>"; };
+		3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Momentify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5599DA7F6E4238EA61E2332F /* Pods-Momentify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momentify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Momentify/Pods-Momentify.debug.xcconfig"; sourceTree = "<group>"; };
+		C0118C4220745514004F3375 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		C0118C442074573F004F3375 /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
+		C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		C07772DC2073016E00EA6759 /* Momentify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07772DF2073016E00EA6759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C07772E12073016E00EA6759 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C07772E42073016E00EA6759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C07772E72073016E00EA6759 /* Momentify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Momentify.xcdatamodel; sourceTree = "<group>"; };
 		C07772E92073016E00EA6759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C07772EC2073016E00EA6759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C07772EE2073016E00EA6759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C07772FD207311C100EA6759 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		C0777303207311FD00EA6759 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "FacebookSDKs-iOS-4"; path = "../../../Documents/FacebookSDKs-iOS-4"; sourceTree = "<group>"; };
+		C077730720731EA800EA6759 /* Momentify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Momentify-Bridging-Header.h"; sourceTree = "<group>"; };
+		C077730F20742C9B00EA6759 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		C077731120742CB300EA6759 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C077731320742CD100EA6759 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
+		C077731520742CEA00EA6759 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +60,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07773062073131600EA6759 /* FacebookSDKs-iOS-4 in Frameworks */,
+				DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */,
+				C0777300207311E000EA6759 /* FBSDKCoreKit.framework in Frameworks */,
+				C0777304207311FD00EA6759 /* FBSDKShareKit.framework in Frameworks */,
+				C0777302207311EE00EA6759 /* FBSDKLoginKit.framework in Frameworks */,
+				C07772FE207311C100EA6759 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0616D726D37247B81C050D7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */,
+				C0777303207311FD00EA6759 /* FBSDKShareKit.framework */,
+				C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */,
+				C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */,
+				C07772FD207311C100EA6759 /* Bolts.framework */,
+				3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C07772D32073016E00EA6759 = {
 			isa = PBXGroup;
 			children = (
+				C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */,
 				C07772DE2073016E00EA6759 /* Momentify */,
+				C07772FA207306FC00EA6759 /* Supporting Files */,
 				C07772DD2073016E00EA6759 /* Products */,
+				D235D13FC0A7B0E524A14098 /* Pods */,
+				0616D726D37247B81C050D7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +108,62 @@
 		C07772DE2073016E00EA6759 /* Momentify */ = {
 			isa = PBXGroup;
 			children = (
-				C07772DF2073016E00EA6759 /* AppDelegate.swift */,
-				C07772E12073016E00EA6759 /* ViewController.swift */,
-				C07772E32073016E00EA6759 /* Main.storyboard */,
+				C07772F9207306F500EA6759 /* Model */,
+				C07772F6207306BA00EA6759 /* View */,
+				C07772F8207306D700EA6759 /* Controller */,
 				C07772E92073016E00EA6759 /* Assets.xcassets */,
-				C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */,
-				C07772EE2073016E00EA6759 /* Info.plist */,
 				C07772E62073016E00EA6759 /* Momentify.xcdatamodeld */,
+				C077730720731EA800EA6759 /* Momentify-Bridging-Header.h */,
 			);
 			path = Momentify;
+			sourceTree = "<group>";
+		};
+		C07772F6207306BA00EA6759 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */,
+				C07772E32073016E00EA6759 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C07772F8207306D700EA6759 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C07772DF2073016E00EA6759 /* AppDelegate.swift */,
+				C0118C4220745514004F3375 /* AuthenticationViewController.swift */,
+				C0118C442074573F004F3375 /* SessionsViewController.swift */,
+				C077730F20742C9B00EA6759 /* FilterViewController.swift */,
+				C077731120742CB300EA6759 /* ProfileViewController.swift */,
+				C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */,
+				C077731320742CD100EA6759 /* CreateSessionViewController.swift */,
+				C077731520742CEA00EA6759 /* NotificationsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C07772F9207306F500EA6759 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C07772FA207306FC00EA6759 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C07772EE2073016E00EA6759 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D235D13FC0A7B0E524A14098 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5599DA7F6E4238EA61E2332F /* Pods-Momentify.debug.xcconfig */,
+				253E0D3793C9A9C0BCB58947 /* Pods-Momentify.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C07772F12073016E00EA6759 /* Build configuration list for PBXNativeTarget "Momentify" */;
 			buildPhases = (
+				D5C526DF5CD5717ED19725FE /* [CP] Check Pods Manifest.lock */,
 				C07772D82073016E00EA6759 /* Sources */,
 				C07772D92073016E00EA6759 /* Frameworks */,
 				C07772DA2073016E00EA6759 /* Resources */,
+				D95AD744225360E8D9C858EA /* [CP] Embed Pods Frameworks */,
+				F08EF81FE80E2C709201F055 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,6 +201,7 @@
 				TargetAttributes = {
 					C07772DB2073016E00EA6759 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -128,20 +231,105 @@
 			files = (
 				C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */,
 				C07772EA2073016E00EA6759 /* Assets.xcassets in Resources */,
+				C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */,
 				C07772E52073016E00EA6759 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D5C526DF5CD5717ED19725FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Momentify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D95AD744225360E8D9C858EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Momentify/Pods-Momentify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Momentify/Pods-Momentify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F08EF81FE80E2C709201F055 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Momentify/Pods-Momentify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C07772D82073016E00EA6759 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
+				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
 				C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */,
-				C07772E22073016E00EA6759 /* ViewController.swift in Sources */,
+				C0118C4320745514004F3375 /* AuthenticationViewController.swift in Sources */,
 				C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */,
+				C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */,
+				C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */,
+				C077731620742CEA00EA6759 /* NotificationsViewController.swift in Sources */,
+				C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,14 +464,22 @@
 		};
 		C07772F22073016E00EA6759 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5599DA7F6E4238EA61E2332F /* Pods-Momentify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YP7LSL63WS;
-				INFOPLIST_FILE = Momentify/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.labrecque.Momentify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Momentify/Momentify-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -291,14 +487,21 @@
 		};
 		C07772F32073016E00EA6759 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 253E0D3793C9A9C0BCB58947 /* Pods-Momentify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YP7LSL63WS;
-				INFOPLIST_FILE = Momentify/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.labrecque.Momentify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Momentify/Momentify-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
