@@ -9,6 +9,8 @@
 import UIKit
 import FacebookLogin
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import SVProgressHUD
 import FBSDKLoginKit
 
@@ -16,12 +18,13 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var createUserButton: UIButton!
+    @IBOutlet weak var logInButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //let FBLoginButton = LoginButton(readPermissions: [ .publicProfile ])
         let FBLoginButton = FBSDKLoginButton()
         FBLoginButton.delegate = self
         
@@ -30,6 +33,18 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        
+        createUserButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+        logInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+        
+        createUserButton.isEnabled = false
+        logInButton.isEnabled = false
+        
+        handleTextField()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
     }
 
     
@@ -38,23 +53,67 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     }
     
     
+    
+    // MARK :- Allow buttons to be pressed
+    
+    func handleTextField() {
+        emailTextField.addTarget(self, action: #selector(AuthenticationViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(AuthenticationViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty
+        else {
+            createUserButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            logInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            
+            createUserButton.isEnabled = false
+            logInButton.isEnabled = false
+            
+            return
+        }
+        createUserButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        logInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        
+        createUserButton.isEnabled = true
+        logInButton.isEnabled = true
+    }
+    
+    
+    
     //MARK :- Create User
     
     @IBAction func createUserButtonPressed(_ sender: Any) {
         SVProgressHUD.show()
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-        
+
             if error != nil {
+                
                 print(error!)
+                return
             } else {
-                print("Registration Succesfull")
+                
+                let uid = user?.uid
+                self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!)
+                
                 SVProgressHUD.dismiss()
-    
+                
                 self.performSegue(withIdentifier: "goToNavigationController", sender: self)
             }
         }
+        
     }
+    
+    func setUserInformation(email: String, name: String, occupation: String, uid: String) {
+        
+        let ref = Database.database().reference()
+        let usersReference = ref.child("users")
+        let newUserReference = usersReference.child(uid)
+        newUserReference.setValue(["email": email, "name": name, "occupation": occupation])
+    }
+    
+    
     
     
     //MARK :- Log In
@@ -89,6 +148,10 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
             if let error = error {
                 return
             }
+
+            let uid = user?.uid
+            self.setUserInformation(email: "", name: "", occupation: "", uid: uid!)
+            
             self.performSegue(withIdentifier: "goToNavigationController", sender: self)
         }
     }
@@ -97,6 +160,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         // to understand why would need this
     }
+    
     
     
     //MARK:- TextField Delegate Methods

@@ -74,7 +74,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qUB-aw-haJ"/>
                     <connections>
+                        <outlet property="createUserButton" destination="IRR-VX-8AD" id="P9Q-xG-L7f"/>
                         <outlet property="emailTextField" destination="XCy-aX-J1L" id="kS4-RA-KTb"/>
+                        <outlet property="logInButton" destination="gls-Hr-xJZ" id="PxX-Lx-ZH2"/>
                         <outlet property="passwordTextField" destination="nB0-W4-UyF" id="gc9-Aq-STV"/>
                         <segue destination="cZ3-HC-enK" kind="show" identifier="goToNavigationController" id="tYV-mU-iNx"/>
                     </connections>
@@ -178,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdC-IA-pK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5577" y="-639"/>
+            <point key="canvasLocation" x="5478" y="63"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Gfy-tO-VQ1">
@@ -189,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lno-Jl-QyV">
-                                <rect key="frame" x="141" y="122" width="93" height="49"/>
+                                <rect key="frame" x="141" y="373" width="93" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Edit">
@@ -199,6 +201,20 @@
                                     <action selector="editProfileButtonPressed:" destination="jyA-9t-K6J" eventType="touchUpInside" id="nHE-7i-Byv"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Name" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVT-hx-VI2">
+                                <rect key="frame" x="16" y="158" width="343" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Occupation" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9C-ud-b7j">
+                                <rect key="frame" x="16" y="242" width="343" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ykH-ow-CL6"/>
@@ -212,28 +228,75 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="userName" destination="EVT-hx-VI2" id="MXW-6V-ZWz"/>
+                        <outlet property="userOccupation" destination="S9C-ud-b7j" id="3on-lu-XEs"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOutGoToAuth" id="aAa-ug-Fgk"/>
                         <segue destination="5U8-4c-Gwa" kind="show" identifier="goToEditProfile" id="eID-nh-xqY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKF-Pf-OjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5576.8000000000002" y="62.518740629685162"/>
+            <point key="canvasLocation" x="5478" y="-684"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="SBP-zw-Ves">
             <objects>
-                <viewController id="5U8-4c-Gwa" sceneMemberID="viewController">
+                <viewController id="5U8-4c-Gwa" customClass="EditProfileViewController" customModule="Momentify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5dM-91-cw3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9q7-Ic-IZK">
+                                <rect key="frame" x="76" y="148" width="222" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="366-bx-aAk">
+                                <rect key="frame" x="76" y="318" width="222" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Name" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t98-8C-HUp">
+                                <rect key="frame" x="134" y="186" width="107" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Occupation" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSX-6P-ktz">
+                                <rect key="frame" x="134" y="356" width="107" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wk-xT-pp8">
+                                <rect key="frame" x="114" y="457" width="146" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="5U8-4c-Gwa" eventType="touchUpInside" id="lew-Fh-uJF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fP5-Yr-sTE"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="9q7-Ic-IZK" id="HNd-XK-8eF"/>
+                        <outlet property="occupationTextField" destination="366-bx-aAk" id="0gQ-kg-bf6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oeo-rZ-sVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6470" y="73"/>
+            <point key="canvasLocation" x="6350" y="-684"/>
         </scene>
         <!--Create a Session-->
         <scene sceneID="3R0-7k-yeW">

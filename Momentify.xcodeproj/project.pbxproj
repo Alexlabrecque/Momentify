@@ -10,6 +10,7 @@
 		C0118C4320745514004F3375 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4220745514004F3375 /* AuthenticationViewController.swift */; };
 		C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C442074573F004F3375 /* SessionsViewController.swift */; };
 		C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */; };
+		C0118C4D2077CA58004F3375 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4C2077CA58004F3375 /* User.swift */; };
 		C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07772DF2073016E00EA6759 /* AppDelegate.swift */; };
 		C07772E52073016E00EA6759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772E32073016E00EA6759 /* Main.storyboard */; };
 		C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C07772E62073016E00EA6759 /* Momentify.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 		C0118C4220745514004F3375 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		C0118C442074573F004F3375 /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		C0118C4C2077CA58004F3375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C07772DC2073016E00EA6759 /* Momentify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07772DF2073016E00EA6759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07772E42073016E00EA6759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		C07772F9207306F500EA6759 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C0118C4C2077CA58004F3375 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */,
 				C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */,
 				C077731620742CEA00EA6759 /* NotificationsViewController.swift in Sources */,
+				C0118C4D2077CA58004F3375 /* User.swift in Sources */,
 				C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

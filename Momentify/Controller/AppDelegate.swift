@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let myDatabase = Database.database().reference()
-        myDatabase.setValue("We've got data")
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -42,23 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         return SDKApplicationDelegate.shared.application(application, open: url, options: options)
     }
-
-// Uncomment if FBSDKLoginDelegate doesn't work in Auth View Controller
-//    func LoginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!,error: Error!) {
-//        if let error = error {
-//            print(error.localizedDescription)
-//            return
-//        }
-//
-//        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-//
-//        Auth.auth().signIn(with: credential) { (user, error) in
-//            if let error = error {
-//                return
-//            }
-//            // User is signed in
-//        }
-//    }
 
     
     func applicationWillResignActive(_ application: UIApplication) {

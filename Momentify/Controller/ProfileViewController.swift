@@ -13,9 +13,16 @@ import Firebase
 import SVProgressHUD
 
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
+    var users = [User]()
+    
+    @IBOutlet weak var userName: UITextView!
+    @IBOutlet weak var userOccupation: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUser()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +30,21 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
+    //MARK :- Presenting User's Information
     
+    func fetchUser() {
+        
+        //let currentUser = Auth.auth().currentUser
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            print(snapshot)
+        }, withCancel: nil)
+    }
+   
+    
+ 
     // MARK :- Loggin Out
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
