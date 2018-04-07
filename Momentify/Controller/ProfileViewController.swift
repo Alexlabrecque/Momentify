@@ -24,6 +24,10 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         fetchUser()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,14 +37,28 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK :- Presenting User's Information
     
     func fetchUser() {
-        
-        //let currentUser = Auth.auth().currentUser
-        
+
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
             print(snapshot)
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                if self.userName.text.isEmpty {
+                    self.userName.text = "Name"
+                } else {
+                    self.userName.text = dictionary["name"] as? String
+                }
+                
+                if self.userOccupation.text.isEmpty {
+                    self.userOccupation.text = "Occupation"
+                } else {
+                    self.userOccupation.text = dictionary["occupation"] as? String
+                }
+            }
         }, withCancel: nil)
+
     }
    
     
