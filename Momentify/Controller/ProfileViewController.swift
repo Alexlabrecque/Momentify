@@ -13,9 +13,7 @@ import Firebase
 import SVProgressHUD
 
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
-    var users = [User]()
-    
+
     @IBOutlet weak var userName: UITextView!
     @IBOutlet weak var userOccupation: UITextView!
     

@@ -10,13 +10,11 @@ import UIKit
 import Firebase
 import FacebookLogin
 import FBSDKLoginKit
-import SVProgressHUD
 
 class EditProfileViewController: UIViewController, UITextFieldDelegate {
 
     let user = Auth.auth().currentUser
     
-    var users = [User]()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var occupationTextField: UITextField!
