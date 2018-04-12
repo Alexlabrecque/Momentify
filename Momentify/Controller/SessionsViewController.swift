@@ -18,9 +18,12 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     var ref : DatabaseReference?
     
     var currentSessions = [Session]()
+    var currentAttendees = [SessionAttendees]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        verifyIfUserIsLoggedIn()
 
         configureTableView()
 
@@ -34,15 +37,22 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK :- Fetch Sessions
     
-    func fetchSessions() {
-        // Triggers too quickly. When creating a session, Database don't have the time to enter all the properties before this methods gets called and crashes the app
+    func deleteThenFetchSessions() {
         self.currentSessions.removeAll()
+        self.currentAttendees.removeAll()
+        
+        fetchSessions()
+    }
+    
+    func fetchSessions() {
+        // bug if there is no sessions
+        
         Database.database().reference().child("sessions").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                print(snapshot)
-                
+
                 var session = Session()
                 
+                session.sessionID = snapshot.key
                 session.numberOfCoworkers = dictionary["numberOfCoworkers"] as? String
                 session.sessionDescription = dictionary["sessionDescription"] as? String
                 session.sessionEndTime = dictionary["sessionEndTime"] as? String
@@ -50,22 +60,48 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
                 session.sessionStartTime = dictionary["sessionStartTime"] as? String
                 session.sessionTitle = dictionary["sessionTitle"] as? String
                 
-                
-                
                 self.currentSessions.append(session)
+                print("There is \(self.currentSessions.count) object inside of current sessions")
+                
                 
                 DispatchQueue.main.async {
                     self.configureTableView()
                     self.sessionTableView.reloadData()
                 }
             }
+            
             Database.database().reference(withPath: "sessions").removeAllObservers()
-
         }
         
-        
+        Database.database().reference().child("attendees").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                let sessionAttendes = SessionAttendees()
+                
+                sessionAttendes.hostID = dictionary["hostID"] as? String
 
+                Database.database().reference().child("users").child(sessionAttendes.hostID!).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                    if let userDictionary = userSnapshot.value as? [String: AnyObject] {
+
+                        sessionAttendes.hostName = userDictionary["name"] as? String
+                        
+                        DispatchQueue.main.async {
+                            self.configureTableView()
+                            self.sessionTableView.reloadData()
+                        }
+                    }
+                })
+                self.currentAttendees.append(sessionAttendes)
+                
+                DispatchQueue.main.async {
+                    self.configureTableView()
+                    self.sessionTableView.reloadData()
+                }
+            }
+            Database.database().reference(withPath: "attendees").removeAllObservers()
+        }
     }
+
     
     // Mark :- TableView Delegate Methods
     
@@ -77,35 +113,23 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
-        
-//        cell.sessionTitle.text = "Coders with Coffee"
-//        cell.sessionLocation.text = "23 Dundas Street"
-//        cell.sessionStartTime.text = "1:00 pm"
-//        cell.sessionEndTime.text = "3:00 pm"
-//        cell.sessionDescription.text = "lets work"
-//        cell.numberOfCoworkers.text = "4 people attending"
-        
+
         cell.sessionTitle.text = self.currentSessions[indexPath.row].sessionTitle
         cell.sessionLocation.text = self.currentSessions[indexPath.row].sessionLocation
         cell.sessionStartTime.text = self.currentSessions[indexPath.row].sessionStartTime
         cell.sessionEndTime.text = self.currentSessions[indexPath.row].sessionEndTime
         cell.sessionDescription.text = self.currentSessions[indexPath.row].sessionDescription
         cell.numberOfCoworkers.text = self.currentSessions[indexPath.row].numberOfCoworkers
-        
-//        cell.numberOfCoworkers.text = self.currentSessions[indexPath.row].numberOfCoworkers
-//        cell.sessionDescription.text = self.currentSessions[indexPath.row].sessionDescription
-//        cell.sessionEndTime.text = self.currentSessions[indexPath.row].sessionEndTime
-//        cell.sessionLocation.text = self.currentSessions[indexPath.row].sessionLocation
-//        cell.sessionStartTime.text = self.currentSessions[indexPath.row].sessionStartTime
-//        cell.sessionTitle.text = self.currentSessions[indexPath.row].sessionTitle
+        cell.hostName.text = self.currentAttendees[indexPath.row].hostName
         
         return cell
     }
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 230.0
+        sessionTableView.rowHeight = 275.0
     }
+    
     
     
     // Mark : - Navigation
@@ -113,7 +137,7 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         verifyIfUserIsLoggedIn()
         
-        fetchSessions()
+        deleteThenFetchSessions()
         
         // UIBarButton bug
         super.viewWillAppear(animated)
@@ -145,12 +169,16 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK :- Logged In Verification
     
     func verifyIfUserIsLoggedIn() {
-        if Auth.auth().currentUser != nil {
+        if Auth.auth().currentUser?.uid != nil {
             // User logged in via email
+            print("user is logged in with email.")
+            print(Auth.auth().currentUser?.uid)
         }else if FBSDKAccessToken.current() != nil{
             // User logged in via Facebook
+            print("user is logged in with Facebook.")
         }else {
             // User not logged in
+            print("user is not logged in.")
             performSegue(withIdentifier: "goToAuth", sender: self)
         }
     }

@@ -16,6 +16,7 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var sessionEndTime: UILabel!
     @IBOutlet weak var sessionDescription: UILabel!
     @IBOutlet weak var numberOfCoworkers: UILabel!
+    @IBOutlet weak var hostName: UILabel!
     
     
     override func awakeFromNib() {
@@ -26,5 +27,11 @@ class SessionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    @IBAction func joinButtonPressed(_ sender: Any) {
+        
+    }
+    
+
 
 }

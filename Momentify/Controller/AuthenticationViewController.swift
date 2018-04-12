@@ -54,7 +54,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     
     
     
-    // MARK :- Allow buttons to be pressed
+    //MARK:- Allow buttons to be pressed
     
     func handleTextField() {
         emailTextField.addTarget(self, action: #selector(AuthenticationViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -81,7 +81,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     
     
     
-    //MARK :- Create User
+    //MARK:- Create User
     
     @IBAction func createUserButtonPressed(_ sender: Any) {
         SVProgressHUD.show()
@@ -115,8 +115,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     
     
     
-    
-    //MARK :- Log In
+    //MARK:- Log In
 
     // Log in via email
     @IBAction func logInButtonPressed(_ sender: Any) {

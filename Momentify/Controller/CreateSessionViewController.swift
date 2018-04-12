@@ -59,6 +59,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         ref?.child("sessions").child(sessionID!).child("sessionEndTime").setValue(self.sessionEndTimeTextField.text)
         ref?.child("sessions").child(sessionID!).child("sessionDescription").setValue(self.sessionDescriptionTextField.text)
         ref?.child("sessions").child(sessionID!).child("numberOfCoworkers").setValue(self.numberOfCoworkersTextField.text)
+        
+        ref?.child("attendees").child(sessionID!).child("hostID").setValue(Auth.auth().currentUser?.uid)
 
         _ = navigationController?.popViewController(animated: true)
 

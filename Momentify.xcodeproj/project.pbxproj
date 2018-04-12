@@ -28,6 +28,7 @@
 		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
 		C077731620742CEA00EA6759 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731520742CEA00EA6759 /* NotificationsViewController.swift */; };
 		C0C9A815207B9DF20036FC12 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */; };
+		C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A816207E548C0036FC12 /* SessionAttendees.swift */; };
 		DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		C077731320742CD100EA6759 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		C077731520742CEA00EA6759 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		C0C9A816207E548C0036FC12 /* SessionAttendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendees.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +141,12 @@
 				C07772DF2073016E00EA6759 /* AppDelegate.swift */,
 				C0118C4220745514004F3375 /* AuthenticationViewController.swift */,
 				C0118C442074573F004F3375 /* SessionsViewController.swift */,
+				C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */,
 				C077730F20742C9B00EA6759 /* FilterViewController.swift */,
 				C077731120742CB300EA6759 /* ProfileViewController.swift */,
 				C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */,
 				C077731320742CD100EA6759 /* CreateSessionViewController.swift */,
 				C077731520742CEA00EA6759 /* NotificationsViewController.swift */,
-				C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +156,7 @@
 			children = (
 				C0118C4C2077CA58004F3375 /* User.swift */,
 				C037E820207AEE0400788ABC /* Session.swift */,
+				C0C9A816207E548C0036FC12 /* SessionAttendees.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */,
 				C0C9A815207B9DF20036FC12 /* SessionTableViewCell.swift in Sources */,
 				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
 				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
