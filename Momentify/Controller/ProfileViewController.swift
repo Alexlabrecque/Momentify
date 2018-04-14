@@ -41,6 +41,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
             (snapshot) in
             print(snapshot)
             
+            //Create User Object to store user info and load quicker to implement
+            
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
                 if self.userName.text.isEmpty {
@@ -56,6 +58,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             }
         }, withCancel: nil)
+        
 
     }
    

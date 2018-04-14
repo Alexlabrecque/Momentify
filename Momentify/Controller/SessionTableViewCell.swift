@@ -18,6 +18,7 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfCoworkers: UILabel!
     @IBOutlet weak var hostName: UILabel!
     
+    var session = Session()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +29,15 @@ class SessionTableViewCell: UITableViewCell {
 
     }
     
-    @IBAction func joinButtonPressed(_ sender: Any) {
+    func setSession(session: Session, attendee: SessionAttendees) {
+        
+        sessionTitle.text = session.sessionTitle
+        sessionLocation.text = session.sessionLocation
+        sessionStartTime.text = session.sessionStartTime
+        sessionEndTime.text = session.sessionEndTime
+        sessionDescription.text = session.sessionDescription
+        numberOfCoworkers.text = session.numberOfCoworkers
+        hostName.text = attendee.hostName
         
     }
     

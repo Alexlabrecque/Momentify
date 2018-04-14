@@ -11,7 +11,7 @@ import Firebase
 import SVProgressHUD
 import FBSDKLoginKit
 
-class SessionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SessionsViewController: UIViewController {
     
     @IBOutlet weak var sessionTableView: UITableView!
     
@@ -26,7 +26,6 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
         verifyIfUserIsLoggedIn()
 
         configureTableView()
-
     }
 
     
@@ -46,8 +45,9 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func fetchSessions() {
         // bug if there is no sessions
+        let ref = Database.database().reference()
         
-        Database.database().reference().child("sessions").observe(.childAdded) { (snapshot) in
+        ref.child("sessions").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
 
                 var session = Session()
@@ -63,24 +63,19 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.currentSessions.append(session)
                 print("There is \(self.currentSessions.count) object inside of current sessions")
                 
-                
-                DispatchQueue.main.async {
-                    self.configureTableView()
-                    self.sessionTableView.reloadData()
-                }
             }
             
             Database.database().reference(withPath: "sessions").removeAllObservers()
         }
         
-        Database.database().reference().child("attendees").observe(.childAdded) { (snapshot) in
+        ref.child("attendees").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
                 let sessionAttendes = SessionAttendees()
                 
                 sessionAttendes.hostID = dictionary["hostID"] as? String
 
-                Database.database().reference().child("users").child(sessionAttendes.hostID!).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                ref.child("users").child(sessionAttendes.hostID!).observeSingleEvent(of: .value, with: { (userSnapshot) in
                     if let userDictionary = userSnapshot.value as? [String: AnyObject] {
 
                         sessionAttendes.hostName = userDictionary["name"] as? String
@@ -92,44 +87,11 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                 })
                 self.currentAttendees.append(sessionAttendes)
-                
-                DispatchQueue.main.async {
-                    self.configureTableView()
-                    self.sessionTableView.reloadData()
-                }
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
     }
 
-    
-    // Mark :- TableView Delegate Methods
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.currentSessions.count
-        //return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
-
-        cell.sessionTitle.text = self.currentSessions[indexPath.row].sessionTitle
-        cell.sessionLocation.text = self.currentSessions[indexPath.row].sessionLocation
-        cell.sessionStartTime.text = self.currentSessions[indexPath.row].sessionStartTime
-        cell.sessionEndTime.text = self.currentSessions[indexPath.row].sessionEndTime
-        cell.sessionDescription.text = self.currentSessions[indexPath.row].sessionDescription
-        cell.numberOfCoworkers.text = self.currentSessions[indexPath.row].numberOfCoworkers
-        cell.hostName.text = self.currentAttendees[indexPath.row].hostName
-        
-        return cell
-    }
-    
-    
-    func configureTableView() {
-        sessionTableView.rowHeight = 275.0
-    }
-    
     
     
     // Mark : - Navigation
@@ -172,7 +134,7 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
         if Auth.auth().currentUser?.uid != nil {
             // User logged in via email
             print("user is logged in with email.")
-            print(Auth.auth().currentUser?.uid)
+            print(Auth.auth().currentUser?.uid as Any)
         }else if FBSDKAccessToken.current() != nil{
             // User logged in via Facebook
             print("user is logged in with Facebook.")
@@ -183,7 +145,32 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+}
+
+extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.currentSessions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let session = currentSessions[indexPath.row]
+        let attendee = currentAttendees[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
+        
+        cell.setSession(session: session, attendee: attendee)
+        
+        return cell
+    }
+    
+    
+    func configureTableView() {
+        sessionTableView.rowHeight = 350.0
+    }
     
 }
+
 
 
