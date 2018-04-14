@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SessionCellDelegate {
+    func joinButtonPressed(title: String)
+}
+
 class SessionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sessionTitle: UILabel!
@@ -18,7 +22,10 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfCoworkers: UILabel!
     @IBOutlet weak var hostName: UILabel!
     
-    var session = Session()
+    var delegate: SessionCellDelegate?
+    
+    var thisSession = Session()
+    var thisSessionsAttendees = SessionAttendees()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,8 +46,16 @@ class SessionTableViewCell: UITableViewCell {
         numberOfCoworkers.text = session.numberOfCoworkers
         hostName.text = attendee.hostName
         
+        self.thisSession = session
+        self.thisSessionsAttendees = attendee
+        
+    }
+ 
+    
+    @IBAction func didPressJoinButton(_ sender: Any) {
+        delegate?.joinButtonPressed(title: thisSession.sessionTitle!)
     }
     
-
-
 }
+
+

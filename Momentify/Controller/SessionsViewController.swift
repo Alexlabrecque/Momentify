@@ -147,6 +147,14 @@ class SessionsViewController: UIViewController {
     
 }
 
+extension SessionsViewController: SessionCellDelegate {
+    
+    func joinButtonPressed(title: String) {
+        print("join button pressed for \(title)")
+    }
+    
+}
+
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,6 +169,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
         
         cell.setSession(session: session, attendee: attendee)
+        
+        cell.delegate = self
         
         return cell
     }
