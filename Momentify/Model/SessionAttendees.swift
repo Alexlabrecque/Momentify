@@ -11,7 +11,7 @@ import UIKit
 class SessionAttendees: NSObject {
     
     var sessionID: String?
-    var attendees = [String : AnyObject]()
+    var attendees = [String : String]()
     var hostID: String?
     var hostName: String?
 

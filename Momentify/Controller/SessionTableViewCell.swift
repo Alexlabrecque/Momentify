@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SessionCellDelegate {
-    func joinButtonPressed(title: String)
+    func joinButtonPressed(thisSessionAttendees: SessionAttendees)
 }
 
 class SessionTableViewCell: UITableViewCell {
@@ -21,6 +21,7 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var sessionDescription: UILabel!
     @IBOutlet weak var numberOfCoworkers: UILabel!
     @IBOutlet weak var hostName: UILabel!
+    @IBOutlet weak var joinButton: UIButton!
     
     var delegate: SessionCellDelegate?
     
@@ -29,6 +30,8 @@ class SessionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        joinButton.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,7 +46,8 @@ class SessionTableViewCell: UITableViewCell {
         sessionStartTime.text = session.sessionStartTime
         sessionEndTime.text = session.sessionEndTime
         sessionDescription.text = session.sessionDescription
-        numberOfCoworkers.text = session.numberOfCoworkers
+        numberOfCoworkers.text = ("\(String(attendee.attendees.count)) attendees, bitch")
+        
         hostName.text = attendee.hostName
         
         self.thisSession = session
@@ -53,7 +57,8 @@ class SessionTableViewCell: UITableViewCell {
  
     
     @IBAction func didPressJoinButton(_ sender: Any) {
-        delegate?.joinButtonPressed(title: thisSession.sessionTitle!)
+        delegate?.joinButtonPressed(thisSessionAttendees: self.thisSessionsAttendees)
+ 
     }
     
 }

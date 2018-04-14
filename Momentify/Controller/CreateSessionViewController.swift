@@ -19,6 +19,7 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numberOfCoworkersTextField: UITextField!
     
     var ref : DatabaseReference?
+    var userName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         self.sessionEndTimeTextField.delegate = self
         self.sessionDescriptionTextField.delegate = self
         self.numberOfCoworkersTextField.delegate = self
+        
+        fetchUser()
         
         ref = Database.database().reference()
 
@@ -43,10 +46,9 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     // MARK :- Add Session
     
     @IBAction func createSessionButtonPressed(_ sender: Any) {
-
             createSession()
-        
     }
+    
     
     func createSession() {
         
@@ -61,6 +63,9 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         ref?.child("sessions").child(sessionID!).child("numberOfCoworkers").setValue(self.numberOfCoworkersTextField.text)
         
         ref?.child("attendees").child(sessionID!).child("hostID").setValue(Auth.auth().currentUser?.uid)
+        ref?.child("attendees").child(sessionID!).child("hostName").setValue(userName)
+        ref?.child("attendees").child(sessionID!).child("sessionID").setValue(sessionID)
+        ref?.child("attendees").child(sessionID!).child("attendees").child((Auth.auth().currentUser?.uid)!).setValue(userName)
 
         _ = navigationController?.popViewController(animated: true)
 
@@ -78,6 +83,22 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    //MARK:- Fetch User Data
+    
+    func fetchUser() {
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            print(snapshot)
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                self.userName = dictionary["name"] as? String
+            }
+        }, withCancel: nil)
     }
     
 

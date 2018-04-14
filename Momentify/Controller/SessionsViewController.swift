@@ -14,24 +14,56 @@ import FBSDKLoginKit
 class SessionsViewController: UIViewController {
     
     @IBOutlet weak var sessionTableView: UITableView!
+    @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var notifButton: UIButton!
     
     var ref : DatabaseReference?
     
     var currentSessions = [Session]()
     var currentAttendees = [SessionAttendees]()
+    var currentUser = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        chatButton.layer.cornerRadius = 10
+        createButton.layer.cornerRadius = 10
+        notifButton.layer.cornerRadius = 10
+        
         verifyIfUserIsLoggedIn()
+        
+        fetchUser()
 
         configureTableView()
+
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    
+    //MARK :- Fetch User
+    func fetchUser() {
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            print(snapshot)
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                self.currentUser.name = dictionary["name"] as? String
+                self.currentUser.email = dictionary["email"] as? String
+                self.currentUser.occupation = dictionary["occupation"] as? String
+                self.currentUser.userID = uid
+            }
+        }, withCancel: nil)
+    }
+    
     
     
     // MARK :- Fetch Sessions
@@ -61,7 +93,6 @@ class SessionsViewController: UIViewController {
                 session.sessionTitle = dictionary["sessionTitle"] as? String
                 
                 self.currentSessions.append(session)
-                print("There is \(self.currentSessions.count) object inside of current sessions")
                 
             }
             
@@ -74,22 +105,27 @@ class SessionsViewController: UIViewController {
                 let sessionAttendes = SessionAttendees()
                 
                 sessionAttendes.hostID = dictionary["hostID"] as? String
+                sessionAttendes.sessionID = snapshot.key
+                sessionAttendes.hostName = dictionary["hostName"] as? String
+                sessionAttendes.attendees = dictionary["attendees"] as! [String: String]
 
                 ref.child("users").child(sessionAttendes.hostID!).observeSingleEvent(of: .value, with: { (userSnapshot) in
                     if let userDictionary = userSnapshot.value as? [String: AnyObject] {
 
                         sessionAttendes.hostName = userDictionary["name"] as? String
-                        
+
                         DispatchQueue.main.async {
                             self.configureTableView()
                             self.sessionTableView.reloadData()
                         }
                     }
                 })
+                
                 self.currentAttendees.append(sessionAttendes)
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
+
     }
 
     
@@ -132,12 +168,16 @@ class SessionsViewController: UIViewController {
     
     func verifyIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid != nil {
+            
+            fetchUser()
+            
             // User logged in via email
             print("user is logged in with email.")
-            print(Auth.auth().currentUser?.uid as Any)
+            
         }else if FBSDKAccessToken.current() != nil{
             // User logged in via Facebook
             print("user is logged in with Facebook.")
+            
         }else {
             // User not logged in
             print("user is not logged in.")
@@ -149,8 +189,15 @@ class SessionsViewController: UIViewController {
 
 extension SessionsViewController: SessionCellDelegate {
     
-    func joinButtonPressed(title: String) {
-        print("join button pressed for \(title)")
+    func joinButtonPressed(thisSessionAttendees: SessionAttendees) {
+        
+        thisSessionAttendees.attendees[self.currentUser.userID!] = self.currentUser.name!
+        
+        let thisRef = Database.database().reference()
+        thisRef.child("attendees").child(thisSessionAttendees.sessionID!).child("attendees").child(currentUser.userID!).setValue(currentUser.name)
+        
+        self.deleteThenFetchSessions()
+
     }
     
 }
@@ -161,6 +208,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         return self.currentSessions.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let session = currentSessions[indexPath.row]
@@ -169,7 +217,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
         
         cell.setSession(session: session, attendee: attendee)
-        
+        cell.selectionStyle = .none
         cell.delegate = self
         
         return cell

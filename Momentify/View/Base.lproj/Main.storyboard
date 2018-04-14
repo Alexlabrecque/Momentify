@@ -176,7 +176,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Coworkers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuN-x2-9u1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="##" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuN-x2-9u1">
                                                     <rect key="frame" x="15" y="188" width="345" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
@@ -197,7 +197,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ke-Fp-E2a">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ke-Fp-E2a">
                                                     <rect key="frame" x="139" y="285" width="96" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -212,6 +212,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="hostName" destination="iyh-5d-LXb" id="SzU-QD-BiQ"/>
+                                            <outlet property="joinButton" destination="9ke-Fp-E2a" id="NVH-ky-jT0"/>
                                             <outlet property="numberOfCoworkers" destination="IuN-x2-9u1" id="Rm9-kg-Lki"/>
                                             <outlet property="sessionDescription" destination="k1G-G3-QpQ" id="uAQ-MT-4pe"/>
                                             <outlet property="sessionEndTime" destination="XFv-Cb-Juo" id="3pc-8l-HsM"/>
@@ -243,6 +244,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chatButton" destination="qeV-Ux-I51" id="VF6-p1-AOm"/>
+                        <outlet property="createButton" destination="9WA-YB-Umt" id="qUD-yn-I3d"/>
+                        <outlet property="notifButton" destination="vrx-Cj-6dM" id="8W4-IJ-sgf"/>
                         <outlet property="sessionTableView" destination="dGn-Dg-1Ge" id="n2Z-Dx-CTe"/>
                         <segue destination="GBm-Gi-kXI" kind="show" identifier="goToFilter" id="PEt-kT-rVb"/>
                         <segue destination="jyA-9t-K6J" kind="show" identifier="goToProfile" id="emJ-yn-gQ0"/>
