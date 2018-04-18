@@ -9,7 +9,9 @@
 import UIKit
 
 protocol SessionCellDelegate {
-    func joinButtonPressed(thisSessionAttendees: SessionAttendees)
+    func joinButtonPressed(theseAttendeesJoin: SessionAttendees)
+    func leaveButtonPressed(theseAttendeesLeave: SessionAttendees)
+    func deleteButtonPressed(thisSession: Session)
 }
 
 class SessionTableViewCell: UITableViewCell {
@@ -22,16 +24,21 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfCoworkers: UILabel!
     @IBOutlet weak var hostName: UILabel!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var leaveButton: UIButton!
+    @IBOutlet weak var deleteSessionButton: UIButton!
+    
     
     var delegate: SessionCellDelegate?
     
     var thisSession = Session()
     var thisSessionsAttendees = SessionAttendees()
+    var currentUser = User()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         joinButton.layer.cornerRadius = 10
+        leaveButton.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,7 +53,7 @@ class SessionTableViewCell: UITableViewCell {
         sessionStartTime.text = session.sessionStartTime
         sessionEndTime.text = session.sessionEndTime
         sessionDescription.text = session.sessionDescription
-        numberOfCoworkers.text = ("\(String(attendee.attendees.count)) attendees, bitch")
+        numberOfCoworkers.text = ("\(String(attendee.attendees.count)) attendees")
         
         hostName.text = attendee.hostName
         
@@ -57,10 +64,17 @@ class SessionTableViewCell: UITableViewCell {
  
     
     @IBAction func didPressJoinButton(_ sender: Any) {
-        delegate?.joinButtonPressed(thisSessionAttendees: self.thisSessionsAttendees)
- 
+        delegate?.joinButtonPressed(theseAttendeesJoin: self.thisSessionsAttendees)
     }
     
+    @IBAction func didPressedLeaveButton(_ sender: Any) {
+        delegate?.leaveButtonPressed(theseAttendeesLeave: self.thisSessionsAttendees)
+    }
+    
+    
+    @IBAction func didPressedDeleteSession(_ sender: Any) {
+        delegate?.deleteButtonPressed(thisSession: self.thisSession)
+    }
 }
 
 

@@ -149,7 +149,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
             }
 
             let uid = user?.uid
-            self.setUserInformation(email: "", name: "", occupation: "", uid: uid!)
             
             self.performSegue(withIdentifier: "goToNavigationController", sender: self)
         }

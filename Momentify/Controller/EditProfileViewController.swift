@@ -60,13 +60,23 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
-        let prntRefName  = Database.database().reference().child("users").child((user?.uid)!)
-        prntRefName.updateChildValues(["name":nameTextField.text ?? "Name"])
+         if FBSDKAccessToken.current() != nil || Auth.auth().currentUser?.uid != nil{
         
-        let prntRefOccupation  = Database.database().reference().child("users").child((user?.uid)!)
-        prntRefOccupation.updateChildValues(["occupation":occupationTextField.text ?? "Occupation"])
+            let prntRefName  = Database.database().reference().child("users").child((user?.uid)!)
+            prntRefName.updateChildValues(["name":nameTextField.text ?? "Name"])
         
-        _ = navigationController?.popViewController(animated: true)
+            let prntRefOccupation  = Database.database().reference().child("users").child((user?.uid)!)
+            prntRefOccupation.updateChildValues(["occupation":occupationTextField.text ?? "Occupation"])
+            
+         }
+        
+        let alert = UIAlertController(title: "Profile edited", message: "Congrats on your new identity", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Gracias amigo", style: .default, handler: { action in
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
+
+        //else if log in with facebook ->
 
     }
     

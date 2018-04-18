@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol mySessionsDelegate {
+    func fetchMySessions(mySessions: SessionAttendees)
+
+}
+
 class NotificationsViewController: UIViewController {
+    
+    var delegate : mySessionsDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +24,10 @@ class NotificationsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getUserAndSession() {
+        //delegate?.fetchMySessions(mySessions: <#T##SessionAttendees#>)
     }
 
 }

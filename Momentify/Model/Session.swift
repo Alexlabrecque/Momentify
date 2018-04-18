@@ -12,7 +12,7 @@ class Session: NSObject {
     
     var sessionID: String?
     
-    var SessionHost: AnyObject?
+    var sessionHost: AnyObject?
     var sessionTitle: String?
     var sessionLocation: String?
     var sessionStartTime: String?

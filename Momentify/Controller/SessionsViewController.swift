@@ -32,8 +32,6 @@ class SessionsViewController: UIViewController {
         notifButton.layer.cornerRadius = 10
         
         verifyIfUserIsLoggedIn()
-        
-        fetchUser()
 
         configureTableView()
 
@@ -46,7 +44,7 @@ class SessionsViewController: UIViewController {
     
     
     
-    //MARK :- Fetch User
+    // MARK: - Fetch User
     func fetchUser() {
         
         let uid = Auth.auth().currentUser?.uid
@@ -66,13 +64,20 @@ class SessionsViewController: UIViewController {
     
     
     
-    // MARK :- Fetch Sessions
+    // MARK: - Fetch Sessions
     
-    func deleteThenFetchSessions() {
+    func deleteSessions(finished: () -> Void) {
         self.currentSessions.removeAll()
         self.currentAttendees.removeAll()
         
-        fetchSessions()
+        finished()
+    }
+    
+    func deleteThenFetchSessions() {
+        deleteSessions {
+            fetchSessions()
+        }
+        
     }
     
     func fetchSessions() {
@@ -102,6 +107,7 @@ class SessionsViewController: UIViewController {
         ref.child("attendees").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
+                
                 let sessionAttendes = SessionAttendees()
                 
                 sessionAttendes.hostID = dictionary["hostID"] as? String
@@ -130,7 +136,7 @@ class SessionsViewController: UIViewController {
 
     
     
-    // Mark : - Navigation
+    // MARK: - Navigation
     
     override func viewWillAppear(_ animated: Bool) {
         verifyIfUserIsLoggedIn()
@@ -164,22 +170,20 @@ class SessionsViewController: UIViewController {
         performSegue(withIdentifier: "goToNotifications", sender: self)
     }
  
-    // MARK :- Logged In Verification
+    // MARK: - Logged In Verification
     
     func verifyIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid != nil {
             
             fetchUser()
-            
-            // User logged in via email
             print("user is logged in with email.")
             
         }else if FBSDKAccessToken.current() != nil{
-            // User logged in via Facebook
+
             print("user is logged in with Facebook.")
             
         }else {
-            // User not logged in
+
             print("user is not logged in.")
             performSegue(withIdentifier: "goToAuth", sender: self)
         }
@@ -187,24 +191,12 @@ class SessionsViewController: UIViewController {
     
 }
 
-extension SessionsViewController: SessionCellDelegate {
-    
-    func joinButtonPressed(thisSessionAttendees: SessionAttendees) {
-        
-        thisSessionAttendees.attendees[self.currentUser.userID!] = self.currentUser.name!
-        
-        let thisRef = Database.database().reference()
-        thisRef.child("attendees").child(thisSessionAttendees.sessionID!).child("attendees").child(currentUser.userID!).setValue(currentUser.name)
-        
-        self.deleteThenFetchSessions()
-
-    }
-    
-}
 
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.currentSessions.count
     }
     
@@ -213,12 +205,41 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let session = currentSessions[indexPath.row]
         let attendee = currentAttendees[indexPath.row]
+  
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
         
         cell.setSession(session: session, attendee: attendee)
         cell.selectionStyle = .none
         cell.delegate = self
+        
+        cell.deleteSessionButton.isHidden = true
+        cell.deleteSessionButton.isEnabled = false
+        
+        if attendee.attendees[self.currentUser.userID!] != nil {
+            cell.joinButton.isHidden = true
+            cell.joinButton.isUserInteractionEnabled = false
+            
+            cell.leaveButton.isHidden = false
+            cell.leaveButton.isUserInteractionEnabled = true
+
+        } else {
+            cell.joinButton.isHidden = false
+            cell.joinButton.isUserInteractionEnabled = true
+            
+            cell.leaveButton.isHidden = true
+            cell.leaveButton.isUserInteractionEnabled = false
+            
+        }
+        
+        if attendee.hostID == self.currentUser.userID {
+            cell.leaveButton.isEnabled = false
+            
+            cell.deleteSessionButton.isHidden = false
+            cell.deleteSessionButton.isEnabled = true
+        }
+        
+        
         
         return cell
     }
@@ -227,8 +248,48 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     func configureTableView() {
         sessionTableView.rowHeight = 350.0
     }
+
     
 }
 
+extension SessionsViewController: SessionCellDelegate {
+    
+    func joinButtonPressed(theseAttendeesJoin: SessionAttendees) {
+        
+        let thisRef = Database.database().reference()
+        thisRef.child("attendees").child(theseAttendeesJoin.sessionID!).child("attendees").child(currentUser.userID!).setValue(currentUser.name)
+        
+        let alert = UIAlertController(title: "Session joined", message: "Happy FlowWorking Homie! :)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
+        self.deleteThenFetchSessions()
+    }
+    
+    func leaveButtonPressed(theseAttendeesLeave: SessionAttendees) {
+        
+        let thisRef = Database.database().reference()
+        thisRef.child("attendees").child(theseAttendeesLeave.sessionID!).child("attendees").child(currentUser.userID!).removeValue()
+        
+        let alert = UIAlertController(title: "Session leaved", message: "You leaved the session :(", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
 
+        self.deleteThenFetchSessions()
+    }
+    
+    func deleteButtonPressed(thisSession: Session) {
+        let thisRef = Database.database().reference()
+        thisRef.child("sessions").child(thisSession.sessionID!).removeValue()
+        thisRef.child("attendees").child(thisSession.sessionID!).removeValue()
+        
+        let alert = UIAlertController(title: "Session Deleted", message: "The session was deleted", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
+        self.deleteThenFetchSessions()
+    }
+    
+}
 
