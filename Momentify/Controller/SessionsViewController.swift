@@ -90,10 +90,10 @@ class SessionsViewController: UIViewController {
                 var session = Session()
                 
                 session.sessionID = snapshot.key
-                session.numberOfCoworkers = dictionary["numberOfCoworkers"] as? String
                 session.sessionDescription = dictionary["sessionDescription"] as? String
                 session.sessionEndTime = dictionary["sessionEndTime"] as? String
                 session.sessionLocation = dictionary["sessionLocation"] as? String
+                session.sessionDate = dictionary["sessionDate"] as? String
                 session.sessionStartTime = dictionary["sessionStartTime"] as? String
                 session.sessionTitle = dictionary["sessionTitle"] as? String
                 
@@ -246,7 +246,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 350.0
+        sessionTableView.rowHeight = 365.0
     }
 
     

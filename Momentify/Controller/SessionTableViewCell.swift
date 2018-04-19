@@ -26,6 +26,7 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var leaveButton: UIButton!
     @IBOutlet weak var deleteSessionButton: UIButton!
+    @IBOutlet weak var sessionDate: UILabel!
     
     
     var delegate: SessionCellDelegate?
@@ -52,6 +53,8 @@ class SessionTableViewCell: UITableViewCell {
         sessionLocation.text = session.sessionLocation
         sessionStartTime.text = session.sessionStartTime
         sessionEndTime.text = session.sessionEndTime
+        sessionDate.text = session.sessionDate
+
         sessionDescription.text = session.sessionDescription
         numberOfCoworkers.text = ("\(String(attendee.attendees.count)) attendees")
         

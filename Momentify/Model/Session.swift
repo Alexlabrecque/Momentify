@@ -15,6 +15,7 @@ class Session: NSObject {
     var sessionHost: AnyObject?
     var sessionTitle: String?
     var sessionLocation: String?
+    var sessionDate: String?
     var sessionStartTime: String?
     var sessionEndTime: String?
     var sessionDescription: String?
