@@ -20,8 +20,11 @@ class SessionsViewController: UIViewController {
     
     var ref : DatabaseReference?
     
-    var currentSessions = [Session]()
-    var currentAttendees = [SessionAttendees]()
+    var currentSessions: [Session] = []
+    //var currentAttendees = [SessionAttendees]()
+    
+    var currentAttendees = [String: SessionAttendees]()
+    
     var currentUser = User()
 
     override func viewDidLoad() {
@@ -50,7 +53,6 @@ class SessionsViewController: UIViewController {
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
-            print(snapshot)
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
@@ -87,7 +89,7 @@ class SessionsViewController: UIViewController {
         ref.child("sessions").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
 
-                var session = Session()
+                let session = Session()
                 
                 session.sessionID = snapshot.key
                 session.sessionDescription = dictionary["sessionDescription"] as? String
@@ -99,14 +101,15 @@ class SessionsViewController: UIViewController {
                 
                 self.currentSessions.append(session)
                 
+                self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedAscending })
+                
             }
-            
             Database.database().reference(withPath: "sessions").removeAllObservers()
+            
         }
         
         ref.child("attendees").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                
                 
                 let sessionAttendes = SessionAttendees()
                 
@@ -127,7 +130,11 @@ class SessionsViewController: UIViewController {
                     }
                 })
                 
-                self.currentAttendees.append(sessionAttendes)
+                //self.currentAttendees.append(sessionAttendes)
+                
+                self.currentAttendees[snapshot.key] = sessionAttendes
+                
+
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
@@ -138,7 +145,7 @@ class SessionsViewController: UIViewController {
     
     // MARK: - Navigation
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         verifyIfUserIsLoggedIn()
         
         deleteThenFetchSessions()
@@ -149,6 +156,7 @@ class SessionsViewController: UIViewController {
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
         
     }
+
     
     @IBAction func filterButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToFilter", sender: self)
@@ -203,20 +211,24 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        Database.database().reference(withPath: "sessions").removeAllObservers()
+        Database.database().reference(withPath: "attendees").removeAllObservers()
+        
         let session = currentSessions[indexPath.row]
-        let attendee = currentAttendees[indexPath.row]
+        //let attendee = currentAttendees[indexPath.row]
+        let attendee = currentAttendees[session.sessionID!]
   
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
         
-        cell.setSession(session: session, attendee: attendee)
+        cell.setSession(session: session, attendee: attendee!)
         cell.selectionStyle = .none
         cell.delegate = self
         
         cell.deleteSessionButton.isHidden = true
         cell.deleteSessionButton.isEnabled = false
         
-        if attendee.attendees[self.currentUser.userID!] != nil {
+        if attendee?.attendees[self.currentUser.userID!] != nil {
             cell.joinButton.isHidden = true
             cell.joinButton.isUserInteractionEnabled = false
             
@@ -232,7 +244,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        if attendee.hostID == self.currentUser.userID {
+        if attendee?.hostID == self.currentUser.userID {
             cell.leaveButton.isEnabled = false
             
             cell.deleteSessionButton.isHidden = false

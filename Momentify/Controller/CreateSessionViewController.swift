@@ -20,10 +20,10 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     var sessionDate: String?
     var sessionStartTime: String?
     var sessionEndTime: String?
+    var currentUser = User()
     
     
     var ref : DatabaseReference?
-    var userName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +32,17 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         self.sessionLocationTextField.delegate = self
         self.sessionDescriptionTextField.delegate = self
         
-        self.initialDate()
         self.initialStartTime()
         self.initialEndTime()
         
-        fetchUser()
+        verifyIfUserIsLoggedIn()
         
         ref = Database.database().reference()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        verifyIfUserIsLoggedIn()
     }
 
     
@@ -56,6 +59,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     
     
     func createSession() {
+        // Patch for observer. If not present app crashes on SessionViewController when force unwrapping attendees [String : String]
+        Database.database().reference(withPath: "attendees").removeAllObservers()
         
         let sessionRef = ref?.child("sessions").childByAutoId()
         let sessionID = sessionRef?.key
@@ -68,11 +73,17 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         ref?.child("sessions").child(sessionID!).child("sessionEndTime").setValue(self.sessionEndTime)
         
         ref?.child("attendees").child(sessionID!).child("hostID").setValue(Auth.auth().currentUser?.uid)
-        ref?.child("attendees").child(sessionID!).child("hostName").setValue(userName)
+        ref?.child("attendees").child(sessionID!).child("hostName").setValue(self.currentUser.name)
         ref?.child("attendees").child(sessionID!).child("sessionID").setValue(sessionID)
-        ref?.child("attendees").child(sessionID!).child("attendees").child((Auth.auth().currentUser?.uid)!).setValue(userName)
 
-        _ = navigationController?.popViewController(animated: true)
+        ref?.child("attendees").child(sessionID!).child("attendees").child((Auth.auth().currentUser?.uid)!).setValue(self.currentUser.name)
+        
+        let alert = UIAlertController(title: "Session created", message: "Happy coworking!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Gracias amigo", style: .default, handler: { action in
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
+
 
     }
     
@@ -92,6 +103,24 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Fetch User Data
     
+    func verifyIfUserIsLoggedIn() {
+        if Auth.auth().currentUser?.uid != nil {
+            
+            fetchUser()
+            print("user is logged in with email.")
+            
+        }else if FBSDKAccessToken.current() != nil{
+            
+            fetchUser()
+            print("user is logged in with Facebook.")
+            
+        }else {
+            
+            print("user is not logged in.")
+            performSegue(withIdentifier: "goToAuth", sender: self)
+        }
+    }
+    
     func fetchUser() {
         
         let uid = Auth.auth().currentUser?.uid
@@ -101,19 +130,20 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
-                self.userName = dictionary["name"] as? String
+                self.currentUser.name = dictionary["name"] as? String
+                self.currentUser.email = dictionary["email"] as? String
+                self.currentUser.occupation = dictionary["occupation"] as? String
+                self.currentUser.userID = uid
             }
         }, withCancel: nil)
     }
     
-    //MARK: - Date Format
     
-    func initialDate() {
-        self.sessionDate = dateToString(date: startTime.date as NSDate)
-    }
+    //MARK: - Date Format
     
     func initialStartTime() {
         self.sessionStartTime = hourToString(date: startTime.date as NSDate)
+        self.sessionDate = dateToString(date: startTime.date as NSDate)
     }
     
     func initialEndTime() {
@@ -122,6 +152,7 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func startTimeChanged(_ sender: Any) {
         self.sessionStartTime = hourToString(date: startTime.date as NSDate)
+        self.sessionDate = dateToString(date: startTime.date as NSDate)
     }
     
     @IBAction func endTimeChanged(_ sender: Any) {
@@ -132,7 +163,7 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormatter.string(from: date as Date)
-        
+
         return stringDate
     }
     
@@ -140,7 +171,7 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let stringDate = dateFormatter.string(from: date as Date)
-        
+
         return stringDate
     }
     
