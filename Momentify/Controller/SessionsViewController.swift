@@ -20,12 +20,10 @@ class SessionsViewController: UIViewController {
     
     var ref : DatabaseReference?
     
-    var currentSessions: [Session] = []
-    //var currentAttendees = [SessionAttendees]()
-    
+    var currentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
-    
     var currentUser = User()
+    var notExpiredID = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +35,8 @@ class SessionsViewController: UIViewController {
         verifyIfUserIsLoggedIn()
 
         configureTableView()
+        
+        //verifyIfSessionsHaveExpired()
 
     }
 
@@ -47,7 +47,7 @@ class SessionsViewController: UIViewController {
     
     
     
-    // MARK: - Fetch User
+    // MARK: - Fetch Data
     func fetchUser() {
         
         let uid = Auth.auth().currentUser?.uid
@@ -66,12 +66,10 @@ class SessionsViewController: UIViewController {
     
     
     
-    // MARK: - Fetch Sessions
-    
     func deleteSessions(finished: () -> Void) {
         self.currentSessions.removeAll()
         self.currentAttendees.removeAll()
-        
+
         finished()
     }
     
@@ -83,6 +81,7 @@ class SessionsViewController: UIViewController {
     }
     
     func fetchSessions() {
+
         // bug if there is no sessions
         let ref = Database.database().reference()
         
@@ -98,10 +97,23 @@ class SessionsViewController: UIViewController {
                 session.sessionDate = dictionary["sessionDate"] as? String
                 session.sessionStartTime = dictionary["sessionStartTime"] as? String
                 session.sessionTitle = dictionary["sessionTitle"] as? String
+
                 
-                self.currentSessions.append(session)
+                let currentDate = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let stringDate = dateFormatter.string(from: currentDate as Date)
                 
-                self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedAscending })
+                if session.sessionDate! < stringDate {
+                    //self.expiredID.append(session.sessionID!)
+                    self.moveExpiredSession(session: session)
+                    
+                } else {
+                    self.currentSessions.append(session)
+                    self.notExpiredID.append(session.sessionID!)
+                }
+                
+                self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedDescending })
                 
             }
             Database.database().reference(withPath: "sessions").removeAllObservers()
@@ -130,15 +142,47 @@ class SessionsViewController: UIViewController {
                     }
                 })
                 
-                //self.currentAttendees.append(sessionAttendes)
-                
-                self.currentAttendees[snapshot.key] = sessionAttendes
-                
+                if self.notExpiredID.contains(sessionAttendes.sessionID!) {
+                    self.currentAttendees[snapshot.key] = sessionAttendes
+                } else {
+                    self.moveExpiredAttendees(attendees: sessionAttendes)
+                }
 
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
 
+    }
+   
+    
+    
+    //MARK: - Delete Expired Sessions
+
+    func moveExpiredSession(session: Session) {
+        let sessionRef = Database.database().reference().child("sessions")
+        let expiredSessionRef = Database.database().reference().child("expiredSessions")
+        
+        sessionRef.child(session.sessionID!).removeValue()
+        
+        expiredSessionRef.child(session.sessionID!).child("sessionTitle").setValue(session.sessionTitle)
+        expiredSessionRef.child(session.sessionID!).child("sessionLocation").setValue(session.sessionLocation)
+        expiredSessionRef.child(session.sessionID!).child("sessionDescription").setValue(session.sessionDescription)
+        expiredSessionRef.child(session.sessionID!).child("sessionDate").setValue(session.sessionDate)
+        expiredSessionRef.child(session.sessionID!).child("sessionStartTime").setValue(session.sessionStartTime)
+        expiredSessionRef.child(session.sessionID!).child("sessionEndTime").setValue(session.sessionEndTime)
+    }
+    
+    func moveExpiredAttendees(attendees: SessionAttendees) {
+        let attendeesRef = Database.database().reference().child("attendees")
+        let expiredAttendeesRef = Database.database().reference().child("expiredAttendees")
+        
+        attendeesRef.child(attendees.sessionID!).removeValue()
+        
+        expiredAttendeesRef.child(attendees.sessionID!).child("hostID").setValue(attendees.hostID)
+        expiredAttendeesRef.child(attendees.sessionID!).child("hostName").setValue(attendees.hostName)
+        expiredAttendeesRef.child(attendees.sessionID!).child("sessionID").setValue(attendees.sessionID)
+        expiredAttendeesRef.child(attendees.sessionID!).child("attendees").setValue(attendees.attendees)
+        
     }
 
     
@@ -149,6 +193,7 @@ class SessionsViewController: UIViewController {
         verifyIfUserIsLoggedIn()
         
         deleteThenFetchSessions()
+
         
         // UIBarButton bug
         super.viewWillAppear(animated)
@@ -204,7 +249,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         return self.currentSessions.count
     }
     
@@ -215,7 +260,6 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         Database.database().reference(withPath: "attendees").removeAllObservers()
         
         let session = currentSessions[indexPath.row]
-        //let attendee = currentAttendees[indexPath.row]
         let attendee = currentAttendees[session.sessionID!]
   
         
@@ -304,4 +348,3 @@ extension SessionsViewController: SessionCellDelegate {
     }
     
 }
-
