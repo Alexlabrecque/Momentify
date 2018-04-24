@@ -17,6 +17,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var startTime: UIDatePicker!
     @IBOutlet weak var endTime: UIDatePicker!
     
+    @IBOutlet weak var createSessionButton: UIButton!
+    
     var sessionDate: String?
     var sessionStartTime: String?
     var sessionEndTime: String?
@@ -34,6 +36,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         
         self.initialStartTime()
         self.initialEndTime()
+        
+        createSessionButton.layer.cornerRadius = 10
         
         verifyIfUserIsLoggedIn()
         
@@ -75,7 +79,6 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         ref?.child("attendees").child(sessionID!).child("hostID").setValue(Auth.auth().currentUser?.uid)
         ref?.child("attendees").child(sessionID!).child("hostName").setValue(self.currentUser.name)
         ref?.child("attendees").child(sessionID!).child("sessionID").setValue(sessionID)
-
         ref?.child("attendees").child(sessionID!).child("attendees").child((Auth.auth().currentUser?.uid)!).setValue(self.currentUser.name)
         
         let alert = UIAlertController(title: "Session created", message: "Happy coworking!", preferredStyle: .alert)

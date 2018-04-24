@@ -16,10 +16,23 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var userName: UITextView!
     @IBOutlet weak var userOccupation: UITextView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var editButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchUser()
+        
+        editButton.layer.cornerRadius = 10
+        
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.black.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
 
     }
     
@@ -35,13 +48,14 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK :- Presenting User's Information
     
     func fetchUser() {
+        
+        var user = User()
 
         let uid = Auth.auth().currentUser?.uid
+        let storageRef = Storage.storage().reference(forURL: "gs://momentify-83187.appspot.com/")
+        
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
-            print(snapshot)
-            
-            //Create User Object to store user info and load quicker to implement
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
@@ -56,9 +70,46 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                 } else {
                     self.userOccupation.text = dictionary["occupation"] as? String
                 }
+                
+                user.profilePictureURL = dictionary["profilePictureURL"] as? String
+                
+                
+                if let url = URL(string: user.profilePictureURL!) {
+                    URLSession.shared.dataTask(with: url) { (data, res, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.profileImageView.image = UIImage(data: data!)
+                            self.profileImageView.translatesAutoresizingMaskIntoConstraints = false
+                            self.profileImageView.contentMode = .scaleAspectFit
+                        }
+                        
+                        }.resume()
+                } 
+                
+//                let url = URL(string: user.profilePictureURL!)
+//
+//                URLSession.shared.dataTask(with: url!) { (data, res, error) in
+//                    if error != nil {
+//                        print(error!)
+//                        return
+//                    }
+//
+//                    DispatchQueue.main.async {
+//                        self.profileImageView.image = UIImage(data: data!)
+//                        self.profileImageView.translatesAutoresizingMaskIntoConstraints = false
+//                        self.profileImageView.contentMode = .scaleAspectFit
+//                    }
+//
+//                }.resume()
+                
+                
+                
             }
         }, withCancel: nil)
-        
 
     }
    

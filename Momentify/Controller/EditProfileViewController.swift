@@ -12,12 +12,17 @@ import FacebookLogin
 import FBSDKLoginKit
 
 class EditProfileViewController: UIViewController, UITextFieldDelegate {
-
-    let user = Auth.auth().currentUser
-    
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var occupationTextField: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    var selectedImage: UIImage?
+    
+    @IBOutlet weak var changePictureButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
+    
+    var user = User()
     
     
     override func viewDidLoad() {
@@ -30,6 +35,15 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     
         self.nameTextField.textColor = UIColor.gray
         self.occupationTextField.textColor = UIColor.gray
+        
+        changePictureButton.layer.cornerRadius = 10
+        confirmButton.layer.cornerRadius = 10
+        
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.black.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,9 +60,28 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
-                    self.nameTextField.text = dictionary["name"] as? String
+                self.nameTextField.text = dictionary["name"] as? String
         
-                    self.occupationTextField.text = dictionary["occupation"] as? String
+                self.occupationTextField.text = dictionary["occupation"] as? String
+                
+                self.user.profilePictureURL = dictionary["profilePictureURL"] as? String
+                
+                if let url = URL(string: self.user.profilePictureURL!) {
+                    URLSession.shared.dataTask(with: url) { (data, res, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.profileImageView.image = UIImage(data: data!)
+                            self.profileImageView.translatesAutoresizingMaskIntoConstraints = false
+                            self.profileImageView.contentMode = .scaleAspectFit
+                        }
+                        
+                    }.resume()
+                }
+
             }
         }, withCancel: nil)
         
@@ -61,13 +94,27 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
          if FBSDKAccessToken.current() != nil || Auth.auth().currentUser?.uid != nil{
-        
-            let prntRefName  = Database.database().reference().child("users").child((user?.uid)!)
-            prntRefName.updateChildValues(["name":nameTextField.text ?? "Name"])
-        
-            let prntRefOccupation  = Database.database().reference().child("users").child((user?.uid)!)
-            prntRefOccupation.updateChildValues(["occupation":occupationTextField.text ?? "Occupation"])
             
+            let uid = Auth.auth().currentUser?.uid
+            let ref  = Database.database().reference().child("users").child(uid!)
+            ref.updateChildValues(["name":nameTextField.text ?? "Name"])
+
+            ref.updateChildValues(["occupation":occupationTextField.text ?? "Occupation"])
+            
+            let storageRef = Storage.storage().reference().child("profileImage").child((Auth.auth().currentUser?.uid)!)
+            
+            if let profileImg = selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
+                storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        return
+                    }
+                    let profileImageURL = metadata?.downloadURL()?.absoluteString
+                    
+                    ref.updateChildValues(["name":self.nameTextField.text ?? "Name"])
+                    ref.updateChildValues(["occupation":self.occupationTextField.text ?? "Occupation"])
+                    ref.updateChildValues(["profilePictureURL": profileImageURL!])
+                }
+            }
          }
         
         let alert = UIAlertController(title: "Profile edited", message: "Congrats on your new identity", preferredStyle: .alert)
@@ -80,6 +127,14 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    
+    @IBAction func changePictureButtonPressed(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+    }
     
     
     //MARK:- TextField Delegate Methods
@@ -94,4 +149,23 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+}
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("did select a picture")
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            self.selectedImage = editedImage
+            profileImageView.image = self.selectedImage
+            
+        } else if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            self.selectedImage = image
+            profileImageView.image = self.selectedImage
+        }
+        
+        
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -99,7 +99,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
                 
                 SVProgressHUD.dismiss()
                 
-                self.performSegue(withIdentifier: "goToNavigationController", sender: self)
+                self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
             }
         }
         

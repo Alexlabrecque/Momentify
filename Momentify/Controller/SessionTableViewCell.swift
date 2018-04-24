@@ -40,6 +40,7 @@ class SessionTableViewCell: UITableViewCell {
         
         joinButton.layer.cornerRadius = 10
         leaveButton.layer.cornerRadius = 10
+        deleteSessionButton.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

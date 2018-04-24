@@ -16,30 +16,44 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var sessionTableView: UITableView!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var notifButton: UIButton!
-    
-    var ref : DatabaseReference?
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     var currentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
     var currentUser = User()
-    var notExpiredID = [String]()
+    var expiredID = [String]()
+    
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        chatButton.isHidden = true
+        filterButton.title = ""
+        filterButton.isEnabled = false
+        
         chatButton.layer.cornerRadius = 10
         createButton.layer.cornerRadius = 10
-        notifButton.layer.cornerRadius = 10
         
         verifyIfUserIsLoggedIn()
+        
+        deleteThenFetchSessions()
 
         configureTableView()
-        
-        //verifyIfSessionsHaveExpired()
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        verifyIfUserIsLoggedIn()
+        
+        deleteThenFetchSessions()
+        
+        // UIBarButton bug
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintAdjustmentMode = .normal
+        self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,6 +65,7 @@ class SessionsViewController: UIViewController {
     func fetchUser() {
         
         let uid = Auth.auth().currentUser?.uid
+        print(uid)
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
             
@@ -63,7 +78,6 @@ class SessionsViewController: UIViewController {
             }
         }, withCancel: nil)
     }
-    
     
     
     func deleteSessions(finished: () -> Void) {
@@ -82,7 +96,6 @@ class SessionsViewController: UIViewController {
     
     func fetchSessions() {
 
-        // bug if there is no sessions
         let ref = Database.database().reference()
         
         ref.child("sessions").observe(.childAdded) { (snapshot) in
@@ -98,20 +111,25 @@ class SessionsViewController: UIViewController {
                 session.sessionStartTime = dictionary["sessionStartTime"] as? String
                 session.sessionTitle = dictionary["sessionTitle"] as? String
 
-                
                 let currentDate = Date()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let stringDate = dateFormatter.string(from: currentDate as Date)
+
                 
-                if session.sessionDate! < stringDate {
-                    //self.expiredID.append(session.sessionID!)
-                    self.moveExpiredSession(session: session)
-                    
+                if session.sessionDate != nil {
+                    if session.sessionDate! < stringDate {
+                        self.moveExpiredSession(session: session)
+                        //print("session is expired")
+                        self.expiredID.append(session.sessionID!)
+                    } else {
+                        self.currentSessions.append(session)
+                        //print("session still ok")
+                    }
                 } else {
-                    self.currentSessions.append(session)
-                    self.notExpiredID.append(session.sessionID!)
+                    //print("session date = nil, bruh")
                 }
+                
                 
                 self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedDescending })
                 
@@ -128,13 +146,27 @@ class SessionsViewController: UIViewController {
                 sessionAttendes.hostID = dictionary["hostID"] as? String
                 sessionAttendes.sessionID = snapshot.key
                 sessionAttendes.hostName = dictionary["hostName"] as? String
-                sessionAttendes.attendees = dictionary["attendees"] as! [String: String]
+                
+                if dictionary["attendees"] != nil {
+                    sessionAttendes.attendees = dictionary["attendees"] as! [String: String]
+                }
+               
 
                 ref.child("users").child(sessionAttendes.hostID!).observeSingleEvent(of: .value, with: { (userSnapshot) in
                     if let userDictionary = userSnapshot.value as? [String: AnyObject] {
 
                         sessionAttendes.hostName = userDictionary["name"] as? String
-
+                        
+                        if self.expiredID.contains(sessionAttendes.sessionID!) != false {
+                            //print("Attendees expired")
+                            self.moveExpiredAttendees(attendees: sessionAttendes)
+                            
+                        } else {
+                            
+                            //print("Attendees not expired")
+                            self.currentAttendees[snapshot.key] = sessionAttendes
+                        }
+                        
                         DispatchQueue.main.async {
                             self.configureTableView()
                             self.sessionTableView.reloadData()
@@ -142,15 +174,11 @@ class SessionsViewController: UIViewController {
                     }
                 })
                 
-                if self.notExpiredID.contains(sessionAttendes.sessionID!) {
-                    self.currentAttendees[snapshot.key] = sessionAttendes
-                } else {
-                    self.moveExpiredAttendees(attendees: sessionAttendes)
-                }
-
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
+        
+        self.refreshControl.endRefreshing()
 
     }
    
@@ -189,18 +217,7 @@ class SessionsViewController: UIViewController {
     
     // MARK: - Navigation
     
-    override func viewDidAppear(_ animated: Bool) {
-        verifyIfUserIsLoggedIn()
-        
-        deleteThenFetchSessions()
 
-        
-        // UIBarButton bug
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintAdjustmentMode = .normal
-        self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
-        
-    }
 
     
     @IBAction func filterButtonPressed(_ sender: Any) {
@@ -219,13 +236,11 @@ class SessionsViewController: UIViewController {
         performSegue(withIdentifier: "goToCreate", sender: self)
     }
     
-    @IBAction func notificationsButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToNotifications", sender: self)
-    }
  
     // MARK: - Logged In Verification
     
     func verifyIfUserIsLoggedIn() {
+        
         if Auth.auth().currentUser?.uid != nil {
             
             fetchUser()
@@ -247,62 +262,83 @@ class SessionsViewController: UIViewController {
 
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return self.currentSessions.count
+
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        Database.database().reference(withPath: "sessions").removeAllObservers()
-        Database.database().reference(withPath: "attendees").removeAllObservers()
-        
-        let session = currentSessions[indexPath.row]
-        let attendee = currentAttendees[session.sessionID!]
-  
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
         
-        cell.setSession(session: session, attendee: attendee!)
+        Database.database().reference(withPath: "sessions").removeAllObservers()
+        Database.database().reference(withPath: "attendees").removeAllObservers()
+            
+        let session = currentSessions[indexPath.row]
+        let attendee = currentAttendees[session.sessionID!]
+        
+        if attendee != nil {
+            cell.setSession(session: session, attendee: attendee!)
+        }
         cell.selectionStyle = .none
         cell.delegate = self
-        
+            
         cell.deleteSessionButton.isHidden = true
         cell.deleteSessionButton.isEnabled = false
-        
+            
         if attendee?.attendees[self.currentUser.userID!] != nil {
             cell.joinButton.isHidden = true
             cell.joinButton.isUserInteractionEnabled = false
-            
+                
             cell.leaveButton.isHidden = false
             cell.leaveButton.isUserInteractionEnabled = true
-
+                
         } else {
             cell.joinButton.isHidden = false
             cell.joinButton.isUserInteractionEnabled = true
             
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
-            
+                
         }
-        
+            
         if attendee?.hostID == self.currentUser.userID {
             cell.leaveButton.isEnabled = false
-            
+                
             cell.deleteSessionButton.isHidden = false
             cell.deleteSessionButton.isEnabled = true
+            cell.joinButton.isHidden = true
+            cell.joinButton.isUserInteractionEnabled = false
+            cell.leaveButton.isHidden = true
+            cell.leaveButton.isUserInteractionEnabled = false
+                
         }
-        
-        
-        
-        return cell
+    
+    return cell
+
     }
     
     
     func configureTableView() {
         sessionTableView.rowHeight = 365.0
+    
+        
+        if #available(iOS 10.0, *) {
+            sessionTableView.refreshControl = refreshControl
+        } else {
+            sessionTableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshSessions(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.orange
+        refreshControl.attributedTitle = NSAttributedString(string: "Looking for Coworking Sessions ...")
+    }
+    
+    @objc private func refreshSessions(_ sender: Any) {
+        self.deleteThenFetchSessions()
+
     }
 
     
@@ -341,10 +377,11 @@ extension SessionsViewController: SessionCellDelegate {
         thisRef.child("attendees").child(thisSession.sessionID!).removeValue()
         
         let alert = UIAlertController(title: "Session Deleted", message: "The session was deleted", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Gracias amigo", style: .default, handler: { action in
+            self.deleteThenFetchSessions()
+        }))
         self.present(alert, animated: true)
         
-        self.deleteThenFetchSessions()
     }
     
 }
