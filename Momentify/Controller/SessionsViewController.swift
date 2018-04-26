@@ -17,6 +17,7 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var filterButton: UIBarButtonItem!
+    @IBOutlet weak var buttonsBackground: UIImageView!
     
     var currentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
@@ -28,17 +29,29 @@ class SessionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        do {
+//            try Auth.auth().signOut()
+//
+//            if FBSDKAccessToken.current() != nil {
+//
+//                FBSDKLoginManager().logOut()
+//                //logged out of Facebook
+//            }
+//        } catch {
+//            print("Error, there was a problem signing out.")
+//        }
+        
         chatButton.isHidden = true
         filterButton.title = ""
         filterButton.isEnabled = false
         
         chatButton.layer.cornerRadius = 10
-        createButton.layer.cornerRadius = 10
+        createButton.layer.cornerRadius = createButton.frame.height/2
+        createButton.layer.borderWidth = 1
+        createButton.layer.borderColor = UIColor.gray.cgColor
         
         verifyIfUserIsLoggedIn()
         
-        deleteThenFetchSessions()
-
         configureTableView()
 
     }
@@ -64,19 +77,24 @@ class SessionsViewController: UIViewController {
     // MARK: - Fetch Data
     func fetchUser() {
         
-        let uid = Auth.auth().currentUser?.uid
-        print(uid)
-        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
+        if let uid = Auth.auth().currentUser?.uid {
+          print(uid)
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
+                (snapshot) in
                 
-                self.currentUser.name = dictionary["name"] as? String
-                self.currentUser.email = dictionary["email"] as? String
-                self.currentUser.occupation = dictionary["occupation"] as? String
-                self.currentUser.userID = uid
-            }
-        }, withCancel: nil)
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    
+                    self.currentUser.name = dictionary["name"] as? String
+                    self.currentUser.email = dictionary["email"] as? String
+                    self.currentUser.occupation = dictionary["occupation"] as? String
+                    self.currentUser.userID = uid
+                }
+            }, withCancel: nil)
+        } else {
+            print("error fetching user")
+        }
+        
     }
     
     
@@ -91,7 +109,6 @@ class SessionsViewController: UIViewController {
         deleteSessions {
             fetchSessions()
         }
-        
     }
     
     func fetchSessions() {
@@ -130,7 +147,6 @@ class SessionsViewController: UIViewController {
                     //print("session date = nil, bruh")
                 }
                 
-                
                 self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedDescending })
                 
             }
@@ -158,12 +174,8 @@ class SessionsViewController: UIViewController {
                         sessionAttendes.hostName = userDictionary["name"] as? String
                         
                         if self.expiredID.contains(sessionAttendes.sessionID!) != false {
-                            //print("Attendees expired")
                             self.moveExpiredAttendees(attendees: sessionAttendes)
-                            
                         } else {
-                            
-                            //print("Attendees not expired")
                             self.currentAttendees[snapshot.key] = sessionAttendes
                         }
                         
@@ -179,7 +191,6 @@ class SessionsViewController: UIViewController {
         }
         
         self.refreshControl.endRefreshing()
-
     }
    
     
@@ -217,9 +228,6 @@ class SessionsViewController: UIViewController {
     
     // MARK: - Navigation
     
-
-
-    
     @IBAction func filterButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToFilter", sender: self)
     }
@@ -237,18 +245,19 @@ class SessionsViewController: UIViewController {
     }
     
  
+    
     // MARK: - Logged In Verification
     
     func verifyIfUserIsLoggedIn() {
         
-        if Auth.auth().currentUser?.uid != nil {
+        if FBSDKAccessToken.current() != nil{
+            
+            print("user is logged in with Facebook.")
+            
+        }else if Auth.auth().currentUser?.uid != nil {
             
             fetchUser()
             print("user is logged in with email.")
-            
-        }else if FBSDKAccessToken.current() != nil{
-
-            print("user is logged in with Facebook.")
             
         }else {
 
@@ -259,11 +268,10 @@ class SessionsViewController: UIViewController {
     
 }
 
-
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        print(self.currentSessions.count)
         return self.currentSessions.count
 
     }
@@ -288,24 +296,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.deleteSessionButton.isHidden = true
         cell.deleteSessionButton.isEnabled = false
             
-        if attendee?.attendees[self.currentUser.userID!] != nil {
-            cell.joinButton.isHidden = true
-            cell.joinButton.isUserInteractionEnabled = false
-                
-            cell.leaveButton.isHidden = false
-            cell.leaveButton.isUserInteractionEnabled = true
-                
-        } else {
-            cell.joinButton.isHidden = false
-            cell.joinButton.isUserInteractionEnabled = true
-            
-            cell.leaveButton.isHidden = true
-            cell.leaveButton.isUserInteractionEnabled = false
-                
-        }
-            
         if attendee?.hostID == self.currentUser.userID {
-            cell.leaveButton.isEnabled = false
+            print("user is the host")
                 
             cell.deleteSessionButton.isHidden = false
             cell.deleteSessionButton.isEnabled = true
@@ -314,6 +306,21 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
                 
+        } else if attendee?.attendees[self.currentUser.userID!] != nil {
+            print("user is attending")
+            cell.joinButton.isHidden = true
+            cell.joinButton.isUserInteractionEnabled = false
+            
+            cell.leaveButton.isHidden = false
+            cell.leaveButton.isUserInteractionEnabled = true
+            
+        } else {
+            print("user is not attending")
+            cell.joinButton.isHidden = false
+            cell.joinButton.isUserInteractionEnabled = true
+            
+            cell.leaveButton.isHidden = true
+            cell.leaveButton.isUserInteractionEnabled = false
         }
     
     return cell
@@ -322,9 +329,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 365.0
+        sessionTableView.rowHeight = 300.0
     
-        
         if #available(iOS 10.0, *) {
             sessionTableView.refreshControl = refreshControl
         } else {

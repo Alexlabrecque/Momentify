@@ -90,24 +90,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                         }.resume()
                 } 
                 
-//                let url = URL(string: user.profilePictureURL!)
-//
-//                URLSession.shared.dataTask(with: url!) { (data, res, error) in
-//                    if error != nil {
-//                        print(error!)
-//                        return
-//                    }
-//
-//                    DispatchQueue.main.async {
-//                        self.profileImageView.image = UIImage(data: data!)
-//                        self.profileImageView.translatesAutoresizingMaskIntoConstraints = false
-//                        self.profileImageView.contentMode = .scaleAspectFit
-//                    }
-//
-//                }.resume()
-                
-                
-                
             }
         }, withCancel: nil)
 

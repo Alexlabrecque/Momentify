@@ -84,25 +84,46 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
     //MARK:- Create User
     
     @IBAction func createUserButtonPressed(_ sender: Any) {
-        SVProgressHUD.show()
         
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+        if emailTextField.text?.isEmpty == true || emailTextField.text?.contains("@") == false {
+            
+            let alert = UIAlertController(title: "Unvalid Email Adress", message: "Please enter a valid one", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else if passwordTextField.text?.isEmpty == true || (passwordTextField.text?.count)! < 6 {
+            
+            let alert = UIAlertController(title: "Unvalid Password", message: "Password must include at least 6 chararcters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else {
+        print("seems all right")
+            SVProgressHUD.show()
+        
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 
-            if error != nil {
+                if error != nil {
+                    print(error!)
+                    SVProgressHUD.dismiss()
+                    
+                    let alert = UIAlertController(title: "Unvalid Email Adress", message: "Please enter a valid one", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                    return
+                } else {
                 
-                print(error!)
-                return
-            } else {
+                    let uid = user?.uid
+                    self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!)
                 
-                let uid = user?.uid
-                self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!)
+                    SVProgressHUD.dismiss()
                 
-                SVProgressHUD.dismiss()
-                
-                self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
+                    self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
+                }
             }
-        }
         
+        }
     }
     
     func setUserInformation(email: String, name: String, occupation: String, uid: String) {
@@ -142,21 +163,36 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
             return
         }
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        print(credential)
         
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                return
-            }
+//        Auth.auth().signIn(with: credential) { (user, error) in
+//            if let error = error {
+//                return
+//            }
+//
+//            _ = user?.uid
+//
+//            self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
+//
+//        }
 
-            let uid = user?.uid
-            
-            self.performSegue(withIdentifier: "goToNavigationController", sender: self)
-        }
+                Auth.auth().signIn(with: credential) { (user, error) in
+                    if error != nil {
+                        return
+                    }
+                    
+                    
+                    _ = user?.uid
+        
+                    self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
+        
+                }
+        //
     }
     
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        // to understand why would need this
+        // Needed for FBSDKLoginDelegate
     }
     
     
