@@ -84,6 +84,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
             }
+            ref.child("userID").setValue(self.currentUser.userID)
             ref.child("name").setValue(self.usernameTextField.text)
             ref.child("occupation").setValue(self.occupationTextField.text)
             performSegue(withIdentifier: "createProfileToNavigationController", sender: self)

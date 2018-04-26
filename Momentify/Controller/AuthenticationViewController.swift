@@ -131,7 +131,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
         let ref = Database.database().reference()
         let usersReference = ref.child("users")
         let newUserReference = usersReference.child(uid)
-        newUserReference.setValue(["email": email, "name": name, "occupation": occupation])
+        newUserReference.setValue(["email": email, "name": name, "occupation": occupation, "userID": uid])
     }
     
     
@@ -180,9 +180,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
                     if error != nil {
                         return
                     }
-                    
-                    
-                    _ = user?.uid
+                    let uid = user?.uid
+                    self.setUserInformation(email: "Facebook Log in", name: "", occupation: "", uid: uid!)
         
                     self.performSegue(withIdentifier: "goToCreateProfile", sender: self)
         

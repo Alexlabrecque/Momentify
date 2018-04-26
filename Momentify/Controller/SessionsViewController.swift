@@ -52,6 +52,8 @@ class SessionsViewController: UIViewController {
         
         verifyIfUserIsLoggedIn()
         
+        fetchUser()
+        
         configureTableView()
 
     }
@@ -329,7 +331,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 300.0
+        sessionTableView.rowHeight = 350.0
     
         if #available(iOS 10.0, *) {
             sessionTableView.refreshControl = refreshControl
