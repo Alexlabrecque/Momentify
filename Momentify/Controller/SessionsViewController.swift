@@ -17,7 +17,8 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var filterButton: UIBarButtonItem!
-    @IBOutlet weak var buttonsBackground: UIImageView!
+    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var profileBarButton: UIBarButtonItem!
     
     var currentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
@@ -29,17 +30,17 @@ class SessionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        do {
-//            try Auth.auth().signOut()
-//
-//            if FBSDKAccessToken.current() != nil {
-//
-//                FBSDKLoginManager().logOut()
-//                //logged out of Facebook
-//            }
-//        } catch {
-//            print("Error, there was a problem signing out.")
-//        }
+        do {
+            try Auth.auth().signOut()
+
+            if FBSDKAccessToken.current() != nil {
+
+                FBSDKLoginManager().logOut()
+                //logged out of Facebook
+            }
+        } catch {
+            print("Error, there was a problem signing out.")
+        }
         
         chatButton.isHidden = true
         filterButton.title = ""
@@ -48,8 +49,10 @@ class SessionsViewController: UIViewController {
         chatButton.layer.cornerRadius = 10
         createButton.layer.cornerRadius = createButton.frame.height/2
         createButton.layer.borderWidth = 1
-        createButton.layer.borderColor = UIColor.gray.cgColor
+        createButton.layer.borderColor = UIColor.orange.cgColor
         
+        sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
+
         verifyIfUserIsLoggedIn()
         
         fetchUser()
@@ -278,14 +281,15 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
     
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customSessionCell", for: indexPath) as! SessionCellTableViewCell
         
         Database.database().reference(withPath: "sessions").removeAllObservers()
         Database.database().reference(withPath: "attendees").removeAllObservers()
-            
+        
+        print(currentSessions.count)
         let session = currentSessions[indexPath.row]
         let attendee = currentAttendees[session.sessionID!]
         
@@ -303,10 +307,14 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
                 
             cell.deleteSessionButton.isHidden = false
             cell.deleteSessionButton.isEnabled = true
+            
             cell.joinButton.isHidden = true
             cell.joinButton.isUserInteractionEnabled = false
+            
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
+            
+            cell.checkmarkImage.isHidden = false
                 
         } else if attendee?.attendees[self.currentUser.userID!] != nil {
             print("user is attending")
@@ -316,6 +324,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isHidden = false
             cell.leaveButton.isUserInteractionEnabled = true
             
+            cell.checkmarkImage.isHidden = false
+            
         } else {
             print("user is not attending")
             cell.joinButton.isHidden = false
@@ -323,6 +333,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
+            
+            cell.checkmarkImage.isHidden = true
         }
     
     return cell
@@ -331,7 +343,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 350.0
+        sessionTableView.rowHeight = 275.0
+        sessionTableView.separatorStyle = .none
     
         if #available(iOS 10.0, *) {
             sessionTableView.refreshControl = refreshControl
@@ -352,7 +365,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension SessionsViewController: SessionCellDelegate {
+extension SessionsViewController: SessionCellDelegate1 {
     
     func joinButtonPressed(theseAttendeesJoin: SessionAttendees) {
         

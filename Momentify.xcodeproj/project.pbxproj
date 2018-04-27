@@ -12,11 +12,11 @@
 		C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */; };
 		C0118C4D2077CA58004F3375 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4C2077CA58004F3375 /* User.swift */; };
 		C037E821207AEE0400788ABC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037E820207AEE0400788ABC /* Session.swift */; };
+		C04B01DA20939BEB00B8EE29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04B01D920939BEB00B8EE29 /* Assets.xcassets */; };
 		C04FFC44208BFA79005C4ED1 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04FFC43208BFA79005C4ED1 /* CreateProfileViewController.swift */; };
 		C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07772DF2073016E00EA6759 /* AppDelegate.swift */; };
 		C07772E52073016E00EA6759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772E32073016E00EA6759 /* Main.storyboard */; };
 		C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C07772E62073016E00EA6759 /* Momentify.xcdatamodeld */; };
-		C07772EA2073016E00EA6759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07772E92073016E00EA6759 /* Assets.xcassets */; };
 		C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */; };
 		C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */; };
 		C07772FE207311C100EA6759 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07772FD207311C100EA6759 /* Bolts.framework */; };
@@ -29,7 +29,8 @@
 		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
 		C0BCB661209263A200D2D8EC /* SessionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */; };
 		C0BCB662209263A200D2D8EC /* SessionCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */; };
-		C0C9A815207B9DF20036FC12 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */; };
+		C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66320935C3600D2D8EC /* Nexa Light.otf */; };
+		C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */; };
 		C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A816207E548C0036FC12 /* SessionAttendees.swift */; };
 		DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */; };
 /* End PBXBuildFile section */
@@ -43,12 +44,12 @@
 		C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		C0118C4C2077CA58004F3375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C037E820207AEE0400788ABC /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		C04B01D920939BEB00B8EE29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C04FFC43208BFA79005C4ED1 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		C07772DC2073016E00EA6759 /* Momentify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momentify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07772DF2073016E00EA6759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07772E42073016E00EA6759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C07772E72073016E00EA6759 /* Momentify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Momentify.xcdatamodel; sourceTree = "<group>"; };
-		C07772E92073016E00EA6759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C07772EC2073016E00EA6759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C07772EE2073016E00EA6759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -63,7 +64,10 @@
 		C077731320742CD100EA6759 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellTableViewCell.swift; sourceTree = "<group>"; };
 		C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCellTableViewCell.xib; sourceTree = "<group>"; };
-		C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		C0BCB66320935C3600D2D8EC /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Light.otf"; path = "../../../Downloads/nexa/Nexa Light.otf"; sourceTree = "<group>"; };
+		C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Bold.otf"; path = "../../../Downloads/nexa/Nexa Bold.otf"; sourceTree = "<group>"; };
+		C0BCB66820935F1800D2D8EC /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Light.otf"; sourceTree = "<group>"; };
+		C0BCB66920935F1900D2D8EC /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Bold.otf"; sourceTree = "<group>"; };
 		C0C9A816207E548C0036FC12 /* SessionAttendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendees.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,7 @@
 		C07772D32073016E00EA6759 = {
 			isa = PBXGroup;
 			children = (
+				C04B01D920939BEB00B8EE29 /* Assets.xcassets */,
 				C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */,
 				C07772DE2073016E00EA6759 /* Momentify */,
 				C07772FA207306FC00EA6759 /* Supporting Files */,
@@ -123,7 +128,6 @@
 				C07772F9207306F500EA6759 /* Model */,
 				C07772F6207306BA00EA6759 /* View */,
 				C07772F8207306D700EA6759 /* Controller */,
-				C07772E92073016E00EA6759 /* Assets.xcassets */,
 				C07772E62073016E00EA6759 /* Momentify.xcdatamodeld */,
 				C077730720731EA800EA6759 /* Momentify-Bridging-Header.h */,
 			);
@@ -133,6 +137,9 @@
 		C07772F6207306BA00EA6759 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */,
+				C0BCB66320935C3600D2D8EC /* Nexa Light.otf */,
+				C0BCB66720935F0E00D2D8EC /* Fonts */,
 				C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */,
 				C07772E32073016E00EA6759 /* Main.storyboard */,
 				C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */,
@@ -143,12 +150,11 @@
 		C07772F8207306D700EA6759 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */,
 				C07772DF2073016E00EA6759 /* AppDelegate.swift */,
 				C0118C4220745514004F3375 /* AuthenticationViewController.swift */,
 				C04FFC43208BFA79005C4ED1 /* CreateProfileViewController.swift */,
 				C0118C442074573F004F3375 /* SessionsViewController.swift */,
-				C0C9A814207B9DF20036FC12 /* SessionTableViewCell.swift */,
+				C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */,
 				C077730F20742C9B00EA6759 /* FilterViewController.swift */,
 				C077731120742CB300EA6759 /* ProfileViewController.swift */,
 				C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */,
@@ -173,6 +179,15 @@
 				C07772EE2073016E00EA6759 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0BCB66720935F0E00D2D8EC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C0BCB66920935F1900D2D8EC /* Nexa Bold.otf */,
+				C0BCB66820935F1800D2D8EC /* Nexa Light.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D235D13FC0A7B0E524A14098 /* Pods */ = {
@@ -249,9 +264,11 @@
 			files = (
 				C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */,
 				C0BCB662209263A200D2D8EC /* SessionCellTableViewCell.xib in Resources */,
-				C07772EA2073016E00EA6759 /* Assets.xcassets in Resources */,
 				C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */,
 				C07772E52073016E00EA6759 /* Main.storyboard in Resources */,
+				C04B01DA20939BEB00B8EE29 /* Assets.xcassets in Resources */,
+				C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */,
+				C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +359,6 @@
 			files = (
 				C0BCB661209263A200D2D8EC /* SessionCellTableViewCell.swift in Sources */,
 				C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */,
-				C0C9A815207B9DF20036FC12 /* SessionTableViewCell.swift in Sources */,
 				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
 				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
 				C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */,
@@ -383,6 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_OPTIMIZATION = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_OPTIMIZATION = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -27,6 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        let attrs = [
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font: UIFont(name: "Nexa Light", size: 22)!
+        ]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes(
+            [
+                NSAttributedStringKey.foregroundColor: UIColor.orange,
+                NSAttributedStringKey.font: UIFont(name: "Nexa Light", size: 18)!
+                ], for: .normal)
+        
+        UINavigationBar.appearance().titleTextAttributes = attrs
+        
         return true
     }
     

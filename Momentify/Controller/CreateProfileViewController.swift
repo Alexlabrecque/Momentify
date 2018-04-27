@@ -22,6 +22,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     
     var selectedImage: UIImage?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +37,14 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
         
+        
         fetchUser()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 
     
     
@@ -137,12 +140,13 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
 
 extension CreateProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @ objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("did select a picture")
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             self.selectedImage = editedImage
             profileImageView.image = self.selectedImage
+            print("edited image")
             
         } else if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             self.selectedImage = image

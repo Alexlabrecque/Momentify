@@ -27,6 +27,9 @@ class SessionCellTableViewCell: UITableViewCell {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var leaveButton: UIButton!
     @IBOutlet weak var deleteSessionButton: UIButton!
+    @IBOutlet weak var sessionBackground: UIView!
+    @IBOutlet weak var lineBackground: UIView!
+    @IBOutlet weak var checkmarkImage: UIImageView!
     
     var delegate: SessionCellDelegate1?
     
@@ -34,16 +37,31 @@ class SessionCellTableViewCell: UITableViewCell {
     var thisSessionsAttendees = SessionAttendees()
     var currentUser = User()
     
+ 
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         
         super.awakeFromNib()
         
         joinButton.layer.cornerRadius = 10
+        joinButton.layer.borderWidth = 1
+        joinButton.layer.borderColor = UIColor.orange.cgColor
+        
         leaveButton.layer.cornerRadius = 10
+        leaveButton.layer.borderWidth = 1
+        leaveButton.layer.borderColor = UIColor.darkGray.cgColor
+        
         deleteSessionButton.layer.cornerRadius = 10
+        deleteSessionButton.layer.borderWidth = 1
+        deleteSessionButton.layer.borderColor = UIColor.red.cgColor
+        
+        lineBackground.layer.cornerRadius = 10
+        lineBackground.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        
+        sessionBackground.layer.cornerRadius = 10
+        
+        checkmarkImage.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,7 +77,12 @@ class SessionCellTableViewCell: UITableViewCell {
         sessionDate.text = session.sessionDate
         
         sessionDescription.text = session.sessionDescription
-        numberOfCoworkers.text = ("\(String(attendee.attendees.count)) attendees")
+        if attendee.attendees.count <= 1 {
+            numberOfCoworkers.text = ("\(String(attendee.attendees.count)) person attending")
+        } else {
+            numberOfCoworkers.text = ("\(String(attendee.attendees.count)) people attending")
+        }
+        
         
         hostName.text = attendee.hostName
         

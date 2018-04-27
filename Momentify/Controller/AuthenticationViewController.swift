@@ -37,6 +37,14 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
         createUserButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
         logInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
         
+        createUserButton.layer.cornerRadius = 10
+        logInButton.layer.cornerRadius = 10
+        
+        createUserButton.layer.borderWidth = 1
+        createUserButton.layer.borderColor = UIColor.gray.cgColor
+        logInButton.layer.borderWidth = 1
+        logInButton.layer.borderColor = UIColor.gray.cgColor
+        
         createUserButton.isEnabled = false
         logInButton.isEnabled = false
         

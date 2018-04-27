@@ -35,9 +35,10 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     
         self.nameTextField.textColor = UIColor.gray
         self.occupationTextField.textColor = UIColor.gray
-        
-        changePictureButton.layer.cornerRadius = 10
+
         confirmButton.layer.cornerRadius = 10
+        confirmButton.layer.borderColor = UIColor.orange.cgColor
+        confirmButton.layer.borderWidth = 1
         
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false

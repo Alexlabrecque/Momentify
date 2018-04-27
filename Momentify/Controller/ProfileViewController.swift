@@ -27,6 +27,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         fetchUser()
         
         editButton.layer.cornerRadius = 10
+        editButton.layer.borderColor = UIColor.orange.cgColor
+        editButton.layer.borderWidth = 1
         
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false

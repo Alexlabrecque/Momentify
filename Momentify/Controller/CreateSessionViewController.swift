@@ -38,6 +38,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         self.initialEndTime()
         
         createSessionButton.layer.cornerRadius = 10
+        createSessionButton.layer.borderColor = UIColor.orange.cgColor
+        createSessionButton.layer.borderWidth = 1
         
         verifyIfUserIsLoggedIn()
         
