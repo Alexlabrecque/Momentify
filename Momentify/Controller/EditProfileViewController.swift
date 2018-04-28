@@ -45,6 +45,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileView)))
+        profileImageView.isUserInteractionEnabled = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,6 +133,14 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func changePictureButtonPressed(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+    }
+    
+    @objc func handleSelectProfileView() {
         let pickerController = UIImagePickerController()
         present(pickerController, animated: true, completion: nil)
         

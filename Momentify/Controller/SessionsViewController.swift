@@ -30,17 +30,17 @@ class SessionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {
-            try Auth.auth().signOut()
-
-            if FBSDKAccessToken.current() != nil {
-
-                FBSDKLoginManager().logOut()
-                //logged out of Facebook
-            }
-        } catch {
-            print("Error, there was a problem signing out.")
-        }
+//        do {
+//            try Auth.auth().signOut()
+//
+//            if FBSDKAccessToken.current() != nil {
+//
+//                FBSDKLoginManager().logOut()
+//                //logged out of Facebook
+//            }
+//        } catch {
+//            print("Error, there was a problem signing out.")
+//        }
         
         chatButton.isHidden = true
         filterButton.title = ""
@@ -267,7 +267,7 @@ class SessionsViewController: UIViewController {
         }else {
 
             print("user is not logged in.")
-            performSegue(withIdentifier: "goToAuth", sender: self)
+            performSegue(withIdentifier: "goToSignUpOrLogIn", sender: self)
         }
     }
     

@@ -31,6 +31,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, FBSDK
         FBLoginButton.center = view.center
         view.addSubview(FBLoginButton)
         
+        view.addSubview(FBLoginButton)
+        
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         

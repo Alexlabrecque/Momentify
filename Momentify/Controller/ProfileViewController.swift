@@ -116,7 +116,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         navigationController?.popToRootViewController(animated: true)
         
-        performSegue(withIdentifier: "logOutGoToAuth", sender: self)
+        performSegue(withIdentifier: "profileToSignUpOrLogIn", sender: self)
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

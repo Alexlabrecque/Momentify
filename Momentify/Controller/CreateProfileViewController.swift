@@ -36,7 +36,8 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
-        
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileView)))
+        profileImageView.isUserInteractionEnabled = true
         
         fetchUser()
     }
@@ -57,6 +58,13 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    @objc func handleSelectProfileView () {
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+    }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
