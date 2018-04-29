@@ -152,7 +152,7 @@ class SessionsViewController: UIViewController {
                     //print("session date = nil, bruh")
                 }
                 
-                self.currentSessions = self.currentSessions.sorted (by:{  $0.sessionDate!.localizedCaseInsensitiveCompare($1.sessionDate!) == ComparisonResult.orderedDescending })
+                self.currentSessions = self.currentSessions.sorted (by:{  $1.sessionDate!.localizedCaseInsensitiveCompare($0.sessionDate!) == ComparisonResult.orderedDescending })
                 
             }
             Database.database().reference(withPath: "sessions").removeAllObservers()

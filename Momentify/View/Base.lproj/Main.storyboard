@@ -182,7 +182,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-4q-JP3">
-                                <rect key="frame" x="10" y="256" width="355" height="20"/>
+                                <rect key="frame" x="10" y="251" width="355" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="lHo-I6-A2H"/>
                                 </constraints>
@@ -191,13 +191,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to get started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-FR-O8D">
-                                <rect key="frame" x="10" y="286" width="355" height="20"/>
+                                <rect key="frame" x="10" y="276" width="355" height="20"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQl-2u-R0e">
-                                <rect key="frame" x="50" y="366" width="275" height="30"/>
+                                <rect key="frame" x="50" y="336" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CJH-BY-jAz"/>
                                 </constraints>
@@ -206,25 +206,25 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-vD-zV0">
-                                <rect key="frame" x="50" y="344" width="275" height="17"/>
+                                <rect key="frame" x="50" y="314" width="275" height="17"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-E4-jfn">
-                                <rect key="frame" x="50" y="436" width="275" height="30"/>
+                                <rect key="frame" x="50" y="406" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2L-rb-I3K">
-                                <rect key="frame" x="50" y="414" width="275" height="17"/>
+                                <rect key="frame" x="50" y="384" width="275" height="17"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXG-73-VXe">
-                                <rect key="frame" x="80" y="506" width="215" height="30"/>
+                                <rect key="frame" x="80" y="486" width="215" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ENT-zQ-gHV"/>
                                 </constraints>
@@ -244,7 +244,7 @@
                             <constraint firstItem="TJc-E4-jfn" firstAttribute="top" secondItem="NQl-2u-R0e" secondAttribute="bottom" constant="40" id="7wR-EK-gb0"/>
                             <constraint firstItem="h6q-4q-JP3" firstAttribute="centerX" secondItem="4GB-2f-MMe" secondAttribute="centerX" id="GpK-iC-xqf"/>
                             <constraint firstItem="TJc-E4-jfn" firstAttribute="top" secondItem="a2L-rb-I3K" secondAttribute="bottom" constant="5" id="HfG-q6-gwQ"/>
-                            <constraint firstItem="EXG-73-VXe" firstAttribute="top" secondItem="TJc-E4-jfn" secondAttribute="bottom" constant="40" id="JmK-ef-67O"/>
+                            <constraint firstItem="EXG-73-VXe" firstAttribute="top" secondItem="TJc-E4-jfn" secondAttribute="bottom" constant="50" id="JmK-ef-67O"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="bottom" secondItem="Jey-ZQ-X9G" secondAttribute="bottom" id="NE0-9T-x24"/>
                             <constraint firstItem="hqN-FR-O8D" firstAttribute="height" secondItem="h6q-4q-JP3" secondAttribute="height" id="PZv-yz-5gL"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="1h8-AP-PXV" secondAttribute="trailing" id="Qpi-Ov-kKg"/>
@@ -258,16 +258,16 @@
                             <constraint firstItem="kHB-8e-BH0" firstAttribute="top" secondItem="Xmh-r2-MwJ" secondAttribute="top" constant="50" id="e29-HV-2yH"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="h6q-4q-JP3" secondAttribute="trailing" constant="10" id="euE-dv-5PU"/>
                             <constraint firstItem="9M1-vD-zV0" firstAttribute="leading" secondItem="NQl-2u-R0e" secondAttribute="leading" id="fSh-Yc-7kb"/>
-                            <constraint firstItem="hqN-FR-O8D" firstAttribute="top" secondItem="h6q-4q-JP3" secondAttribute="bottom" constant="10" id="gVz-Tv-5OH"/>
+                            <constraint firstItem="hqN-FR-O8D" firstAttribute="top" secondItem="h6q-4q-JP3" secondAttribute="bottom" constant="5" id="gVz-Tv-5OH"/>
                             <constraint firstItem="NQl-2u-R0e" firstAttribute="centerX" secondItem="4GB-2f-MMe" secondAttribute="centerX" id="iUw-k7-aiP"/>
                             <constraint firstItem="a2L-rb-I3K" firstAttribute="height" secondItem="9M1-vD-zV0" secondAttribute="height" id="k8h-Uy-o6J"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="NQl-2u-R0e" secondAttribute="trailing" constant="50" id="kDy-G7-qpM"/>
                             <constraint firstItem="TJc-E4-jfn" firstAttribute="width" secondItem="NQl-2u-R0e" secondAttribute="width" id="lRe-C3-sBF"/>
-                            <constraint firstItem="NQl-2u-R0e" firstAttribute="top" secondItem="hqN-FR-O8D" secondAttribute="bottom" constant="60" id="lbf-Wo-1UD"/>
+                            <constraint firstItem="NQl-2u-R0e" firstAttribute="top" secondItem="hqN-FR-O8D" secondAttribute="bottom" constant="40" id="lbf-Wo-1UD"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="Jey-ZQ-X9G" secondAttribute="trailing" id="pGp-Yx-231"/>
                             <constraint firstItem="Jey-ZQ-X9G" firstAttribute="leading" secondItem="Xmh-r2-MwJ" secondAttribute="leading" id="pHf-tA-Ne2"/>
                             <constraint firstItem="NQl-2u-R0e" firstAttribute="top" secondItem="9M1-vD-zV0" secondAttribute="bottom" constant="5" id="qIZ-13-wxr"/>
-                            <constraint firstItem="h6q-4q-JP3" firstAttribute="top" secondItem="kHB-8e-BH0" secondAttribute="bottom" constant="10" id="rqU-2K-vho"/>
+                            <constraint firstItem="h6q-4q-JP3" firstAttribute="top" secondItem="kHB-8e-BH0" secondAttribute="bottom" constant="5" id="rqU-2K-vho"/>
                             <constraint firstItem="kHB-8e-BH0" firstAttribute="centerX" secondItem="4GB-2f-MMe" secondAttribute="centerX" id="sU4-ym-RA4"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="EXG-73-VXe" secondAttribute="trailing" constant="80" id="v8K-Eq-DoQ"/>
                             <constraint firstItem="TJc-E4-jfn" firstAttribute="height" secondItem="NQl-2u-R0e" secondAttribute="height" id="vAW-sN-exF"/>
@@ -327,13 +327,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h5-ug-Kzi">
-                                <rect key="frame" x="50" y="341" width="43" height="17"/>
+                                <rect key="frame" x="50" y="311" width="43" height="17"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cP3-8G-OZY">
-                                <rect key="frame" x="50" y="363" width="275" height="30"/>
+                                <rect key="frame" x="50" y="333" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UAD-2F-Ctd"/>
                                 </constraints>
@@ -342,13 +342,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-5h-sWG">
-                                <rect key="frame" x="50" y="433" width="275" height="30"/>
+                                <rect key="frame" x="50" y="403" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew6-dE-vlD">
-                                <rect key="frame" x="80" y="503" width="215" height="30"/>
+                                <rect key="frame" x="80" y="483" width="215" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="q78-L0-QR5"/>
                                 </constraints>
@@ -359,7 +359,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vP-tg-CAE">
-                                <rect key="frame" x="50" y="411" width="78.5" height="17"/>
+                                <rect key="frame" x="50" y="381" width="78.5" height="17"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -384,7 +384,7 @@
                             <constraint firstItem="316-hA-J8o" firstAttribute="leading" secondItem="OMW-Ra-Eh5" secondAttribute="leading" id="Z8M-cZ-Gue"/>
                             <constraint firstItem="cP3-8G-OZY" firstAttribute="centerX" secondItem="FKu-TT-566" secondAttribute="centerX" id="cXY-iY-jbn"/>
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="trailing" secondItem="d0B-Bf-gNn" secondAttribute="trailing" constant="100" id="cni-xD-Sfo"/>
-                            <constraint firstItem="cP3-8G-OZY" firstAttribute="top" secondItem="mnp-y4-71H" secondAttribute="bottom" constant="90" id="dtg-fQ-viI"/>
+                            <constraint firstItem="cP3-8G-OZY" firstAttribute="top" secondItem="mnp-y4-71H" secondAttribute="bottom" constant="60" id="dtg-fQ-viI"/>
                             <constraint firstItem="7QA-5h-sWG" firstAttribute="top" secondItem="4vP-tg-CAE" secondAttribute="bottom" constant="5" id="fKu-sA-gh9"/>
                             <constraint firstItem="XVb-bO-nw6" firstAttribute="top" secondItem="FKu-TT-566" secondAttribute="top" id="hxL-k5-oog"/>
                             <constraint firstItem="d0B-Bf-gNn" firstAttribute="top" secondItem="OMW-Ra-Eh5" secondAttribute="top" constant="50" id="qNI-4i-nLv"/>
@@ -395,7 +395,7 @@
                             <constraint firstItem="7QA-5h-sWG" firstAttribute="width" secondItem="cP3-8G-OZY" secondAttribute="width" id="xdm-3q-OPu"/>
                             <constraint firstItem="ew6-dE-vlD" firstAttribute="centerX" secondItem="FKu-TT-566" secondAttribute="centerX" id="y5R-X9-xN7"/>
                             <constraint firstItem="l8g-Sr-lsM" firstAttribute="top" secondItem="OMW-Ra-Eh5" secondAttribute="top" constant="15" id="zPR-AH-cdd"/>
-                            <constraint firstItem="ew6-dE-vlD" firstAttribute="top" secondItem="7QA-5h-sWG" secondAttribute="bottom" constant="40" id="zVD-84-tdV"/>
+                            <constraint firstItem="ew6-dE-vlD" firstAttribute="top" secondItem="7QA-5h-sWG" secondAttribute="bottom" constant="50" id="zVD-84-tdV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OMW-Ra-Eh5"/>
                     </view>
@@ -409,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcG-jw-OrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1484" y="-684"/>
+            <point key="canvasLocation" x="1484" y="-553"/>
         </scene>
         <!--Sessions-->
         <scene sceneID="rTS-0T-4s2">
@@ -818,7 +818,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Location" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GG0-tP-Yw1">
                                 <rect key="frame" x="30" y="139" width="315" height="25"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCN-Fx-7WQ">
@@ -837,7 +837,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Description" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-Rr-9Rg">
                                 <rect key="frame" x="30" y="184" width="315" height="25"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="hoN-Ii-qi6">

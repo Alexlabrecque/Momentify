@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C00EFF002094C6FE00F64FE1 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00EFEFF2094C6FE00F64FE1 /* LogInViewController.swift */; };
-		C0118C4320745514004F3375 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4220745514004F3375 /* AuthenticationViewController.swift */; };
 		C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C442074573F004F3375 /* SessionsViewController.swift */; };
 		C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */; };
 		C0118C4D2077CA58004F3375 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0118C4C2077CA58004F3375 /* User.swift */; };
@@ -43,7 +42,6 @@
 		3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Momentify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5599DA7F6E4238EA61E2332F /* Pods-Momentify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momentify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Momentify/Pods-Momentify.debug.xcconfig"; sourceTree = "<group>"; };
 		C00EFEFF2094C6FE00F64FE1 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		C0118C4220745514004F3375 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		C0118C442074573F004F3375 /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		C0118C4C2077CA58004F3375 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				C07772DF2073016E00EA6759 /* AppDelegate.swift */,
-				C0118C4220745514004F3375 /* AuthenticationViewController.swift */,
 				C0A5754B2094A5E700FEF60B /* SignUpOrLogInViewController.swift */,
 				C0A5754D2094C27E00FEF60B /* SignUpViewController.swift */,
 				C00EFEFF2094C6FE00F64FE1 /* LogInViewController.swift */,
@@ -371,7 +368,6 @@
 				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
 				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
 				C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */,
-				C0118C4320745514004F3375 /* AuthenticationViewController.swift in Sources */,
 				C04FFC44208BFA79005C4ED1 /* CreateProfileViewController.swift in Sources */,
 				C0A5754C2094A5E700FEF60B /* SignUpOrLogInViewController.swift in Sources */,
 				C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */,
