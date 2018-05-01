@@ -82,11 +82,6 @@ class SignUpOrLogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             }, withCancel: nil)
             
-            
-            //self.setUserInformation(email: "Facebook Log in", name: "", occupation: "", uid: uid!)
-            
-            //self.performSegue(withIdentifier: "goToCreateFBProfile", sender: self)
-            
         }
     }
     

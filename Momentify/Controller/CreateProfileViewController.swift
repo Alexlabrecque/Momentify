@@ -30,6 +30,8 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         self.occupationTextField.delegate = self
         
         confirmButton.layer.cornerRadius = 10
+        confirmButton.layer.borderColor = UIColor.orange.cgColor
+        confirmButton.layer.borderWidth = 1
         
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false

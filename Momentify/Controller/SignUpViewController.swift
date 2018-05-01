@@ -21,13 +21,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         signUpButton.layer.cornerRadius = 10
-        signUpButton.layer.borderColor = UIColor.orange.cgColor
+        signUpButton.layer.borderColor = UIColor.gray.cgColor
         signUpButton.layer.borderWidth = 1
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         
-        signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+        //signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
         
         signUpButton.isEnabled = false
         
@@ -53,20 +53,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     //MARK:- Allow buttons to be pressed
     
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(AuthenticationViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(AuthenticationViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty
             else {
-                signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+                signUpButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
+                signUpButton.layer.borderColor = UIColor.gray.cgColor
 
                 signUpButton.isEnabled = false
                 
                 return
         }
-        signUpButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        signUpButton.setTitleColor(UIColor.orange, for: UIControlState.normal)
+        signUpButton.layer.borderColor = UIColor.orange.cgColor
 
         
         signUpButton.isEnabled = true

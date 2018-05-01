@@ -52,6 +52,7 @@ class SessionsViewController: UIViewController {
         createButton.layer.borderColor = UIColor.orange.cgColor
         
         sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
+        sessionTableView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
 
         verifyIfUserIsLoggedIn()
         
@@ -178,7 +179,7 @@ class SessionsViewController: UIViewController {
 
                         sessionAttendes.hostName = userDictionary["name"] as? String
                         
-                        if self.expiredID.contains(sessionAttendes.sessionID!) != false {
+                        if self.expiredID.contains(sessionAttendes.sessionID!) == true {
                             self.moveExpiredAttendees(attendees: sessionAttendes)
                         } else {
                             self.currentAttendees[snapshot.key] = sessionAttendes
