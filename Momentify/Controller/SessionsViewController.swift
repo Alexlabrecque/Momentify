@@ -316,6 +316,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isUserInteractionEnabled = false
             
             cell.checkmarkImage.isHidden = false
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
                 
         } else if attendee?.attendees[self.currentUser.userID!] != nil {
             print("user is attending")
@@ -326,7 +327,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isUserInteractionEnabled = true
             
             cell.checkmarkImage.isHidden = false
-            
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
+
         } else {
             print("user is not attending")
             cell.joinButton.isHidden = false
@@ -336,6 +338,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isUserInteractionEnabled = false
             
             cell.checkmarkImage.isHidden = true
+            cell.lineBackground.layer.backgroundColor = UIColor.orange.cgColor
+
         }
     
     return cell

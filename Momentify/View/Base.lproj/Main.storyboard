@@ -55,7 +55,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkO-5J-ejq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkO-5J-ejq">
                                 <rect key="frame" x="79" y="420" width="216" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iqj-kA-KjO"/>
@@ -66,7 +66,7 @@
                                     <action selector="signUpButtonPressed:" destination="2fr-vK-aks" eventType="touchUpInside" id="pdm-D8-Ahi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2L-fw-Ma3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2L-fw-Ma3">
                                 <rect key="frame" x="79.5" y="470" width="216" height="30"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <state key="normal" title="Log in"/>
@@ -75,9 +75,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Sign In with Using " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5o-fK-2rt">
-                                <rect key="frame" x="112.5" y="579" width="150" height="15"/>
+                                <rect key="frame" x="112.5" y="576.5" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="jEe-x5-oyD"/>
+                                    <constraint firstAttribute="height" constant="20" id="ubs-0I-hhu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,7 +224,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXG-73-VXe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXG-73-VXe">
                                 <rect key="frame" x="80" y="451" width="215" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ENT-zQ-gHV"/>
@@ -348,7 +349,7 @@
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew6-dE-vlD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew6-dE-vlD">
                                 <rect key="frame" x="80" y="453" width="215" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="q78-L0-QR5"/>
@@ -531,7 +532,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iba-jd-fxK">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iba-jd-fxK">
                                 <rect key="frame" x="20.5" y="266" width="334.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qVb-Pc-VtG"/>
@@ -563,7 +564,7 @@
                                     <action selector="confirmButtonPressed:" destination="F9G-WG-WLy" eventType="touchUpInside" id="RHi-Bp-GEf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yR-bD-Br3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yR-bD-Br3">
                                 <rect key="frame" x="126" y="206" width="122" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UPg-cd-icy"/>
@@ -700,19 +701,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9q7-Ic-IZK">
-                                <rect key="frame" x="50" y="314" width="275" height="30"/>
+                                <rect key="frame" x="50" y="324" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="366-bx-aAk">
-                                <rect key="frame" x="50.5" y="389" width="275" height="30"/>
+                                <rect key="frame" x="50.5" y="399" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Name" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t98-8C-HUp">
-                                <rect key="frame" x="50" y="349" width="275" height="30"/>
+                                <rect key="frame" x="50" y="359" width="275" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nIr-mI-gpZ"/>
@@ -721,7 +722,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Occupation" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSX-6P-ktz">
-                                <rect key="frame" x="50" y="424" width="275" height="30"/>
+                                <rect key="frame" x="50" y="434" width="275" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -733,21 +734,28 @@
                                     <constraint firstAttribute="width" constant="130" id="UGc-Ga-Q2s"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUA-6h-94g">
-                                <rect key="frame" x="61" y="244" width="254" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" springLoaded="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUA-6h-94g">
+                                <rect key="frame" x="61" y="244" width="254" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="vk0-MN-HOD"/>
+                                    <constraint firstAttribute="height" constant="40" id="vk0-MN-HOD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
-                                <state key="normal" title="Change Picture">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Change Picture">
+                                            <attributes>
+                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" size="17" name="NexaLight"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </state>
                                 <connections>
                                     <action selector="changePictureButtonPressed:" destination="5U8-4c-Gwa" eventType="touchUpInside" id="uLB-jj-qKu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wk-xT-pp8">
-                                <rect key="frame" x="49" y="484" width="276" height="30"/>
+                                <rect key="frame" x="49" y="494" width="276" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gxK-rX-Ipm"/>
                                 </constraints>
@@ -982,8 +990,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XlI-z5-CoL"/>
-        <segue reference="Emv-xc-Mgm"/>
-        <segue reference="OUI-oc-fpk"/>
+        <segue reference="jfr-wA-x66"/>
+        <segue reference="lYA-LJ-6bG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

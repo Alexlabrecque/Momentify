@@ -73,17 +73,41 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     //Mark: - Log in
     @IBAction func logInButtonPressed(_ sender: Any) {
-        SVProgressHUD.show()
         
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+        if emailTextField.text?.isEmpty == true || emailTextField.text?.contains("@") == false {
             
-            if error != nil{
-                print(error!)
-            } else {
-                print("Log In Successfull")
-                SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Unvalid Email Adress", message: "Please enter a valid one", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else if passwordTextField.text?.isEmpty == true || (passwordTextField.text?.count)! < 6 {
+            
+            let alert = UIAlertController(title: "Unvalid Password", message: "Password must include at least 6 chararcters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else {
+            SVProgressHUD.show()
+        
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+                if error != nil{
+                    print(error!)
+
+                    SVProgressHUD.dismiss()
+                        
+                    let alert = UIAlertController(title: "Unvalid Email Adress", message: "Please enter a valid one", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                        
+                    return
+                } else {
+                    print("Log In Successfull")
+                    SVProgressHUD.dismiss()
                 
-                self.performSegue(withIdentifier: "goToNavigationController", sender: self)
+                    self.performSegue(withIdentifier: "goToNavigationController", sender: self)
+                }
+                
             }
         }
     }

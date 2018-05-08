@@ -60,7 +60,29 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Add Session
     
     @IBAction func createSessionButtonPressed(_ sender: Any) {
+        if sessionTitleTextField.text?.isEmpty == true {
+            let alert = UIAlertController(title: "Invalid Session", message: "Please enter the Session's Title", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else if sessionLocationTextField.text?.isEmpty == true {
+            let alert = UIAlertController(title: "Invalid Session", message: "Please enter the Session's Location", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else if sessionDescriptionTextField.text?.isEmpty == true {
+            let alert = UIAlertController(title: "Invalid Session", message: "Please enter a short description", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        } else if self.sessionEndTime! <= self.sessionStartTime! {
+            let alert = UIAlertController(title: "Invalid Session", message: "Please check the Start time and End time", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }else {
             createSession()
+        }
     }
     
     

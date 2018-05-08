@@ -59,13 +59,16 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08L-HI-aEp">
-                        <rect key="frame" x="31" y="31" width="101" height="17"/>
+                        <rect key="frame" x="31" y="31" width="101" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="laR-Uw-JTp"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="NexaBold" family="Nexa Bold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGl-ap-y34">
-                        <rect key="frame" x="264" y="24.5" width="30" height="30"/>
+                        <rect key="frame" x="264" y="29.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="jhp-MV-g29"/>
                             <constraint firstAttribute="height" constant="30" id="lRE-LN-zts"/>
@@ -188,7 +191,7 @@
                     <constraint firstItem="gga-QV-FLg" firstAttribute="centerY" secondItem="57D-Nu-5L6" secondAttribute="centerY" id="SHa-qx-FIH"/>
                     <constraint firstItem="gga-QV-FLg" firstAttribute="width" secondItem="kVf-MG-ToT" secondAttribute="width" id="VUF-dJ-lDW"/>
                     <constraint firstItem="gga-QV-FLg" firstAttribute="trailing" secondItem="cGl-ap-y34" secondAttribute="trailing" id="Vjd-mn-U5h"/>
-                    <constraint firstItem="7Y4-Hm-N0h" firstAttribute="top" secondItem="08L-HI-aEp" secondAttribute="bottom" constant="20" id="XBg-8G-hyS"/>
+                    <constraint firstItem="7Y4-Hm-N0h" firstAttribute="top" secondItem="08L-HI-aEp" secondAttribute="bottom" constant="10" id="XBg-8G-hyS"/>
                     <constraint firstItem="gga-QV-FLg" firstAttribute="height" secondItem="kVf-MG-ToT" secondAttribute="height" id="bE3-ne-Yhe"/>
                     <constraint firstItem="eFI-g0-YyO" firstAttribute="top" secondItem="Ryk-m6-eyn" secondAttribute="bottom" constant="20" id="dSV-13-1VX"/>
                     <constraint firstItem="ZMv-B0-U4i" firstAttribute="centerY" secondItem="cMn-df-Qa3" secondAttribute="centerY" id="ej8-e2-YvG"/>
