@@ -38,7 +38,8 @@ class SignUpOrLogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 40)
         FBLoginButton.center = newCenter
         view.addSubview(FBLoginButton)
-        
+        //Get rid of line below to allow FB loggin
+        FBLoginButton.isHidden = true
 
     }
 

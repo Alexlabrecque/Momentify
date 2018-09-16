@@ -60,6 +60,8 @@ class SessionCellTableViewCell: UITableViewCell {
         lineBackground.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         
         sessionBackground.layer.cornerRadius = 10
+        sessionBackground.layer.borderWidth = 1
+        sessionBackground.layer.borderColor = UIColor(red:0.36, green:0.34, blue:0.42, alpha:1.0).cgColor
         
         checkmarkImage.isHidden = true
     }

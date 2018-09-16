@@ -34,6 +34,16 @@
 		C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66320935C3600D2D8EC /* Nexa Light.otf */; };
 		C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */; };
 		C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A816207E548C0036FC12 /* SessionAttendees.swift */; };
+		C0F1CB88214C20ED003CC421 /* Maax Rounded.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */; };
+		C0F1CB92214C23EA003CC421 /* maax-bold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */; };
+		C0F1CB93214C23EA003CC421 /* maax-bolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8A214C23DE003CC421 /* maax-bolditalic-webfont.ttf */; };
+		C0F1CB94214C23EA003CC421 /* Maax-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8B214C23E0003CC421 /* Maax-Medium.ttf */; };
+		C0F1CB95214C23EA003CC421 /* maax-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8C214C23E1003CC421 /* maax-webfont.ttf */; };
+		C0F1CB96214C23EA003CC421 /* Maax-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8D214C23E2003CC421 /* Maax-Bold.ttf */; };
+		C0F1CB97214C23EA003CC421 /* hinted-Maax.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8E214C23E4003CC421 /* hinted-Maax.ttf */; };
+		C0F1CB98214C23EA003CC421 /* Maax-RegularMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8F214C23E5003CC421 /* Maax-RegularMono.ttf */; };
+		C0F1CB99214C23EA003CC421 /* maax-medium-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB90214C23E7003CC421 /* maax-medium-webfont.ttf */; };
+		C0F1CB9A214C23EA003CC421 /* Maax.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB91214C23E8003CC421 /* Maax.ttf */; };
 		DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +83,16 @@
 		C0BCB66820935F1800D2D8EC /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Light.otf"; sourceTree = "<group>"; };
 		C0BCB66920935F1900D2D8EC /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Bold.otf"; sourceTree = "<group>"; };
 		C0C9A816207E548C0036FC12 /* SessionAttendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendees.swift; sourceTree = "<group>"; };
+		C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax Rounded.otf"; path = "../../../Downloads/maax/Maax Rounded.otf"; sourceTree = "<group>"; };
+		C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-bold-webfont.ttf"; path = "../../../../Downloads/maax/maax-bold-webfont.ttf"; sourceTree = "<group>"; };
+		C0F1CB8A214C23DE003CC421 /* maax-bolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-bolditalic-webfont.ttf"; path = "../../../../Downloads/maax/maax-bolditalic-webfont.ttf"; sourceTree = "<group>"; };
+		C0F1CB8B214C23E0003CC421 /* Maax-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax-Medium.ttf"; path = "../../../../Downloads/maax/Maax-Medium.ttf"; sourceTree = "<group>"; };
+		C0F1CB8C214C23E1003CC421 /* maax-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-webfont.ttf"; path = "../../../../Downloads/maax/maax-webfont.ttf"; sourceTree = "<group>"; };
+		C0F1CB8D214C23E2003CC421 /* Maax-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax-Bold.ttf"; path = "../../../../Downloads/maax/Maax-Bold.ttf"; sourceTree = "<group>"; };
+		C0F1CB8E214C23E4003CC421 /* hinted-Maax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hinted-Maax.ttf"; path = "../../../../Downloads/maax/hinted-Maax.ttf"; sourceTree = "<group>"; };
+		C0F1CB8F214C23E5003CC421 /* Maax-RegularMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax-RegularMono.ttf"; path = "../../../../Downloads/maax/Maax-RegularMono.ttf"; sourceTree = "<group>"; };
+		C0F1CB90214C23E7003CC421 /* maax-medium-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-medium-webfont.ttf"; path = "../../../../Downloads/maax/maax-medium-webfont.ttf"; sourceTree = "<group>"; };
+		C0F1CB91214C23E8003CC421 /* Maax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Maax.ttf; path = ../../../../Downloads/maax/Maax.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +161,7 @@
 		C07772F6207306BA00EA6759 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */,
 				C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */,
 				C0BCB66320935C3600D2D8EC /* Nexa Light.otf */,
 				C0BCB66720935F0E00D2D8EC /* Fonts */,
@@ -190,6 +211,15 @@
 		C0BCB66720935F0E00D2D8EC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C0F1CB8E214C23E4003CC421 /* hinted-Maax.ttf */,
+				C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */,
+				C0F1CB8D214C23E2003CC421 /* Maax-Bold.ttf */,
+				C0F1CB8A214C23DE003CC421 /* maax-bolditalic-webfont.ttf */,
+				C0F1CB90214C23E7003CC421 /* maax-medium-webfont.ttf */,
+				C0F1CB8B214C23E0003CC421 /* Maax-Medium.ttf */,
+				C0F1CB8F214C23E5003CC421 /* Maax-RegularMono.ttf */,
+				C0F1CB8C214C23E1003CC421 /* maax-webfont.ttf */,
+				C0F1CB91214C23E8003CC421 /* Maax.ttf */,
 				C0BCB66920935F1900D2D8EC /* Nexa Bold.otf */,
 				C0BCB66820935F1800D2D8EC /* Nexa Light.otf */,
 			);
@@ -269,12 +299,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */,
+				C0F1CB95214C23EA003CC421 /* maax-webfont.ttf in Resources */,
 				C0BCB662209263A200D2D8EC /* SessionCellTableViewCell.xib in Resources */,
 				C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */,
 				C07772E52073016E00EA6759 /* Main.storyboard in Resources */,
+				C0F1CB98214C23EA003CC421 /* Maax-RegularMono.ttf in Resources */,
+				C0F1CB97214C23EA003CC421 /* hinted-Maax.ttf in Resources */,
 				C04B01DA20939BEB00B8EE29 /* Assets.xcassets in Resources */,
 				C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */,
+				C0F1CB93214C23EA003CC421 /* maax-bolditalic-webfont.ttf in Resources */,
+				C0F1CB99214C23EA003CC421 /* maax-medium-webfont.ttf in Resources */,
+				C0F1CB92214C23EA003CC421 /* maax-bold-webfont.ttf in Resources */,
+				C0F1CB94214C23EA003CC421 /* Maax-Medium.ttf in Resources */,
+				C0F1CB9A214C23EA003CC421 /* Maax.ttf in Resources */,
 				C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */,
+				C0F1CB88214C20ED003CC421 /* Maax Rounded.otf in Resources */,
+				C0F1CB96214C23EA003CC421 /* Maax-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,7 +52,11 @@ class SessionsViewController: UIViewController {
         createButton.layer.borderColor = UIColor.orange.cgColor
         
         sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
-        sessionTableView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        sessionTableView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:0.0)
+        let backgroundImage = UIImage(named: "HomeScreenBackground")
+        let imageView = UIImageView(image: backgroundImage)
+        sessionTableView.backgroundView = imageView
+
 
         verifyIfUserIsLoggedIn()
         
@@ -302,6 +306,8 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             
         cell.deleteSessionButton.isHidden = true
         cell.deleteSessionButton.isEnabled = false
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0)
             
         if attendee?.hostID == self.currentUser.userID {
             print("user is the host")
@@ -315,8 +321,9 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
             
-            cell.checkmarkImage.isHidden = false
-            cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
+            cell.checkmarkImage.isHidden = true
+            //cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.40, green:0.80, blue:0.38, alpha:1.0).cgColor
                 
         } else if attendee?.attendees[self.currentUser.userID!] != nil {
             print("user is attending")
@@ -326,7 +333,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isHidden = false
             cell.leaveButton.isUserInteractionEnabled = true
             
-            cell.checkmarkImage.isHidden = false
+            cell.checkmarkImage.isHidden = true
             cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
 
         } else {

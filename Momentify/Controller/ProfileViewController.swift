@@ -35,7 +35,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

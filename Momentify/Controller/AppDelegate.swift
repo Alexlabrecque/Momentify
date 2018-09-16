@@ -29,13 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let attrs = [
             NSAttributedStringKey.foregroundColor: UIColor.black,
-            NSAttributedStringKey.font: UIFont(name: "Nexa Light", size: 22)!
+            NSAttributedStringKey.font: UIFont(name: "Maax Rounded", size: 22)!
         ]
         
         UIBarButtonItem.appearance().setTitleTextAttributes(
             [
                 NSAttributedStringKey.foregroundColor: UIColor.orange,
-                NSAttributedStringKey.font: UIFont(name: "Nexa Light", size: 18)!
+                NSAttributedStringKey.font: UIFont(name: "Maax Rounded", size: 18)!
                 ], for: .normal)
         
         UINavigationBar.appearance().titleTextAttributes = attrs
