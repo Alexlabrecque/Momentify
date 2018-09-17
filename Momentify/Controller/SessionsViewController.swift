@@ -25,6 +25,11 @@ class SessionsViewController: UIViewController {
     var currentUser = User()
     var expiredID = [String]()
     
+    //TEST
+    var sessionsAttending = [String]()
+    var sessionsNotAttending = [String]()
+    //END OF TEST
+    
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -159,6 +164,7 @@ class SessionsViewController: UIViewController {
                 
                 self.currentSessions = self.currentSessions.sorted (by:{  $1.sessionDate!.localizedCaseInsensitiveCompare($0.sessionDate!) == ComparisonResult.orderedDescending })
                 
+                
             }
             Database.database().reference(withPath: "sessions").removeAllObservers()
             
@@ -175,6 +181,15 @@ class SessionsViewController: UIViewController {
                 
                 if dictionary["attendees"] != nil {
                     sessionAttendes.attendees = dictionary["attendees"] as! [String: String]
+                    
+                    // TEST
+                    
+                    if sessionAttendes.attendees[self.currentUser.userID!] != nil {
+                        self.sessionsAttending.append(sessionAttendes.sessionID!)
+                    } else {
+                        self.sessionsNotAttending.append(sessionAttendes.sessionID!)
+                    }
+                    // END OF TEST
                 }
                
 
@@ -295,12 +310,18 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         Database.database().reference(withPath: "attendees").removeAllObservers()
         
         print(currentSessions.count)
+        
         let session = currentSessions[indexPath.row]
         let attendee = currentAttendees[session.sessionID!]
+        
+        
+        }
+        //END OF TEST
         
         if attendee != nil {
             cell.setSession(session: session, attendee: attendee!)
         }
+        
         cell.selectionStyle = .none
         cell.delegate = self
             
@@ -322,7 +343,6 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isUserInteractionEnabled = false
             
             cell.checkmarkImage.isHidden = true
-            //cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
             cell.lineBackground.layer.backgroundColor = UIColor(red:0.40, green:0.80, blue:0.38, alpha:1.0).cgColor
                 
         } else if attendee?.attendees[self.currentUser.userID!] != nil {
@@ -334,7 +354,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isUserInteractionEnabled = true
             
             cell.checkmarkImage.isHidden = true
-            cell.lineBackground.layer.backgroundColor = UIColor(red:0.38, green:0.58, blue:0.29, alpha:1.0).cgColor
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.40, green:0.80, blue:0.38, alpha:1.00).cgColor
 
         } else {
             print("user is not attending")
