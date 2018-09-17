@@ -21,6 +21,7 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var profileBarButton: UIBarButtonItem!
     
     var currentSessions = [Session]()
+    var correctedOrderCurrentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
     var currentUser = User()
     var expiredID = [String]()
@@ -182,14 +183,6 @@ class SessionsViewController: UIViewController {
                 if dictionary["attendees"] != nil {
                     sessionAttendes.attendees = dictionary["attendees"] as! [String: String]
                     
-                    // TEST
-                    
-                    if sessionAttendes.attendees[self.currentUser.userID!] != nil {
-                        self.sessionsAttending.append(sessionAttendes.sessionID!)
-                    } else {
-                        self.sessionsNotAttending.append(sessionAttendes.sessionID!)
-                    }
-                    // END OF TEST
                 }
                
 
@@ -214,10 +207,58 @@ class SessionsViewController: UIViewController {
             }
             Database.database().reference(withPath: "attendees").removeAllObservers()
         }
-        
         self.refreshControl.endRefreshing()
     }
-   
+    
+    func sortByAttendence() {
+        
+        correctedOrderCurrentSessions.removeAll()
+        sessionsAttending.removeAll()
+        sessionsNotAttending.removeAll()
+
+        print("There is \(currentSessions.count) sessions")
+        print("There is \(currentAttendees.count) Attendees key")
+        
+        
+        for isAttending in currentAttendees {
+
+            if isAttending.value.attendees[currentUser.userID!] != nil {
+                // User is attending
+                print("user is attending, put at the top of 1st list")
+                self.sessionsAttending.append(isAttending.key)
+            } else {
+                //User is not attending
+                print("user is not attending, put at the bottom of 1st list")
+                self.sessionsNotAttending.append(isAttending.key)
+            }
+        }
+        
+        
+        for thisCurrentSession in currentSessions {
+            for thisSession in sessionsAttending {
+                if thisCurrentSession.sessionID == thisSession {
+                    // User is attending, put session at the top
+                    print("user is attending, put \(thisCurrentSession.sessionID!) at the top of final list")
+                    correctedOrderCurrentSessions.append(thisCurrentSession)
+                }
+            }
+        }
+        print("first for loop done")
+        for thisSession in sessionsNotAttending {
+            print ("there is a problem here")
+            for thisCurrentSession in currentSessions {
+                if thisCurrentSession.sessionID == thisSession {
+                    // User is not attending, put session at the bottom
+                    print("user is not attending, put \(thisCurrentSession.sessionID!) at the bottom of final list")
+                    correctedOrderCurrentSessions.append(thisCurrentSession)
+                }
+            }
+        }
+        print("original order")
+        print(currentSessions)
+        print("corrected order")
+        print(correctedOrderCurrentSessions)
+    }
     
     
     //MARK: - Delete Expired Sessions
@@ -296,9 +337,8 @@ class SessionsViewController: UIViewController {
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.currentSessions.count)
-        return self.currentSessions.count
-
+        self.sortByAttendence()
+        return self.correctedOrderCurrentSessions.count
     }
     
 
@@ -309,14 +349,10 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         Database.database().reference(withPath: "sessions").removeAllObservers()
         Database.database().reference(withPath: "attendees").removeAllObservers()
         
-        print(currentSessions.count)
-        
-        let session = currentSessions[indexPath.row]
+        self.sortByAttendence()
+        let session = correctedOrderCurrentSessions[indexPath.row]
         let attendee = currentAttendees[session.sessionID!]
-        
-        
-        }
-        //END OF TEST
+
         
         if attendee != nil {
             cell.setSession(session: session, attendee: attendee!)
