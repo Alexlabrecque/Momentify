@@ -37,12 +37,11 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         self.occupationTextField.textColor = UIColor.gray
 
         confirmButton.layer.cornerRadius = 10
-        confirmButton.layer.borderColor = UIColor.orange.cgColor
+        confirmButton.layer.borderColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
+        confirmButton.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
         confirmButton.layer.borderWidth = 1
         
-        profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
-        profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileView)))

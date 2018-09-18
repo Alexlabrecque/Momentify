@@ -26,10 +26,8 @@ class SessionsViewController: UIViewController {
     var currentUser = User()
     var expiredID = [String]()
     
-    //TEST
     var sessionsAttending = [String]()
     var sessionsNotAttending = [String]()
-    //END OF TEST
     
     private let refreshControl = UIRefreshControl()
 
@@ -52,17 +50,17 @@ class SessionsViewController: UIViewController {
         filterButton.title = ""
         filterButton.isEnabled = false
         
-        chatButton.layer.cornerRadius = 10
+        chatButton.layer.cornerRadius = chatButton.frame.height/2
+        
         createButton.layer.cornerRadius = createButton.frame.height/2
-        createButton.layer.borderWidth = 1
-        createButton.layer.borderColor = UIColor.orange.cgColor
+        createButton.layer.borderWidth = 2
+        createButton.layer.borderColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
         
         sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
-        sessionTableView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:0.0)
-        let backgroundImage = UIImage(named: "HomeScreenBackground")
-        let imageView = UIImageView(image: backgroundImage)
-        sessionTableView.backgroundView = imageView
-
+        sessionTableView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
+        //let backgroundImage = UIImage(named: "HomeScreenBackground")
+        //let imageView = UIImageView(image: backgroundImage)
+        //sessionTableView.backgroundView = imageView
 
         verifyIfUserIsLoggedIn()
         
@@ -94,7 +92,7 @@ class SessionsViewController: UIViewController {
     func fetchUser() {
         
         if let uid = Auth.auth().currentUser?.uid {
-          print(uid)
+          //print(uid)
             
             Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
                 (snapshot) in
@@ -143,6 +141,7 @@ class SessionsViewController: UIViewController {
                 session.sessionDate = dictionary["sessionDate"] as? String
                 session.sessionStartTime = dictionary["sessionStartTime"] as? String
                 session.sessionTitle = dictionary["sessionTitle"] as? String
+                session.sessionWeekDay = dictionary["sessionWeekDay"] as? String
 
                 let currentDate = Date()
                 let dateFormatter = DateFormatter()
@@ -215,20 +214,14 @@ class SessionsViewController: UIViewController {
         correctedOrderCurrentSessions.removeAll()
         sessionsAttending.removeAll()
         sessionsNotAttending.removeAll()
-
-        print("There is \(currentSessions.count) sessions")
-        print("There is \(currentAttendees.count) Attendees key")
-        
         
         for isAttending in currentAttendees {
 
             if isAttending.value.attendees[currentUser.userID!] != nil {
                 // User is attending
-                print("user is attending, put at the top of 1st list")
                 self.sessionsAttending.append(isAttending.key)
             } else {
                 //User is not attending
-                print("user is not attending, put at the bottom of 1st list")
                 self.sessionsNotAttending.append(isAttending.key)
             }
         }
@@ -238,26 +231,18 @@ class SessionsViewController: UIViewController {
             for thisSession in sessionsAttending {
                 if thisCurrentSession.sessionID == thisSession {
                     // User is attending, put session at the top
-                    print("user is attending, put \(thisCurrentSession.sessionID!) at the top of final list")
                     correctedOrderCurrentSessions.append(thisCurrentSession)
                 }
             }
         }
-        print("first for loop done")
         for thisSession in sessionsNotAttending {
-            print ("there is a problem here")
             for thisCurrentSession in currentSessions {
                 if thisCurrentSession.sessionID == thisSession {
                     // User is not attending, put session at the bottom
-                    print("user is not attending, put \(thisCurrentSession.sessionID!) at the bottom of final list")
                     correctedOrderCurrentSessions.append(thisCurrentSession)
                 }
             }
         }
-        print("original order")
-        print(currentSessions)
-        print("corrected order")
-        print(correctedOrderCurrentSessions)
     }
     
     
@@ -310,7 +295,6 @@ class SessionsViewController: UIViewController {
         performSegue(withIdentifier: "goToCreate", sender: self)
     }
     
- 
     
     // MARK: - Logged In Verification
     
@@ -318,12 +302,12 @@ class SessionsViewController: UIViewController {
         
         if FBSDKAccessToken.current() != nil{
             
-            print("user is logged in with Facebook.")
+            //print("user is logged in with Facebook.")
             
         }else if Auth.auth().currentUser?.uid != nil {
             
             fetchUser()
-            print("user is logged in with email.")
+            //print("user is logged in with email.")
             
         }else {
 
@@ -367,7 +351,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor(white: 1, alpha: 0)
             
         if attendee?.hostID == self.currentUser.userID {
-            print("user is the host")
+            //print("user is the host")
                 
             cell.deleteSessionButton.isHidden = false
             cell.deleteSessionButton.isEnabled = true
@@ -378,30 +362,27 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
             
-            cell.checkmarkImage.isHidden = true
-            cell.lineBackground.layer.backgroundColor = UIColor(red:0.40, green:0.80, blue:0.38, alpha:1.0).cgColor
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.49, green:0.87, blue:0.64, alpha:1.0).cgColor
                 
         } else if attendee?.attendees[self.currentUser.userID!] != nil {
-            print("user is attending")
+            //print("user is attending")
             cell.joinButton.isHidden = true
             cell.joinButton.isUserInteractionEnabled = false
             
             cell.leaveButton.isHidden = false
             cell.leaveButton.isUserInteractionEnabled = true
             
-            cell.checkmarkImage.isHidden = true
-            cell.lineBackground.layer.backgroundColor = UIColor(red:0.40, green:0.80, blue:0.38, alpha:1.00).cgColor
+            cell.lineBackground.layer.backgroundColor = UIColor(red:0.49, green:0.87, blue:0.64, alpha:1.0).cgColor
 
         } else {
-            print("user is not attending")
+            //print("user is not attending")
             cell.joinButton.isHidden = false
             cell.joinButton.isUserInteractionEnabled = true
             
             cell.leaveButton.isHidden = true
             cell.leaveButton.isUserInteractionEnabled = false
             
-            cell.checkmarkImage.isHidden = true
-            cell.lineBackground.layer.backgroundColor = UIColor.orange.cgColor
+            cell.lineBackground.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
 
         }
     
@@ -411,7 +392,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 275.0
+        sessionTableView.rowHeight = 180.0
         sessionTableView.separatorStyle = .none
     
         if #available(iOS 10.0, *) {
@@ -421,7 +402,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         refreshControl.addTarget(self, action: #selector(refreshSessions(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.orange
+        refreshControl.tintColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0)
         refreshControl.attributedTitle = NSAttributedString(string: "Looking for Coworking Sessions ...")
     }
     

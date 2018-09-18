@@ -23,6 +23,8 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     var sessionStartTime: String?
     var sessionEndTime: String?
     var currentUser = User()
+    var sessionWeekDay: String?
+    var thisWeekDay: Int?
     
     
     var ref : DatabaseReference?
@@ -37,9 +39,10 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         self.initialStartTime()
         self.initialEndTime()
         
-        createSessionButton.layer.cornerRadius = 10
-        createSessionButton.layer.borderColor = UIColor.orange.cgColor
-        createSessionButton.layer.borderWidth = 1
+        createSessionButton.layer.cornerRadius = createSessionButton.frame.height/2
+        createSessionButton.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
+        
+        sessionTitleTextField.layer.cornerRadius = 10
         
         verifyIfUserIsLoggedIn()
         
@@ -99,6 +102,7 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         ref?.child("sessions").child(sessionID!).child("sessionDate").setValue(self.sessionDate)
         ref?.child("sessions").child(sessionID!).child("sessionStartTime").setValue(self.sessionStartTime)
         ref?.child("sessions").child(sessionID!).child("sessionEndTime").setValue(self.sessionEndTime)
+        ref?.child("sessions").child(sessionID!).child("sessionWeekDay").setValue(self.sessionWeekDay)
         
         ref?.child("attendees").child(sessionID!).child("hostID").setValue(Auth.auth().currentUser?.uid)
         ref?.child("attendees").child(sessionID!).child("hostName").setValue(self.currentUser.name)
@@ -171,6 +175,9 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     func initialStartTime() {
         self.sessionStartTime = hourToString(date: startTime.date as NSDate)
         self.sessionDate = dateToString(date: startTime.date as NSDate)
+        
+        thisWeekDay = Calendar.current.component(.weekday, from: startTime.date as Date)
+        self.sessionWeekDay = intWeekDayToStringWeekDay(dayNumber: thisWeekDay!)
     }
     
     func initialEndTime() {
@@ -180,16 +187,45 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func startTimeChanged(_ sender: Any) {
         self.sessionStartTime = hourToString(date: startTime.date as NSDate)
         self.sessionDate = dateToString(date: startTime.date as NSDate)
+        
+        thisWeekDay = Calendar.current.component(.weekday, from: startTime.date as Date)
+        self.sessionWeekDay = intWeekDayToStringWeekDay(dayNumber: thisWeekDay!)
     }
     
     @IBAction func endTimeChanged(_ sender: Any) {
         self.sessionEndTime = hourToString(date: endTime.date as NSDate)
     }
     
+    func intWeekDayToStringWeekDay(dayNumber: Int) -> String {
+        let stringWeekDay: String?
+        
+        if dayNumber == 1 {
+            stringWeekDay = "Sun"
+        } else if  dayNumber == 2 {
+            stringWeekDay = "Mon"
+        } else if  dayNumber == 3 {
+            stringWeekDay = "Tue"
+        } else if  dayNumber == 4 {
+            stringWeekDay = "Wed"
+        } else if  dayNumber == 5 {
+            stringWeekDay = "Thu"
+        } else if  dayNumber == 6 {
+            stringWeekDay = "Fri"
+        } else {
+            stringWeekDay = "Sat"
+        }
+        
+        return stringWeekDay!
+    }
+    
     func dateToString(date: NSDate) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         let stringDate = dateFormatter.string(from: date as Date)
+        
+//        let thisWeekDay = Calendar.current.component(.weekday, from: date as Date)
+//        print("session happens on day \(thisWeekDay) of 7")
 
         return stringDate
     }

@@ -28,14 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let attrs = [
-            NSAttributedStringKey.foregroundColor: UIColor.black,
-            NSAttributedStringKey.font: UIFont(name: "Maax Rounded", size: 22)!
+            NSAttributedStringKey.foregroundColor: UIColor(red:0.36, green:0.34, blue:0.42, alpha:1.0),
+            NSAttributedStringKey.font: UIFont(name: "Maax-Medium", size: 22)!
         ]
         
         UIBarButtonItem.appearance().setTitleTextAttributes(
             [
-                NSAttributedStringKey.foregroundColor: UIColor.orange,
-                NSAttributedStringKey.font: UIFont(name: "Maax Rounded", size: 18)!
+                NSAttributedStringKey.foregroundColor: UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0),
+                NSAttributedStringKey.font: UIFont(name: "Maax-Medium", size: 18)!
                 ], for: .normal)
         
         UINavigationBar.appearance().titleTextAttributes = attrs

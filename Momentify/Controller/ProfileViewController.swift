@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var mySessionsButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -26,15 +27,15 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         fetchUser()
         
-        editButton.layer.cornerRadius = 10
-        editButton.layer.borderColor = UIColor.orange.cgColor
-        editButton.layer.borderWidth = 1
+        editButton.layer.cornerRadius = editButton.frame.height/2
+        editButton.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
         
-        profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
-        profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        
+        mySessionsButton.layer.cornerRadius = mySessionsButton.frame.height/2
+        mySessionsButton.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,4 +134,9 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBAction func editProfileButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToEditProfile", sender: self)
     }
+    
+    @IBAction func mySessionsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToMySessions", sender: self)
+    }
+    
 }

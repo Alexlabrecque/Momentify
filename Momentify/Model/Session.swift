@@ -19,6 +19,7 @@ class Session: NSObject {
     var sessionStartTime: String?
     var sessionEndTime: String?
     var sessionDescription: String?
+    var sessionWeekDay: String?
     var numberOfCoworkers: String?
-
+    
 }
