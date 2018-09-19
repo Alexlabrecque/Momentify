@@ -19,12 +19,15 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var profileBarButton: UIBarButtonItem!
+    @IBOutlet weak var sessionsToggleButton: UIButton!
+    
     
     var currentSessions = [Session]()
     var correctedOrderCurrentSessions = [Session]()
     var currentAttendees = [String: SessionAttendees]()
     var currentUser = User()
     var expiredID = [String]()
+    var sessionCount = 0
     
     var sessionsAttending = [String]()
     var sessionsNotAttending = [String]()
@@ -56,6 +59,10 @@ class SessionsViewController: UIViewController {
         createButton.layer.borderWidth = 2
         createButton.layer.borderColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
         
+        sessionsToggleButton.isSelected = false
+        sessionsToggleButton.setImage(UIImage(named: "AllSessionsToggleOn"), for: .normal)
+        sessionsToggleButton.setImage(UIImage(named: "MySessionsToggleOn"), for: .selected)
+        
         sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
         sessionTableView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
         //let backgroundImage = UIImage(named: "HomeScreenBackground")
@@ -71,6 +78,11 @@ class SessionsViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        sessionsToggleButton.isSelected = false
+        sessionsToggleButton.setImage(UIImage(named: "AllSessionsToggleOn"), for: .normal)
+        sessionsToggleButton.setImage(UIImage(named: "MySessionsToggleOn"), for: .selected)
+        
         verifyIfUserIsLoggedIn()
         
         deleteThenFetchSessions()
@@ -147,7 +159,8 @@ class SessionsViewController: UIViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let stringDate = dateFormatter.string(from: currentDate as Date)
-
+                print(session.sessionDate)
+                print(stringDate)
                 
                 if session.sessionDate != nil {
                     if session.sessionDate! < stringDate {
@@ -209,7 +222,7 @@ class SessionsViewController: UIViewController {
         self.refreshControl.endRefreshing()
     }
     
-    func sortByAttendence() {
+    func sortByAttendence(finished: () -> Void) {
         
         correctedOrderCurrentSessions.removeAll()
         sessionsAttending.removeAll()
@@ -224,6 +237,7 @@ class SessionsViewController: UIViewController {
                 //User is not attending
                 self.sessionsNotAttending.append(isAttending.key)
             }
+            finished()
         }
         
         
@@ -235,14 +249,14 @@ class SessionsViewController: UIViewController {
                 }
             }
         }
-        for thisSession in sessionsNotAttending {
-            for thisCurrentSession in currentSessions {
-                if thisCurrentSession.sessionID == thisSession {
-                    // User is not attending, put session at the bottom
-                    correctedOrderCurrentSessions.append(thisCurrentSession)
-                }
-            }
-        }
+//        for thisSession in sessionsNotAttending {
+//            for thisCurrentSession in currentSessions {
+//                if thisCurrentSession.sessionID == thisSession {
+//                    // User is not attending, put session at the bottom
+//                    correctedOrderCurrentSessions.append(thisCurrentSession)
+//                }
+//            }
+//        }
     }
     
     
@@ -295,6 +309,21 @@ class SessionsViewController: UIViewController {
         performSegue(withIdentifier: "goToCreate", sender: self)
     }
     
+    @IBAction func sessionsToggleButtonPressed(_ sender: Any) {
+        if sessionsToggleButton.isSelected == true {
+            sessionsToggleButton.isSelected = false
+        } else {
+            sessionsToggleButton.isSelected = true
+        }
+        
+        DispatchQueue.main.async {
+            self.configureTableView()
+            self.sessionTableView.reloadData()
+        }
+    }
+    
+    
+    
     
     // MARK: - Logged In Verification
     
@@ -321,8 +350,15 @@ class SessionsViewController: UIViewController {
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.sortByAttendence()
-        return self.correctedOrderCurrentSessions.count
+        self.sortByAttendence() {}
+        
+        if sessionsToggleButton.isSelected {
+            sessionCount = correctedOrderCurrentSessions.count
+        } else {
+            sessionCount = currentSessions.count
+        }
+        
+        return self.sessionCount
     }
     
 
@@ -333,8 +369,16 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         Database.database().reference(withPath: "sessions").removeAllObservers()
         Database.database().reference(withPath: "attendees").removeAllObservers()
         
-        self.sortByAttendence()
-        let session = correctedOrderCurrentSessions[indexPath.row]
+        
+        print("\(correctedOrderCurrentSessions.count) vs \(currentSessions.count)")
+        
+        //let session = correctedOrderCurrentSessions[indexPath.row]
+        var session = Session()
+        if sessionsToggleButton.isSelected {
+            session = correctedOrderCurrentSessions[indexPath.row]
+        } else {
+            session = currentSessions[indexPath.row]
+        }
         let attendee = currentAttendees[session.sessionID!]
 
         
@@ -385,7 +429,6 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.lineBackground.layer.backgroundColor = UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0).cgColor
 
         }
-    
     return cell
 
     }

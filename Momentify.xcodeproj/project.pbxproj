@@ -27,7 +27,7 @@
 		C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077730F20742C9B00EA6759 /* FilterViewController.swift */; };
 		C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731120742CB300EA6759 /* ProfileViewController.swift */; };
 		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
-		C07ED1F72151A5BC00920CD9 /* mySessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ED1F62151A5BC00920CD9 /* mySessionsViewController.swift */; };
+		C07ED1F72151A5BC00920CD9 /* MySessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */; };
 		C0A5754C2094A5E700FEF60B /* SignUpOrLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5754B2094A5E700FEF60B /* SignUpOrLogInViewController.swift */; };
 		C0A5754E2094C27E00FEF60B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5754D2094C27E00FEF60B /* SignUpViewController.swift */; };
 		C0BCB661209263A200D2D8EC /* SessionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */; };
@@ -75,7 +75,7 @@
 		C077730F20742C9B00EA6759 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C077731120742CB300EA6759 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C077731320742CD100EA6759 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
-		C07ED1F62151A5BC00920CD9 /* mySessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySessionsViewController.swift; sourceTree = "<group>"; };
+		C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySessionsViewController.swift; sourceTree = "<group>"; };
 		C0A5754B2094A5E700FEF60B /* SignUpOrLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOrLogInViewController.swift; sourceTree = "<group>"; };
 		C0A5754D2094C27E00FEF60B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Momentify/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				C077731120742CB300EA6759 /* ProfileViewController.swift */,
 				C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */,
 				C077731320742CD100EA6759 /* CreateSessionViewController.swift */,
-				C07ED1F62151A5BC00920CD9 /* mySessionsViewController.swift */,
+				C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Alexandre Labrecque";
 				TargetAttributes = {
 					C07772DB2073016E00EA6759 = {
@@ -411,7 +411,7 @@
 				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
 				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
 				C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */,
-				C07ED1F72151A5BC00920CD9 /* mySessionsViewController.swift in Sources */,
+				C07ED1F72151A5BC00920CD9 /* MySessionsViewController.swift in Sources */,
 				C04FFC44208BFA79005C4ED1 /* CreateProfileViewController.swift in Sources */,
 				C0A5754C2094A5E700FEF60B /* SignUpOrLogInViewController.swift in Sources */,
 				C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */,
@@ -462,6 +462,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -469,6 +470,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -520,6 +522,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -527,6 +530,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -574,7 +578,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Momentify/Momentify-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -596,7 +600,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.labrecque.Momentify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Momentify/Momentify-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
