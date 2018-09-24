@@ -66,8 +66,6 @@ class SessionCellTableViewCell: UITableViewCell {
         sessionBackground.layer.shadowOffset = CGSize(width: -1, height: 1)
         sessionBackground.layer.shadowOpacity = 0.45
         sessionBackground.layer.shadowRadius = 1.75
-        //sessionBackground.layer.borderWidth = 1
-        //sessionBackground.layer.borderColor = UIColor(red:0.36, green:0.34, blue:0.42, alpha:1.0).cgColor
         
     }
 

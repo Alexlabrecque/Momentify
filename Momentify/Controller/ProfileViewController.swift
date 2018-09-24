@@ -37,6 +37,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         viewDidLoad()
+        
+        fetchUser()
     }
 
     override func didReceiveMemoryWarning() {

@@ -95,27 +95,36 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     //MARK :- Edit Profile
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
-        
+
          if FBSDKAccessToken.current() != nil || Auth.auth().currentUser?.uid != nil{
-            
+
             let uid = Auth.auth().currentUser?.uid
             let ref  = Database.database().reference().child("users").child(uid!)
             ref.updateChildValues(["name":nameTextField.text ?? "Name"])
 
             ref.updateChildValues(["occupation":occupationTextField.text ?? "Occupation"])
-            
+
             let storageRef = Storage.storage().reference().child("profileImage").child((Auth.auth().currentUser?.uid)!)
-            
-            if let profileImg = selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
-                storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-                    if error != nil {
+
+            if let profileImg = selectedImage, let data = selectedImage?.jpegData(compressionQuality: 1.0) {
+                storageRef.putData(data, metadata: nil) { (metadata, error) in
+                    guard let metadata = metadata else {
+                        // Uh-oh, an error occurred!
                         return
                     }
-                    let profileImageURL = metadata?.downloadURL()?.absoluteString
-                    
+                    storageRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            // Uh-oh, an error occurred!
+                            return
+                        }
+                        let profileImageURL = downloadURL.absoluteString
+                        print("the profile image URL is \(profileImageURL)")
+                        ref.updateChildValues(["profilePictureURL": profileImageURL])
+                    }
+
                     ref.updateChildValues(["name":self.nameTextField.text ?? "Name"])
                     ref.updateChildValues(["occupation":self.occupationTextField.text ?? "Occupation"])
-                    ref.updateChildValues(["profilePictureURL": profileImageURL!])
+                    
                 }
             }
          }
@@ -164,7 +173,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
 
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("did select a picture")
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {

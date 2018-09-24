@@ -32,6 +32,9 @@ class SessionsViewController: UIViewController {
     var sessionsAttending = [String]()
     var sessionsNotAttending = [String]()
     
+    var selectedSession = Session()
+    var selectedSessionAttendees = SessionAttendees()
+    
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -65,9 +68,7 @@ class SessionsViewController: UIViewController {
         
         sessionTableView.register(UINib.init(nibName: "SessionCellTableViewCell", bundle: nil), forCellReuseIdentifier: "customSessionCell")
         sessionTableView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
-        //let backgroundImage = UIImage(named: "HomeScreenBackground")
-        //let imageView = UIImageView(image: backgroundImage)
-        //sessionTableView.backgroundView = imageView
+
 
         verifyIfUserIsLoggedIn()
         
@@ -104,7 +105,7 @@ class SessionsViewController: UIViewController {
     func fetchUser() {
         
         if let uid = Auth.auth().currentUser?.uid {
-          //print(uid)
+            print("User ID is :\(uid)")
             
             Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
                 (snapshot) in
@@ -159,8 +160,7 @@ class SessionsViewController: UIViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let stringDate = dateFormatter.string(from: currentDate as Date)
-                print(session.sessionDate)
-                print(stringDate)
+
                 
                 if session.sessionDate != nil {
                     if session.sessionDate! < stringDate {
@@ -293,6 +293,14 @@ class SessionsViewController: UIViewController {
     
     // MARK: - Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SessionDetailsViewController {
+            let vc = segue.destination as? SessionDetailsViewController
+            vc?.thisSession = selectedSession
+            vc?.thisSessionAttendees = selectedSessionAttendees
+        }
+    }
+    
     @IBAction func filterButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToFilter", sender: self)
     }
@@ -372,7 +380,6 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         print("\(correctedOrderCurrentSessions.count) vs \(currentSessions.count)")
         
-        //let session = correctedOrderCurrentSessions[indexPath.row]
         var session = Session()
         if sessionsToggleButton.isSelected {
             session = correctedOrderCurrentSessions[indexPath.row]
@@ -431,6 +438,14 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     return cell
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedSession = currentSessions[indexPath.row]
+        selectedSessionAttendees = currentAttendees[selectedSession.sessionID!]!
+        
+        performSegue(withIdentifier: "goToSessionDetails", sender: self)
     }
     
     

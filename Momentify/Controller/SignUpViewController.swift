@@ -53,21 +53,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     //MARK:- Allow buttons to be pressed
     
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
     
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty
             else {
-                signUpButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
+                signUpButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
                 signUpButton.layer.borderColor = UIColor.gray.cgColor
 
                 signUpButton.isEnabled = false
                 
                 return
         }
-        signUpButton.setTitleColor(UIColor.orange, for: UIControlState.normal)
+        signUpButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
         signUpButton.layer.borderColor = UIColor.orange.cgColor
 
         
@@ -105,9 +105,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     return
                 } else {
-                    
-                    let uid = user?.uid
-                    self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!)
+// ---------------CHECK HERE+_+_+_+_+_____---------_+++++++++++++++
+                    let uid = user?.user.uid
+                    self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!, profilePictureURL: "")
                     
                     SVProgressHUD.dismiss()
                     
@@ -118,12 +118,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setUserInformation(email: String, name: String, occupation: String, uid: String) {
+    func setUserInformation(email: String, name: String, occupation: String, uid: String, profilePictureURL: String) {
         
         let ref = Database.database().reference()
         let usersReference = ref.child("users")
         let newUserReference = usersReference.child(uid)
-        newUserReference.setValue(["email": email, "name": name, "occupation": occupation, "userID": uid])
+        newUserReference.setValue(["email": email, "name": name, "occupation": occupation, "userID": uid, "profilePictureURL": profilePictureURL])
     }
     
     //MARK:- TextField Delegate Methods

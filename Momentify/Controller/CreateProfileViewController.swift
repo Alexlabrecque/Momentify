@@ -71,6 +71,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
         let ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
+        
         if (usernameTextField.text?.isEmpty)! || (occupationTextField.text?.isEmpty)! {
             
             let alert = UIAlertController(title: "Profile Incomplete", message: "Please enter your name and occupation", preferredStyle: .alert)
@@ -79,29 +80,37 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             if FBSDKAccessToken.current() != nil || Auth.auth().currentUser?.uid != nil{
-            
-//                let ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
+                let ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
                 let storageRef = Storage.storage().reference().child("profileImage").child((Auth.auth().currentUser?.uid)!)
+                var data = selectedImage?.jpegData(compressionQuality: 1.0)
+                if data == nil {
+                    data = UIImage(named: "ProfilePic")?.jpegData(compressionQuality: 1.0)
+                }
                 
-                if let profileImg = selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
-                    storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-                        if error != nil {
+                let uploadTask = storageRef.putData(data!, metadata: nil) { (metadata, error) in
+                    guard let metadata = metadata else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                                        
+                    storageRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            // Uh-oh, an error occurred!
                             return
                         }
-                        let profileImageURL = metadata?.downloadURL()?.absoluteString
+                        let profileImageURL = downloadURL.absoluteString
+                        print("the profile image URL is \(profileImageURL)")
                         
                         ref.child("profilePictureURL").setValue(profileImageURL)
+                        ref.child("userID").setValue(self.currentUser.userID)
+                        ref.child("name").setValue(self.usernameTextField.text)
+                        ref.child("occupation").setValue(self.occupationTextField.text)
                     }
-                } else {
-                    ref.child("profilePictureURL").setValue("https://firebasestorage.googleapis.com/v0/b/momentify-83187.appspot.com/o/profileImage%2FprofilePic.jpg?alt=media&token=8f53e526-5ba2-4a35-b1c7-f550c6d7eff7")
-                        }
-                    }
+                }
             }
-            ref.child("userID").setValue(self.currentUser.userID)
-            ref.child("name").setValue(self.usernameTextField.text)
-            ref.child("occupation").setValue(self.occupationTextField.text)
-            performSegue(withIdentifier: "createProfileToNavigationController", sender: self)
         }
+        performSegue(withIdentifier: "createProfileToNavigationController", sender: self)
+    }
     
     func fetchUser() {
         if let uid = Auth.auth().currentUser?.uid {

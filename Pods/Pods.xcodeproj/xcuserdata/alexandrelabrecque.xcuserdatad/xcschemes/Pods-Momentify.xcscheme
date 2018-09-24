@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CAA9B9B3BB433928C60C5B946774D3D"
+               BlueprintIdentifier = "8710CABFA2B1FB8A8E76DC143A08AD38"
                BuildableName = "Pods_Momentify.framework"
                BlueprintName = "Pods-Momentify"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2CAA9B9B3BB433928C60C5B946774D3D"
+            BlueprintIdentifier = "8710CABFA2B1FB8A8E76DC143A08AD38"
             BuildableName = "Pods_Momentify.framework"
             BlueprintName = "Pods-Momentify"
             ReferencedContainer = "container:Pods.xcodeproj">

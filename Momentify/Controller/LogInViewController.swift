@@ -27,7 +27,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         
-        logInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+        logInButton.setTitleColor(UIColor.lightText, for: UIControl.State.normal)
         logInButton.isEnabled = false
         
         handleTextField()
@@ -47,15 +47,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     //MARK:- Allow buttons to be pressed
     
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailTextField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
     
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty
             else {
 
-                logInButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
+                logInButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
                 logInButton.layer.borderColor = UIColor.gray.cgColor
                 
 
@@ -64,7 +64,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 return
         }
 
-        logInButton.setTitleColor(UIColor.orange, for: UIControlState.normal)
+        logInButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
         logInButton.layer.borderColor = UIColor.orange.cgColor
         
 

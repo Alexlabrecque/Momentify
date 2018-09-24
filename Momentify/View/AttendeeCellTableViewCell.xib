@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="hinted-Maax.ttf">
+            <string>Maax</string>
+        </array>
+        <array key="maax-medium-webfont.ttf">
+            <string>Maax-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customAttendeeCell" rowHeight="75" id="KGk-i7-Jjw" customClass="AttendeeCellTableViewCell" customModule="Momentify" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-nL-2yN">
+                        <rect key="frame" x="5" y="10" width="310" height="54.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Yellow BG" translatesAutoresizingMaskIntoConstraints="NO" id="Zhx-Lq-KQO">
+                        <rect key="frame" x="16" y="12.5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Zhx-Lq-KQO" secondAttribute="height" multiplier="1:1" id="JXb-40-I7e"/>
+                            <constraint firstAttribute="width" constant="50" id="i6C-bi-I1n"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eT5-oD-tzF">
+                        <rect key="frame" x="74" y="15" width="222" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="T4g-2q-SKm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Maax-Medium" family="Maax" pointSize="20"/>
+                        <color key="textColor" red="0.36470588240000001" green="0.3411764706" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdD-tp-JDi">
+                        <rect key="frame" x="74" y="40" width="222" height="20"/>
+                        <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="20"/>
+                        <color key="textColor" red="0.99607843139999996" green="0.74509803919999995" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eT5-oD-tzF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="1M9-Pu-EH5"/>
+                    <constraint firstAttribute="trailing" secondItem="gzL-nL-2yN" secondAttribute="trailing" constant="5" id="BDh-10-LTo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eT5-oD-tzF" secondAttribute="trailing" constant="8" id="GCm-0p-LOM"/>
+                    <constraint firstItem="zdD-tp-JDi" firstAttribute="top" secondItem="eT5-oD-tzF" secondAttribute="bottom" constant="5" id="KNW-QZ-jN6"/>
+                    <constraint firstItem="Zhx-Lq-KQO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VUm-7T-bgS"/>
+                    <constraint firstItem="gzL-nL-2yN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="VbT-iU-FT0"/>
+                    <constraint firstItem="zdD-tp-JDi" firstAttribute="width" secondItem="eT5-oD-tzF" secondAttribute="width" id="bee-hs-lNW"/>
+                    <constraint firstItem="gzL-nL-2yN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fvq-Oz-Nva"/>
+                    <constraint firstItem="Zhx-Lq-KQO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="h2H-zl-eCX"/>
+                    <constraint firstItem="zdD-tp-JDi" firstAttribute="height" secondItem="eT5-oD-tzF" secondAttribute="height" id="hV4-A5-9OP"/>
+                    <constraint firstItem="gzL-nL-2yN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="k2E-IQ-3mt"/>
+                    <constraint firstItem="eT5-oD-tzF" firstAttribute="leading" secondItem="Zhx-Lq-KQO" secondAttribute="trailing" constant="8" id="rgM-9v-LYB"/>
+                    <constraint firstItem="zdD-tp-JDi" firstAttribute="leading" secondItem="eT5-oD-tzF" secondAttribute="leading" id="u3b-eg-aJC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="attendeeBackground" destination="gzL-nL-2yN" id="O0a-Zr-0FS"/>
+                <outlet property="profileImageView" destination="Zhx-Lq-KQO" id="wRv-Dd-FB9"/>
+                <outlet property="userName" destination="eT5-oD-tzF" id="KXT-DQ-ayI"/>
+                <outlet property="userOccupation" destination="zdD-tp-JDi" id="2hI-Yx-UFe"/>
+            </connections>
+            <point key="canvasLocation" x="60.799999999999997" y="100.29985007496252"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Logo Yellow BG" width="5000" height="5000"/>
+    </resources>
+</document>

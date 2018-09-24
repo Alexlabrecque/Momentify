@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         //Initialise and Configure Firebase
         FirebaseApp.configure()
@@ -28,14 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let attrs = [
-            NSAttributedStringKey.foregroundColor: UIColor(red:0.36, green:0.34, blue:0.42, alpha:1.0),
-            NSAttributedStringKey.font: UIFont(name: "Maax-Medium", size: 22)!
+            NSAttributedString.Key.foregroundColor: UIColor(red:0.36, green:0.34, blue:0.42, alpha:1.0),
+            NSAttributedString.Key.font: UIFont(name: "Maax-Medium", size: 22)!
         ]
         
         UIBarButtonItem.appearance().setTitleTextAttributes(
             [
-                NSAttributedStringKey.foregroundColor: UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0),
-                NSAttributedStringKey.font: UIFont(name: "Maax-Medium", size: 18)!
+                NSAttributedString.Key.foregroundColor: UIColor(red:1.00, green:0.75, blue:0.41, alpha:1.0),
+                NSAttributedString.Key.font: UIFont(name: "Maax-Medium", size: 18)!
                 ], for: .normal)
         
         UINavigationBar.appearance().titleTextAttributes = attrs
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return SDKApplicationDelegate.shared.application(application, open: url, options: options)
     }
 

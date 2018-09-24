@@ -27,15 +27,14 @@
 		C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077730F20742C9B00EA6759 /* FilterViewController.swift */; };
 		C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731120742CB300EA6759 /* ProfileViewController.swift */; };
 		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
-		C07ED1F72151A5BC00920CD9 /* MySessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */; };
+		C082695021554C030065ECA5 /* SessionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C082694F21554C030065ECA5 /* SessionDetailsViewController.swift */; };
+		C082695921595BEA0065ECA5 /* AttendeeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C082695721595BEA0065ECA5 /* AttendeeCellTableViewCell.swift */; };
+		C082695A21595BEA0065ECA5 /* AttendeeCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C082695821595BEA0065ECA5 /* AttendeeCellTableViewCell.xib */; };
 		C0A5754C2094A5E700FEF60B /* SignUpOrLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5754B2094A5E700FEF60B /* SignUpOrLogInViewController.swift */; };
 		C0A5754E2094C27E00FEF60B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5754D2094C27E00FEF60B /* SignUpViewController.swift */; };
 		C0BCB661209263A200D2D8EC /* SessionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */; };
 		C0BCB662209263A200D2D8EC /* SessionCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */; };
-		C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66320935C3600D2D8EC /* Nexa Light.otf */; };
-		C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */; };
 		C0C9A817207E548C0036FC12 /* SessionAttendees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9A816207E548C0036FC12 /* SessionAttendees.swift */; };
-		C0F1CB88214C20ED003CC421 /* Maax Rounded.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */; };
 		C0F1CB92214C23EA003CC421 /* maax-bold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */; };
 		C0F1CB93214C23EA003CC421 /* maax-bolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8A214C23DE003CC421 /* maax-bolditalic-webfont.ttf */; };
 		C0F1CB94214C23EA003CC421 /* Maax-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0F1CB8B214C23E0003CC421 /* Maax-Medium.ttf */; };
@@ -75,17 +74,17 @@
 		C077730F20742C9B00EA6759 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C077731120742CB300EA6759 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C077731320742CD100EA6759 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
-		C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySessionsViewController.swift; sourceTree = "<group>"; };
+		C082694E215549470065ECA5 /* Maax Rounded.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Maax Rounded.otf"; sourceTree = "<group>"; };
+		C082694F21554C030065ECA5 /* SessionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailsViewController.swift; sourceTree = "<group>"; };
+		C082695721595BEA0065ECA5 /* AttendeeCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeCellTableViewCell.swift; sourceTree = "<group>"; };
+		C082695821595BEA0065ECA5 /* AttendeeCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendeeCellTableViewCell.xib; sourceTree = "<group>"; };
 		C0A5754B2094A5E700FEF60B /* SignUpOrLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOrLogInViewController.swift; sourceTree = "<group>"; };
 		C0A5754D2094C27E00FEF60B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Momentify/Controller/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0BCB65F209263A200D2D8EC /* SessionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellTableViewCell.swift; sourceTree = "<group>"; };
 		C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCellTableViewCell.xib; sourceTree = "<group>"; };
-		C0BCB66320935C3600D2D8EC /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Light.otf"; path = "../../../Downloads/nexa/Nexa Light.otf"; sourceTree = "<group>"; };
-		C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Bold.otf"; path = "../../../Downloads/nexa/Nexa Bold.otf"; sourceTree = "<group>"; };
 		C0BCB66820935F1800D2D8EC /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Light.otf"; sourceTree = "<group>"; };
 		C0BCB66920935F1900D2D8EC /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Bold.otf"; sourceTree = "<group>"; };
 		C0C9A816207E548C0036FC12 /* SessionAttendees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendees.swift; sourceTree = "<group>"; };
-		C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax Rounded.otf"; path = "../../../Downloads/maax/Maax Rounded.otf"; sourceTree = "<group>"; };
 		C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-bold-webfont.ttf"; path = "../../../../Downloads/maax/maax-bold-webfont.ttf"; sourceTree = "<group>"; };
 		C0F1CB8A214C23DE003CC421 /* maax-bolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "maax-bolditalic-webfont.ttf"; path = "../../../../Downloads/maax/maax-bolditalic-webfont.ttf"; sourceTree = "<group>"; };
 		C0F1CB8B214C23E0003CC421 /* Maax-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Maax-Medium.ttf"; path = "../../../../Downloads/maax/Maax-Medium.ttf"; sourceTree = "<group>"; };
@@ -163,13 +162,11 @@
 		C07772F6207306BA00EA6759 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C0F1CB87214C20ED003CC421 /* Maax Rounded.otf */,
-				C0BCB66420935C3600D2D8EC /* Nexa Bold.otf */,
-				C0BCB66320935C3600D2D8EC /* Nexa Light.otf */,
 				C0BCB66720935F0E00D2D8EC /* Fonts */,
 				C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */,
 				C07772E32073016E00EA6759 /* Main.storyboard */,
 				C0BCB660209263A200D2D8EC /* SessionCellTableViewCell.xib */,
+				C082695821595BEA0065ECA5 /* AttendeeCellTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,7 +185,8 @@
 				C077731120742CB300EA6759 /* ProfileViewController.swift */,
 				C0118C4A2076C5EB004F3375 /* EditProfileViewController.swift */,
 				C077731320742CD100EA6759 /* CreateSessionViewController.swift */,
-				C07ED1F62151A5BC00920CD9 /* MySessionsViewController.swift */,
+				C082694F21554C030065ECA5 /* SessionDetailsViewController.swift */,
+				C082695721595BEA0065ECA5 /* AttendeeCellTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +212,7 @@
 		C0BCB66720935F0E00D2D8EC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C082694E215549470065ECA5 /* Maax Rounded.otf */,
 				C0F1CB8E214C23E4003CC421 /* hinted-Maax.ttf */,
 				C0F1CB89214C23DD003CC421 /* maax-bold-webfont.ttf */,
 				C0F1CB8D214C23E2003CC421 /* Maax-Bold.ttf */,
@@ -250,7 +249,6 @@
 				C07772D92073016E00EA6759 /* Frameworks */,
 				C07772DA2073016E00EA6759 /* Resources */,
 				D95AD744225360E8D9C858EA /* [CP] Embed Pods Frameworks */,
-				F08EF81FE80E2C709201F055 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,14 +307,12 @@
 				C0F1CB98214C23EA003CC421 /* Maax-RegularMono.ttf in Resources */,
 				C0F1CB97214C23EA003CC421 /* hinted-Maax.ttf in Resources */,
 				C04B01DA20939BEB00B8EE29 /* Assets.xcassets in Resources */,
-				C0BCB66520935C3600D2D8EC /* Nexa Light.otf in Resources */,
 				C0F1CB93214C23EA003CC421 /* maax-bolditalic-webfont.ttf in Resources */,
 				C0F1CB99214C23EA003CC421 /* maax-medium-webfont.ttf in Resources */,
 				C0F1CB92214C23EA003CC421 /* maax-bold-webfont.ttf in Resources */,
+				C082695A21595BEA0065ECA5 /* AttendeeCellTableViewCell.xib in Resources */,
 				C0F1CB94214C23EA003CC421 /* Maax-Medium.ttf in Resources */,
 				C0F1CB9A214C23EA003CC421 /* Maax.ttf in Resources */,
-				C0BCB66620935C3600D2D8EC /* Nexa Bold.otf in Resources */,
-				C0F1CB88214C20ED003CC421 /* Maax Rounded.otf in Resources */,
 				C0F1CB96214C23EA003CC421 /* Maax-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +354,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -374,7 +370,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -382,21 +378,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Momentify/Pods-Momentify-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F08EF81FE80E2C709201F055 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Momentify/Pods-Momentify-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -411,16 +392,17 @@
 				C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */,
 				C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */,
 				C07772E82073016E00EA6759 /* Momentify.xcdatamodeld in Sources */,
-				C07ED1F72151A5BC00920CD9 /* MySessionsViewController.swift in Sources */,
 				C04FFC44208BFA79005C4ED1 /* CreateProfileViewController.swift in Sources */,
 				C0A5754C2094A5E700FEF60B /* SignUpOrLogInViewController.swift in Sources */,
 				C07772E02073016E00EA6759 /* AppDelegate.swift in Sources */,
 				C0A5754E2094C27E00FEF60B /* SignUpViewController.swift in Sources */,
+				C082695921595BEA0065ECA5 /* AttendeeCellTableViewCell.swift in Sources */,
 				C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */,
 				C0118C452074573F004F3375 /* SessionsViewController.swift in Sources */,
 				C00EFF002094C6FE00F64FE1 /* LogInViewController.swift in Sources */,
 				C037E821207AEE0400788ABC /* Session.swift in Sources */,
 				C0118C4D2077CA58004F3375 /* User.swift in Sources */,
+				C082695021554C030065ECA5 /* SessionDetailsViewController.swift in Sources */,
 				C0118C4B2076C5EB004F3375 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
