@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func fetchUser() {
         
-        var user = User()
+        let user = User()
 
         let uid = Auth.auth().currentUser?.uid
         let storageRef = Storage.storage().reference(forURL: "gs://momentify-83187.appspot.com/")

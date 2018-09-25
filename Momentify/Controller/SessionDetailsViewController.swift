@@ -17,6 +17,7 @@ class SessionDetailsViewController: UIViewController {
     @IBOutlet weak var sessionStartTime: UITextView!
     @IBOutlet weak var sessionEndTime: UITextView!
     @IBOutlet weak var sessionDetails: UITextView!
+    @IBOutlet weak var sessionAttendeesCount: UITextView!
     
     var thisSession = Session()
     var thisSessionAttendees = SessionAttendees()
@@ -36,6 +37,12 @@ class SessionDetailsViewController: UIViewController {
         sessionStartTime.text = thisSession.sessionStartTime
         sessionEndTime.text = thisSession.sessionEndTime
         sessionDetails.text = thisSession.sessionDescription
+        
+        if thisSessionAttendees.attendees.count <= 1 {
+            sessionAttendeesCount.text = ("\(String(thisSessionAttendees.attendees.count)) person attending")
+        } else {
+            sessionAttendeesCount.text = ("\(String(thisSessionAttendees.attendees.count)) people attending")
+        }
         
         attendeesID = Array(thisSessionAttendees.attendees.keys)
         
@@ -118,6 +125,8 @@ extension SessionDetailsViewController: UITableViewDelegate, UITableViewDataSour
         
         cell.userName.text = attendeesInfo[indexPath.row].name
         cell.userOccupation.text = attendeesInfo[indexPath.row].occupation
+        
+        cell.selectionStyle = .none
         
         cell.profileImageView.image = attendeesProfilePicture[attendeesInfo[indexPath.row].userID!]
         cell.profileImageView.translatesAutoresizingMaskIntoConstraints = false

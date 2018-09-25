@@ -20,10 +20,6 @@
 		C07772ED2073016E00EA6759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07772EB2073016E00EA6759 /* LaunchScreen.storyboard */; };
 		C07772FC20730FDC00EA6759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */; };
 		C07772FE207311C100EA6759 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07772FD207311C100EA6759 /* Bolts.framework */; };
-		C0777300207311E000EA6759 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */; };
-		C0777302207311EE00EA6759 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */; };
-		C0777304207311FD00EA6759 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0777303207311FD00EA6759 /* FBSDKShareKit.framework */; };
-		C07773062073131600EA6759 /* FacebookSDKs-iOS-4 in Frameworks */ = {isa = PBXBuildFile; fileRef = C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */; };
 		C077731020742C9B00EA6759 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077730F20742C9B00EA6759 /* FilterViewController.swift */; };
 		C077731220742CB300EA6759 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731120742CB300EA6759 /* ProfileViewController.swift */; };
 		C077731420742CD100EA6759 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077731320742CD100EA6759 /* CreateSessionViewController.swift */; };
@@ -66,10 +62,6 @@
 		C07772EE2073016E00EA6759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C07772FB20730FDB00EA6759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07772FD207311C100EA6759 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		C0777303207311FD00EA6759 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "FacebookSDKs-iOS-4"; path = "../../../Documents/FacebookSDKs-iOS-4"; sourceTree = "<group>"; };
 		C077730720731EA800EA6759 /* Momentify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Momentify-Bridging-Header.h"; sourceTree = "<group>"; };
 		C077730F20742C9B00EA6759 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C077731120742CB300EA6759 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -101,11 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C07773062073131600EA6759 /* FacebookSDKs-iOS-4 in Frameworks */,
 				DFFE347278A3CD5A1F526EA6 /* Pods_Momentify.framework in Frameworks */,
-				C0777300207311E000EA6759 /* FBSDKCoreKit.framework in Frameworks */,
-				C0777304207311FD00EA6759 /* FBSDKShareKit.framework in Frameworks */,
-				C0777302207311EE00EA6759 /* FBSDKLoginKit.framework in Frameworks */,
 				C07772FE207311C100EA6759 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,10 +104,6 @@
 		0616D726D37247B81C050D7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C07773052073131600EA6759 /* FacebookSDKs-iOS-4 */,
-				C0777303207311FD00EA6759 /* FBSDKShareKit.framework */,
-				C0777301207311EE00EA6759 /* FBSDKLoginKit.framework */,
-				C07772FF207311E000EA6759 /* FBSDKCoreKit.framework */,
 				C07772FD207311C100EA6759 /* Bolts.framework */,
 				3E8660DFDCEDBDC97252D0D2 /* Pods_Momentify.framework */,
 			);

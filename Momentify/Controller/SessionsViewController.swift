@@ -450,7 +450,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func configureTableView() {
-        sessionTableView.rowHeight = 180.0
+        sessionTableView.rowHeight = 210.0
         sessionTableView.separatorStyle = .none
     
         if #available(iOS 10.0, *) {

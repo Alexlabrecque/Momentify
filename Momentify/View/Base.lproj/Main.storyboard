@@ -16,11 +16,11 @@
         <array key="Maax-Bold.ttf">
             <string>Maax-Bold</string>
         </array>
-        <array key="Maax.ttf">
-            <string>Maax</string>
-        </array>
         <array key="Nexa Light.otf">
             <string>NexaLight</string>
+        </array>
+        <array key="hinted-Maax.ttf">
+            <string>Maax</string>
         </array>
         <array key="maax-medium-webfont.ttf">
             <string>Maax-Medium</string>
@@ -36,9 +36,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Sign In with Using " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5o-fK-2rt">
-                                <rect key="frame" x="112.5" y="576.5" width="150" height="20"/>
+                                <rect key="frame" x="114.5" y="576.5" width="146" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="jEe-x5-oyD"/>
                                     <constraint firstAttribute="height" constant="20" id="ubs-0I-hhu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="15"/>
@@ -217,7 +216,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-E4-jfn">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-E4-jfn">
                                 <rect key="frame" x="50" y="410" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
@@ -276,6 +275,8 @@
                             <constraint firstItem="NQl-2u-R0e" firstAttribute="top" secondItem="9M1-vD-zV0" secondAttribute="bottom" constant="5" id="qIZ-13-wxr"/>
                             <constraint firstItem="h6q-4q-JP3" firstAttribute="top" secondItem="kHB-8e-BH0" secondAttribute="bottom" constant="60" id="rqU-2K-vho"/>
                             <constraint firstItem="kHB-8e-BH0" firstAttribute="centerX" secondItem="4GB-2f-MMe" secondAttribute="centerX" id="sU4-ym-RA4"/>
+                            <constraint firstItem="NQl-2u-R0e" firstAttribute="trailing" secondItem="9M1-vD-zV0" secondAttribute="trailing" id="thj-fb-qBF"/>
+                            <constraint firstItem="TJc-E4-jfn" firstAttribute="trailing" secondItem="a2L-rb-I3K" secondAttribute="trailing" id="u33-6D-Q4w"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="trailing" secondItem="EXG-73-VXe" secondAttribute="trailing" constant="80" id="v8K-Eq-DoQ"/>
                             <constraint firstItem="TJc-E4-jfn" firstAttribute="height" secondItem="NQl-2u-R0e" secondAttribute="height" id="vAW-sN-exF"/>
                             <constraint firstItem="Xmh-r2-MwJ" firstAttribute="bottom" secondItem="1h8-AP-PXV" secondAttribute="bottom" id="wlV-Jk-ad4"/>
@@ -311,10 +312,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8g-Sr-lsM">
-                                <rect key="frame" x="15" y="35" width="40" height="30"/>
+                                <rect key="frame" x="15" y="35" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DcQ-Jc-Uga"/>
-                                    <constraint firstAttribute="width" constant="40" id="fCn-dp-ha6"/>
+                                    <constraint firstAttribute="width" constant="60" id="fCn-dp-ha6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="17"/>
                                 <state key="normal" title="Back"/>
@@ -335,7 +336,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h5-ug-Kzi">
-                                <rect key="frame" x="50" y="322" width="43" height="17"/>
+                                <rect key="frame" x="50" y="322" width="275" height="17"/>
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -349,7 +350,7 @@
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-5h-sWG">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QA-5h-sWG">
                                 <rect key="frame" x="50" y="404" width="275" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NexaLight" family="Nexa Light" pointSize="17"/>
@@ -367,7 +368,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vP-tg-CAE">
-                                <rect key="frame" x="50" y="382" width="74.5" height="17"/>
+                                <rect key="frame" x="50" y="382" width="275" height="17"/>
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -382,6 +383,7 @@
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="trailing" secondItem="XVb-bO-nw6" secondAttribute="trailing" id="7wk-Gv-0aT"/>
                             <constraint firstItem="XVb-bO-nw6" firstAttribute="leading" secondItem="OMW-Ra-Eh5" secondAttribute="leading" id="92w-Mv-1Xm"/>
                             <constraint firstItem="7QA-5h-sWG" firstAttribute="height" secondItem="cP3-8G-OZY" secondAttribute="height" id="FO8-CG-ilC"/>
+                            <constraint firstItem="4vP-tg-CAE" firstAttribute="trailing" secondItem="5h5-ug-Kzi" secondAttribute="trailing" id="GPb-aF-Pde"/>
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="bottom" secondItem="316-hA-J8o" secondAttribute="bottom" id="HB6-QV-GiS"/>
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="trailing" secondItem="cP3-8G-OZY" secondAttribute="trailing" constant="50" id="IAQ-Vu-bE3"/>
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="bottom" secondItem="XVb-bO-nw6" secondAttribute="bottom" id="Jav-Uo-Uk0"/>
@@ -399,9 +401,11 @@
                             <constraint firstItem="cP3-8G-OZY" firstAttribute="leading" secondItem="5h5-ug-Kzi" secondAttribute="leading" id="qh3-8J-Ogb"/>
                             <constraint firstItem="d0B-Bf-gNn" firstAttribute="centerX" secondItem="FKu-TT-566" secondAttribute="centerX" id="qyd-8C-njl"/>
                             <constraint firstItem="OMW-Ra-Eh5" firstAttribute="trailing" secondItem="316-hA-J8o" secondAttribute="trailing" id="r8E-Wj-myo"/>
+                            <constraint firstItem="cP3-8G-OZY" firstAttribute="leading" secondItem="5h5-ug-Kzi" secondAttribute="leading" id="tWu-Ca-Pji"/>
                             <constraint firstItem="mnp-y4-71H" firstAttribute="centerX" secondItem="FKu-TT-566" secondAttribute="centerX" id="uPB-y7-LYC"/>
                             <constraint firstItem="7QA-5h-sWG" firstAttribute="width" secondItem="cP3-8G-OZY" secondAttribute="width" id="xdm-3q-OPu"/>
                             <constraint firstItem="ew6-dE-vlD" firstAttribute="centerX" secondItem="FKu-TT-566" secondAttribute="centerX" id="y5R-X9-xN7"/>
+                            <constraint firstItem="cP3-8G-OZY" firstAttribute="trailing" secondItem="5h5-ug-Kzi" secondAttribute="trailing" id="yDT-QX-srn"/>
                             <constraint firstItem="l8g-Sr-lsM" firstAttribute="top" secondItem="OMW-Ra-Eh5" secondAttribute="top" constant="15" id="zPR-AH-cdd"/>
                             <constraint firstItem="ew6-dE-vlD" firstAttribute="top" secondItem="7QA-5h-sWG" secondAttribute="bottom" constant="50" id="zVD-84-tdV"/>
                         </constraints>
@@ -428,18 +432,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-Dg-1Ge">
-                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customSessionCell" id="MPm-8F-Qw8" customClass="SessionCellTableViewCell" customModule="Momentify" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MPm-8F-Qw8" id="B39-4K-EaO" customClass="SessionCellTableViewCell" customModule="Momentify" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Qxr-Tg-ZKO" id="rT7-LE-imT"/>
                                     <outlet property="delegate" destination="Qxr-Tg-ZKO" id="I3O-CV-oeg"/>
@@ -484,7 +478,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AaS-i5-z4f" firstAttribute="centerX" secondItem="JoZ-DD-6gO" secondAttribute="centerX" id="AfE-Pv-Rpz"/>
                             <constraint firstItem="XSN-jH-9Cf" firstAttribute="bottom" secondItem="9WA-YB-Umt" secondAttribute="bottom" constant="13" id="TYx-aZ-ODb"/>
@@ -492,8 +486,8 @@
                             <constraint firstItem="dGn-Dg-1Ge" firstAttribute="top" secondItem="AaS-i5-z4f" secondAttribute="bottom" constant="10" id="Ypb-Yn-2WS"/>
                             <constraint firstItem="9WA-YB-Umt" firstAttribute="centerX" secondItem="JoZ-DD-6gO" secondAttribute="centerX" id="dny-yk-geQ"/>
                             <constraint firstItem="dGn-Dg-1Ge" firstAttribute="leading" secondItem="XSN-jH-9Cf" secondAttribute="leading" id="hxJ-MY-fDy"/>
+                            <constraint firstItem="9WA-YB-Umt" firstAttribute="top" secondItem="dGn-Dg-1Ge" secondAttribute="bottom" constant="13" id="lOI-FI-Smk"/>
                             <constraint firstItem="AaS-i5-z4f" firstAttribute="top" secondItem="XSN-jH-9Cf" secondAttribute="top" constant="10" id="nAc-mz-zDX"/>
-                            <constraint firstItem="XSN-jH-9Cf" firstAttribute="bottom" secondItem="dGn-Dg-1Ge" secondAttribute="bottom" id="rp2-dg-ucQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XSN-jH-9Cf"/>
                     </view>
@@ -608,16 +602,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tE2-Oa-FDc">
                                 <rect key="frame" x="0.0" y="334" width="375" height="333"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eUn-aJ-tWv" customClass="SessionDetailsAttendeesTableViewCell" customModule="Momentify" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eUn-aJ-tWv" id="1gm-yh-For">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Users Attending :" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VV8-04-sex" userLabel="Session Details">
                                 <rect key="frame" x="15" y="284" width="344" height="40"/>
@@ -662,6 +646,7 @@
                     <navigationItem key="navigationItem" title="Session Details" id="HOF-9N-Hbe"/>
                     <connections>
                         <outlet property="attendeesTableView" destination="tE2-Oa-FDc" id="tew-qB-ny9"/>
+                        <outlet property="sessionAttendeesCount" destination="VV8-04-sex" id="V4D-xR-12e"/>
                         <outlet property="sessionDetails" destination="yUb-9y-4bU" id="UZk-Fw-8o4"/>
                         <outlet property="sessionEndTime" destination="EEF-QP-Piz" id="11l-Pw-Vhc"/>
                         <outlet property="sessionLocation" destination="5dJ-FR-ZZH" id="LW1-VX-tDI"/>
@@ -1029,7 +1014,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Title" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OxL-EE-10F">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Title" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OxL-EE-10F">
                                 <rect key="frame" x="30" y="94" width="315" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="ZN4-D3-sDe"/>
@@ -1038,7 +1023,7 @@
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Location" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GG0-tP-Yw1">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Location" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GG0-tP-Yw1">
                                 <rect key="frame" x="30" y="139" width="315" height="25"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="14"/>
@@ -1057,7 +1042,7 @@
                                     <action selector="createSessionButtonPressed:" destination="EBj-CO-SA0" eventType="touchUpInside" id="gNP-Px-IFr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Description" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-Rr-9Rg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Session's Description" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-Rr-9Rg">
                                 <rect key="frame" x="30" y="184" width="315" height="25"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Maax" family="Maax" pointSize="14"/>
@@ -1072,7 +1057,7 @@
                                     <!--2018-04-18 22:09:28 +0000-->
                                 </date>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-62577405748">
-                                    <!--0018-01-01 11:17:32 +0000-->
+                                    <!--0018-01-03 11:17:32 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_CA"/>
                                 <connections>
@@ -1160,16 +1145,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FNs-fr-XmV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FNs-fr-XmV" id="IxF-vQ-rdJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="S0k-7s-NQI" id="naS-fu-HUW"/>
                             <outlet property="delegate" destination="S0k-7s-NQI" id="PLc-8V-5R4"/>
@@ -1207,8 +1182,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XlI-z5-CoL"/>
-        <segue reference="jfr-wA-x66"/>
-        <segue reference="GBC-3e-ATA"/>
+        <segue reference="Emv-xc-Mgm"/>
+        <segue reference="OUI-oc-fpk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.74901960779999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
