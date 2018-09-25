@@ -22,13 +22,14 @@ class AttendeeCellTableViewCell: UITableViewCell {
         profileImageView.layer.masksToBounds = true
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         
-        attendeeBackground.layer.masksToBounds = true
+        attendeeBackground.layer.masksToBounds = false
         attendeeBackground.layer.cornerRadius = 10
+        
         
         attendeeBackground.layer.shadowColor = UIColor.black.cgColor
         attendeeBackground.layer.shadowOffset = CGSize(width: -1, height: 1)
-        attendeeBackground.layer.shadowOpacity = 1
-        attendeeBackground.layer.shadowRadius = 1
+        attendeeBackground.layer.shadowOpacity = 0.45
+        attendeeBackground.layer.shadowRadius = 1.75
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
