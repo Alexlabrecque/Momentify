@@ -15,10 +15,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
         
         signUpButton.layer.cornerRadius = 10
         signUpButton.layer.borderColor = UIColor.gray.cgColor
@@ -26,12 +31,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
-                
+        
         //signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
         
         signUpButton.isEnabled = false
         
         handleTextField()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +77,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         signUpButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
         signUpButton.layer.borderColor = UIColor.orange.cgColor
-
         
         signUpButton.isEnabled = true
     }
@@ -105,7 +112,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     return
                 } else {
-// ---------------CHECK HERE+_+_+_+_+_____---------_+++++++++++++++
                     let uid = user?.user.uid
                     self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!, profilePictureURL: "")
                     
@@ -149,4 +155,47 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
 
     
+    
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            print("keybord height is : \(keyboardHeight)")
+            
+            var contentInset:UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = 80
+            scrollView.contentInset = contentInset
+            
+            let bottomOffset = CGPoint(x: 0, y: contentInset.bottom)
+            scrollView.setContentOffset(bottomOffset, animated: true)
+        }
+        
+        
+        
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        if passwordTextField.isEditing {
+            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+            scrollView.contentInset = contentInset
+        } else {
+            return
+        }
+        
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
+        if passwordTextField.isFirstResponder {
+            passwordTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+        return
+    }
+    
+
 }

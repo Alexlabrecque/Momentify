@@ -24,12 +24,12 @@ class SignUpOrLogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         
         signUpButton.layer.cornerRadius = 10
-        signUpButton.layer.borderWidth = 1
-        signUpButton.layer.borderColor = UIColor.orange.cgColor
+        //signUpButton.layer.borderWidth = 1
+        //signUpButton.layer.borderColor = UIColor.orange.cgColor
         
         logInButton.layer.cornerRadius = 10
-        logInButton.layer.borderWidth = 1
-        logInButton.layer.borderColor = UIColor.orange.cgColor
+        //logInButton.layer.borderWidth = 1
+        //logInButton.layer.borderColor = UIColor.orange.cgColor
         
         let FBLoginButton = FBSDKLoginButton()
         FBLoginButton.delegate = self

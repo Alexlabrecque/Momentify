@@ -23,48 +23,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="eU8-al-38R">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenBackgroundV2" translatesAutoresizingMaskIntoConstraints="NO" id="eU8-al-38R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Yellow BG" translatesAutoresizingMaskIntoConstraints="NO" id="Q0K-OT-YGy">
-                                <rect key="frame" x="97.5" y="120" width="180" height="180"/>
+                                <rect key="frame" x="97.5" y="210" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="Wqa-RI-2OY"/>
                                     <constraint firstAttribute="width" constant="180" id="p3G-tO-qq0"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="momentify" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-W1-Zay">
-                                <rect key="frame" x="46.5" y="305" width="282" height="40"/>
+                                <rect key="frame" x="46.5" y="395" width="282" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5e7-W1-Zay" secondAttribute="height" multiplier="120:17" id="9Hp-CS-m09"/>
                                     <constraint firstAttribute="height" constant="40" id="epC-Xd-BFy"/>
                                 </constraints>
                                 <color key="textColor" red="0.99215686274509807" green="0.51764705882352946" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5o6-DX-NeQ">
-                                <rect key="frame" x="65.5" y="355" width="244" height="55"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Rcp-vc-MFA"/>
-                                    <constraint firstAttribute="width" secondItem="5o6-DX-NeQ" secondAttribute="height" multiplier="40:9" id="iZI-H3-Zqw"/>
-                                </constraints>
-                                <string key="text">Work well
-anywhere, anytime</string>
-                                <color key="textColor" red="0.99215686274509807" green="0.51764705882352946" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5o6-DX-NeQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5ND-eN-YD4"/>
                             <constraint firstItem="5e7-W1-Zay" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AOM-gX-7dN"/>
                             <constraint firstItem="5e7-W1-Zay" firstAttribute="top" secondItem="Q0K-OT-YGy" secondAttribute="bottom" constant="5" id="I4d-Pl-Fff"/>
-                            <constraint firstItem="5o6-DX-NeQ" firstAttribute="top" secondItem="5e7-W1-Zay" secondAttribute="bottom" constant="10" id="JTO-3q-nAB"/>
-                            <constraint firstItem="Q0K-OT-YGy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Wh8-FG-0UP"/>
+                            <constraint firstItem="Q0K-OT-YGy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="190" id="Wh8-FG-0UP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eU8-al-38R" secondAttribute="trailing" id="Zx8-UB-VHP"/>
                             <constraint firstItem="eU8-al-38R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bJy-TZ-a3t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eU8-al-38R" secondAttribute="bottom" id="eAl-ZU-w1D"/>
@@ -80,7 +65,7 @@ anywhere, anytime</string>
         </scene>
     </scenes>
     <resources>
-        <image name="HomeScreenBackground" width="750" height="1334"/>
+        <image name="HomeScreenBackgroundV2" width="375" height="667"/>
         <image name="Logo Yellow BG" width="5000" height="5000"/>
     </resources>
 </document>

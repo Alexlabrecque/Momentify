@@ -16,9 +16,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
         
         logInButton.layer.cornerRadius = 10
         logInButton.layer.borderColor = UIColor.gray.cgColor
@@ -31,6 +36,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.isEnabled = false
         
         handleTextField()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.view.addGestureRecognizer(tap)
 
     }
     
@@ -54,11 +62,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty
             else {
-
                 logInButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
                 logInButton.layer.borderColor = UIColor.gray.cgColor
                 
-
                 logInButton.isEnabled = false
                 
                 return
@@ -130,12 +136,57 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Try to find next responder
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextField.becomeFirstResponder()
+
         } else {
             // Not found, so remove keyboard.
             textField.resignFirstResponder()
         }
         // Do not add a line break
+        
         return false
+
+    }
+    
+    
+
+    @objc func keyboardWillShow(notification:NSNotification){
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            print("keybord height is : \(keyboardHeight)")
+            
+            var contentInset:UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = 80
+            scrollView.contentInset = contentInset
+            
+            let bottomOffset = CGPoint(x: 0, y: contentInset.bottom)
+            scrollView.setContentOffset(bottomOffset, animated: true)
+        }
+        
+        
+
+    }
+
+    @objc func keyboardWillHide(notification:NSNotification){
+        if passwordTextField.isEditing {
+            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+            scrollView.contentInset = contentInset
+        } else {
+            return
+        }
+
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
+        if passwordTextField.isFirstResponder {
+            passwordTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+        return
     }
     
 }
