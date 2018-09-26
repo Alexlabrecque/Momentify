@@ -146,12 +146,12 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         if Auth.auth().currentUser?.uid != nil {
             
             fetchUser()
-            print("user is logged in with email.")
+            //print("user is logged in with email.")
             
         }else if FBSDKAccessToken.current() != nil{
             
             fetchUser()
-            print("user is logged in with Facebook.")
+            //print("user is logged in with Facebook.")
             
         }else {
             
@@ -165,7 +165,6 @@ class CreateSessionViewController: UIViewController, UITextFieldDelegate {
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
-            print(snapshot)
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 

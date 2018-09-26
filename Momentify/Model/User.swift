@@ -15,5 +15,7 @@ class User: NSObject {
     var occupation: String?
     var userID: String?
     var profilePictureURL: String?
+    var hoursCoworked: Int?
+    var sessionsJoined: Int?
 
 }

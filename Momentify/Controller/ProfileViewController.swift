@@ -17,13 +17,14 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var userName: UITextView!
     @IBOutlet weak var userOccupation: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var hoursCoworkedLabel: UILabel!
+    @IBOutlet weak var sessionsJoinedLabel: UILabel!
     
+    let user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchUser()
         
         editButton.layer.cornerRadius = editButton.frame.height/2
@@ -49,8 +50,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK :- Presenting User's Information
     
     func fetchUser() {
-        
-        let user = User()
 
         let uid = Auth.auth().currentUser?.uid
         let storageRef = Storage.storage().reference(forURL: "gs://momentify-83187.appspot.com/")
@@ -58,24 +57,28 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
         Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
             (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
+            if let dictionary = snapshot.value as? NSDictionary {
+                print(snapshot)
+                let value = snapshot.value as? NSDictionary
                 
                 if self.userName.text.isEmpty {
                     self.userName.text = "Name"
                 } else {
-                    self.userName.text = dictionary["name"] as? String
+                    self.userName.text = value?["name"] as? String
                 }
                 
                 if self.userOccupation.text.isEmpty {
                     self.userOccupation.text = "Occupation"
                 } else {
-                    self.userOccupation.text = dictionary["occupation"] as? String
+                    self.userOccupation.text = value?["occupation"] as? String
                 }
                 
-                user.profilePictureURL = dictionary["profilePictureURL"] as? String
+                self.user.hoursCoworked = value?["hoursCoworked"] as? Int
+                self.user.sessionsJoined = value?["sessionsJoined"] as? Int
                 
+                self.user.profilePictureURL = value?["profilePictureURL"] as? String
                 
-                if let url = URL(string: user.profilePictureURL!) {
+                if let url = URL(string: self.user.profilePictureURL!) {
                     URLSession.shared.dataTask(with: url) { (data, res, error) in
                         if error != nil {
                             print(error!)
@@ -89,13 +92,15 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
                         }
                         
                         }.resume()
+                    self.hoursCoworkedLabel.text = "\(self.user.hoursCoworked!)"
+                    self.sessionsJoinedLabel.text = "\(self.user.sessionsJoined!)"
                 } 
                 
             }
         }, withCancel: nil)
 
     }
-   
+
     
  
     // MARK :- Loggin Out

@@ -28,6 +28,7 @@ class SessionsViewController: UIViewController {
     var currentUser = User()
     var expiredID = [String]()
     var sessionCount = 0
+    var usersToAddSessionAttended = [String]()
     
     var sessionsAttending = [String]()
     var sessionsNotAttending = [String]()
@@ -105,7 +106,7 @@ class SessionsViewController: UIViewController {
     func fetchUser() {
         
         if let uid = Auth.auth().currentUser?.uid {
-            print("User ID is :\(uid)")
+            //print("User ID is :\(uid)")
             
             Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
                 (snapshot) in
@@ -280,6 +281,25 @@ class SessionsViewController: UIViewController {
         let attendeesRef = Database.database().reference().child("attendees")
         let expiredAttendeesRef = Database.database().reference().child("expiredAttendees")
         
+        // Look who attended the session
+        expiredAttendeesRef.child(attendees.sessionID!).child("attendees").observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            if let dictionnary = snapshot.value as? [String: String] {
+                
+                for thisUserId in dictionnary.keys {
+                    print(thisUserId)
+                    self.usersToAddSessionAttended.append(thisUserId)
+                }
+                
+                print(self.usersToAddSessionAttended)
+                self.addSessionToUsers()
+                
+            }
+        }, withCancel: nil)
+        
+        // Add this session in the users' sessions attended
+        
+        
         attendeesRef.child(attendees.sessionID!).removeValue()
         
         expiredAttendeesRef.child(attendees.sessionID!).child("hostID").setValue(attendees.hostID)
@@ -287,6 +307,23 @@ class SessionsViewController: UIViewController {
         expiredAttendeesRef.child(attendees.sessionID!).child("sessionID").setValue(attendees.sessionID)
         expiredAttendeesRef.child(attendees.sessionID!).child("attendees").setValue(attendees.attendees)
         
+    }
+    
+    func addSessionToUsers() {
+        
+        for thisUserID in self.usersToAddSessionAttended {
+            Database.database().reference().child("users").child(thisUserID).observeSingleEvent(of: .value, with: {
+                (snapshot) in
+                if let dictionnary = snapshot.value as? [String: AnyObject] {
+                    let numberOfSessionsThisUserAttended = dictionnary["sessionsJoined"] as! Int
+                    let newNumberOfSessionsThisUserAttended = numberOfSessionsThisUserAttended + 1
+                    
+                    Database.database().reference().child("users").child(thisUserID).child("sessionsJoined").setValue(newNumberOfSessionsThisUserAttended)
+                }
+                
+            }, withCancel: nil)
+        print("loop done")
+        }
     }
 
     
@@ -376,9 +413,6 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         Database.database().reference(withPath: "sessions").removeAllObservers()
         Database.database().reference(withPath: "attendees").removeAllObservers()
-        
-        
-        print("\(correctedOrderCurrentSessions.count) vs \(currentSessions.count)")
         
         var session = Session()
         if sessionsToggleButton.isSelected {

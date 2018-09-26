@@ -865,8 +865,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRW-nF-ZMx">
                                 <rect key="frame" x="0.0" y="349" width="375" height="110"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hours Coworked" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-lF-U0c">
-                                        <rect key="frame" x="50" y="42" width="95" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-Lc-aEG" userLabel="Number of Hours">
+                                        <rect key="frame" x="50" y="19" width="95" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="CU2-6r-TmQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Maax-Medium" family="Maax" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.74901960779999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hours Coworked" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-lF-U0c" userLabel="Hours Coworked">
+                                        <rect key="frame" x="50" y="45" width="95" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="95" id="Khe-of-teH"/>
@@ -876,47 +885,35 @@
                                         <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Session Joined" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xCT-ut-TGc">
-                                        <rect key="frame" x="230" y="42" width="95" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yD-m4-he1" userLabel="Number of Sessions">
+                                        <rect key="frame" x="230" y="19" width="95" height="25"/>
+                                        <fontDescription key="fontDescription" name="Maax-Medium" family="Maax" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.74901960779999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Session Joined" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xCT-ut-TGc" userLabel="Sessions Joined">
+                                        <rect key="frame" x="230" y="45" width="95" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" red="0.36470588235294116" green="0.3411764705882353" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="MaaxRounded" family="Maax Rounded" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="24" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-M4-J42">
-                                        <rect key="frame" x="50" y="12" width="95" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="2c6-h8-aIs"/>
-                                            <constraint firstAttribute="height" constant="30" id="vfB-ct-OLh"/>
-                                        </constraints>
-                                        <color key="textColor" red="1" green="0.74901960784313726" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Maax-Bold" family="Maax" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="7" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-RH-DPp">
-                                        <rect key="frame" x="230" y="12" width="95" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" red="1" green="0.74901960784313726" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Maax-Bold" family="Maax" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="xCT-ut-TGc" firstAttribute="centerX" secondItem="dlg-RH-DPp" secondAttribute="centerX" id="62T-qx-0MQ"/>
                                     <constraint firstItem="5RY-lF-U0c" firstAttribute="leading" secondItem="eRW-nF-ZMx" secondAttribute="leading" constant="50" id="62f-Mu-C2a"/>
                                     <constraint firstItem="xCT-ut-TGc" firstAttribute="centerY" secondItem="5RY-lF-U0c" secondAttribute="centerY" id="C7M-U2-KUa"/>
-                                    <constraint firstItem="5RY-lF-U0c" firstAttribute="width" secondItem="g2a-M4-J42" secondAttribute="width" id="Dda-xA-1a4"/>
+                                    <constraint firstItem="8yD-m4-he1" firstAttribute="centerX" secondItem="xCT-ut-TGc" secondAttribute="centerX" id="G0N-Ke-tmH"/>
                                     <constraint firstItem="xCT-ut-TGc" firstAttribute="width" secondItem="5RY-lF-U0c" secondAttribute="width" id="GUn-Qy-MQb"/>
                                     <constraint firstItem="xCT-ut-TGc" firstAttribute="height" secondItem="5RY-lF-U0c" secondAttribute="height" id="HLB-m3-m0U"/>
-                                    <constraint firstAttribute="bottom" secondItem="5RY-lF-U0c" secondAttribute="bottom" constant="8" id="YyU-aj-WKL"/>
-                                    <constraint firstItem="5RY-lF-U0c" firstAttribute="top" secondItem="g2a-M4-J42" secondAttribute="bottom" id="be6-sw-BdI"/>
-                                    <constraint firstItem="5RY-lF-U0c" firstAttribute="centerX" secondItem="g2a-M4-J42" secondAttribute="centerX" id="gDi-Ob-i13"/>
-                                    <constraint firstItem="dlg-RH-DPp" firstAttribute="width" secondItem="g2a-M4-J42" secondAttribute="width" id="h9U-8w-RkJ"/>
-                                    <constraint firstItem="dlg-RH-DPp" firstAttribute="centerY" secondItem="g2a-M4-J42" secondAttribute="centerY" id="ksZ-Vn-7h8"/>
+                                    <constraint firstItem="8yD-m4-he1" firstAttribute="centerY" secondItem="eCp-Lc-aEG" secondAttribute="centerY" id="JMC-py-TB6"/>
+                                    <constraint firstItem="8yD-m4-he1" firstAttribute="width" secondItem="eCp-Lc-aEG" secondAttribute="width" id="PqQ-jw-MRd"/>
+                                    <constraint firstItem="5RY-lF-U0c" firstAttribute="top" secondItem="eCp-Lc-aEG" secondAttribute="bottom" constant="1" id="XvK-IG-Igx"/>
+                                    <constraint firstItem="eCp-Lc-aEG" firstAttribute="centerX" secondItem="5RY-lF-U0c" secondAttribute="centerX" id="Yc5-7Z-jVt"/>
+                                    <constraint firstAttribute="bottom" secondItem="5RY-lF-U0c" secondAttribute="bottom" constant="5" id="YyU-aj-WKL"/>
+                                    <constraint firstItem="8yD-m4-he1" firstAttribute="height" secondItem="eCp-Lc-aEG" secondAttribute="height" id="Yyh-Gn-dGM"/>
+                                    <constraint firstItem="eCp-Lc-aEG" firstAttribute="width" secondItem="5RY-lF-U0c" secondAttribute="width" id="igr-LE-QB7"/>
                                     <constraint firstAttribute="height" constant="110" id="pHh-ca-fKH"/>
-                                    <constraint firstItem="dlg-RH-DPp" firstAttribute="height" secondItem="g2a-M4-J42" secondAttribute="height" id="qS6-iy-mrd"/>
                                     <constraint firstAttribute="trailing" secondItem="xCT-ut-TGc" secondAttribute="trailing" constant="50" id="zgU-9p-Cu1"/>
                                 </constraints>
                             </view>
@@ -950,7 +947,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="lno-Jl-QyV" id="dgJ-Em-7o3"/>
+                        <outlet property="hoursCoworkedLabel" destination="eCp-Lc-aEG" id="7V8-Ut-WSA"/>
                         <outlet property="profileImageView" destination="g1O-eg-FRu" id="HWE-D5-X2u"/>
+                        <outlet property="sessionsJoinedLabel" destination="8yD-m4-he1" id="3ut-7z-WS9"/>
                         <outlet property="userName" destination="EVT-hx-VI2" id="MXW-6V-ZWz"/>
                         <outlet property="userOccupation" destination="S9C-ud-b7j" id="3on-lu-XEs"/>
                         <segue destination="5U8-4c-Gwa" kind="show" identifier="goToEditProfile" id="eID-nh-xqY"/>
@@ -1253,10 +1252,9 @@
         <image name="ProfilePic" width="130" height="130"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s0P-jn-ocf"/>
         <segue reference="lkF-fJ-dfN"/>
         <segue reference="jfr-wA-x66"/>
-        <segue reference="eiN-1c-Zb2"/>
+        <segue reference="lYA-LJ-6bG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.74901960779999999" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

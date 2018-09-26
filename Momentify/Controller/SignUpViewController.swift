@@ -113,7 +113,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     return
                 } else {
                     let uid = user?.user.uid
-                    self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!, profilePictureURL: "")
+                    self.setUserInformation(email: self.emailTextField.text!, name: "", occupation: "", uid: uid!, profilePictureURL: "", hoursCoworked: 0, sessionsJoined: 0)
                     
                     SVProgressHUD.dismiss()
                     
@@ -124,12 +124,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setUserInformation(email: String, name: String, occupation: String, uid: String, profilePictureURL: String) {
+    func setUserInformation(email: String, name: String, occupation: String, uid: String, profilePictureURL: String, hoursCoworked: Int, sessionsJoined: Int) {
         
         let ref = Database.database().reference()
         let usersReference = ref.child("users")
         let newUserReference = usersReference.child(uid)
-        newUserReference.setValue(["email": email, "name": name, "occupation": occupation, "userID": uid, "profilePictureURL": profilePictureURL])
+        newUserReference.setValue(["email": email, "name": name, "occupation": occupation, "userID": uid, "profilePictureURL": profilePictureURL, "hoursCoworked": hoursCoworked, "sessionsJoined": sessionsJoined])
     }
     
     //MARK:- TextField Delegate Methods
